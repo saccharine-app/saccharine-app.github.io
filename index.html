@@ -3,120 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saccharine Ecosystem — Modular Open-Source Operations</title>
+    <title>Saccharine Platform — Modular Open-Source Operations</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen flex flex-col justify-between p-6 md:p-12">
+<body class="bg-slate-50 text-slate-900 antialiased font-sans min-h-screen flex flex-col justify-between p-6 md:p-12">
 
     <!-- Header / Brand -->
-    <header class="max-w-3xl mx-auto w-full flex justify-between items-center border-b border-slate-800 pb-6">
+    <header class="max-w-4xl mx-auto w-full flex justify-between items-center border-b border-slate-200 pb-6">
         <div class="flex items-center space-x-3">
-            <div class="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30">
+            <div class="h-9 w-9 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30">
                 S
             </div>
-            <span class="text-xl font-bold tracking-tight text-white">Saccharine</span>
+            <div>
+                <span class="text-xl font-bold tracking-tight text-slate-900 block leading-none">Saccharine</span>
+                <span class="text-xs text-slate-400">Modular Operational Engine</span>
+            </div>
         </div>
-        <span class="text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full">
-            Early Alpha Development
-        </span>
+        <div class="flex items-center gap-3">
+            <a href="https://demo.saccharine.app" target="_blank" class="text-sm font-semibold bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 shadow-sm transition">
+                Live Demo &rarr;
+            </a>
+        </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-3xl mx-auto w-full my-12 space-y-8">
+    <main class="max-w-4xl mx-auto w-full my-12 space-y-12">
         
-        <!-- Pitch / Premise -->
+        <!-- Hero Section -->
         <div class="space-y-4">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                Composable, open-source building blocks for enterprise operational systems.
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Enterprise operations without monolithic vendor lock-in.
             </h1>
-            <p class="text-lg text-slate-400 leading-relaxed">
-                Saccharine is an evolving ecosystem of modular PHP packages designed to handle complex business workflows, dynamic catalog management, and document generation without monolithic lock-in.
+            <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl">
+                Saccharine is an open-source suite of independent, modular engines designed to automate complex workflows, manage dynamic pricing, and generate compliant documentation.
             </p>
         </div>
 
-        <hr class="border-slate-800" />
+        <!-- The Value Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 bg-white border border-slate-200 rounded-xl space-y-2">
+                <h3 class="font-bold text-slate-900 text-base">Own Your Code & Data</h3>
+                <p class="text-sm text-slate-600">Free from proprietary subscription walls and vendor lock-in. Run it on your terms with standard open-source licenses.</p>
+            </div>
+            <div class="p-5 bg-white border border-slate-200 rounded-xl space-y-2">
+                <h3 class="font-bold text-slate-900 text-base">Modular by Design</h3>
+                <p class="text-sm text-slate-600">Adopt the entire integrated suite or use standalone packages inside existing Laravel applications.</p>
+            </div>
+            <div class="p-5 bg-white border border-slate-200 rounded-xl space-y-2">
+                <h3 class="font-bold text-slate-900 text-base">Audit-Proof Accuracy</h3>
+                <p class="text-sm text-slate-600">Built-in point-in-time pricing and historical document versioning protect operational integrity.</p>
+            </div>
+        </div>
 
-        <!-- Ecosystem Status / Packages -->
+        <hr class="border-slate-200" />
+
+        <!-- Ecosystem Packages Grid -->
         <div class="space-y-6">
-            <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Active Packages</h2>
+            <div class="flex justify-between items-end">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 tracking-tight">Core Operational Modules</h2>
+                    <p class="text-sm text-slate-500">Explore each package or drill down into its technical implementation.</p>
+                </div>
+            </div>
 
             <!-- BPMN Engine Card -->
-            <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-xl space-y-4 hover:border-slate-700 transition">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <h3 class="text-lg font-bold text-white">saccharine/bpmn-engine</h3>
-                        <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">v0.3.1-alpha</span>
+            <div class="p-6 bg-white border border-slate-200 rounded-xl space-y-4 hover:border-slate-700 transition">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Workflow Orchestration</span>
+                        <h3 class="text-xl font-bold text-slate-900">BPMN Process Engine</h3>
                     </div>
-                    <span class="inline-flex items-center text-xs text-emerald-400 font-medium">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Active
+                    <span class="inline-flex items-center text-xs text-emerald-600 font-mono bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 w-fit">
+                        saccharine/bpmn-engine
                     </span>
                 </div>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    A native PHP execution engine and visual orchestrator for Laravel. Interprets BPMN 2.0 XML diagrams into durable, suspendable background coroutines using standard Laravel queue infrastructure.
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Turns standard visual flowcharts (BPMN 2.0) into durable background tasks. Handles automated actions, human approvals, timeouts, and error escalations without relying on third-party SaaS workflow engines.
                 </p>
-                <div class="flex items-center space-x-4 pt-2 text-sm font-medium">
-                    <a href="https://github.com/saccharine-app/bpmn-engine" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
-                        GitHub Repository &rarr;
-                    </a>
-                    <a href="https://packagist.org/packages/saccharine/bpmn-engine" class="text-slate-400 hover:text-slate-200">
-                        Packagist
-                    </a>
+                <div class="pt-2 flex flex-wrap items-center gap-4 text-sm font-medium border-t border-slate-200/80">
+                    <a href="https://github.com/saccharine-app/bpmn-engine" class="text-indigo-600 hover:text-indigo-300">GitHub Repository &rarr;</a>
+                    <a href="https://packagist.org/packages/saccharine/bpmn-engine" class="text-slate-400 hover:text-slate-200">Packagist</a>
+                </div>
+            </div>
+
+            <!-- CPQ Engine Card -->
+            <div class="p-6 bg-white border border-slate-200 rounded-xl space-y-4 hover:border-slate-700 transition">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Pricing & Configuration</span>
+                        <h3 class="text-xl font-bold text-slate-900">Dynamic Catalog & CPQ Engine</h3>
+                    </div>
+                    <span class="inline-flex items-center text-xs text-emerald-600 font-mono bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 w-fit">
+                        saccharine/cpq-catalog
+                    </span>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Headless Configure-Price-Quote system for complex products and services. Features point-in-time temporal pricing, multi-location catalog aliasing, and an instant reactive frontend configurator.
+                </p>
+                <div class="pt-2 flex flex-wrap items-center gap-4 text-sm font-medium border-t border-slate-200/80">
+                    <a href="https://github.com/saccharine-app/cpq-catalog" class="text-indigo-600 hover:text-indigo-300">GitHub Repository &rarr;</a>
+                    <a href="https://packagist.org/packages/saccharine/cpq-catalog" class="text-slate-400 hover:text-slate-200">Packagist</a>
                 </div>
             </div>
             
             <!-- Document Manager Card -->
-            <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-xl space-y-4 hover:border-slate-700 transition">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <h3 class="text-lg font-bold text-white">saccharine/documents</h3>
-                        <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded">v0.1.0-alpha</span>
+            <div class="p-6 bg-white border border-slate-200 rounded-xl space-y-4 hover:border-slate-700 transition">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-semibold text-sky-400 uppercase tracking-wider">Compliance & Paperwork</span>
+                        <h3 class="text-xl font-bold text-slate-900">Document Generation & Envelope Ledger</h3>
                     </div>
-                    <span class="inline-flex items-center text-xs text-emerald-400 font-medium">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Active
+                    <span class="inline-flex items-center text-xs text-emerald-600 font-mono bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 w-fit">
+                        saccharine/documents
                     </span>
                 </div>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Document management capabilities for dynamic business workflows, including templating and PDF generation.
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Converts dynamic application data into compliant PDFs (via Blade, Markdown, or fillable PDF templates). Tracks document versions over time and manages e-signature envelope lifecycles.
                 </p>
-                <div class="flex items-center space-x-4 pt-2 text-sm font-medium">
-                    <a href="https://github.com/saccharine-app/documents" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
-                        GitHub Repository &rarr;
-                    </a>
-                    <!--<a href="https://packagist.org/packages/saccharine/documents" class="text-slate-400 hover:text-slate-200">
-                        Packagist
-                    </a>-->
+                <div class="pt-2 flex flex-wrap items-center gap-4 text-sm font-medium border-t border-slate-200/80">
+                    <a href="https://github.com/saccharine-app/documents" class="text-indigo-600 hover:text-indigo-300">GitHub Repository &rarr;</a>
+                    <a href="https://packagist.org/packages/saccharine/documents" class="text-slate-400 hover:text-slate-200">Packagist</a>
                 </div>
             </div>
 
-            <!-- Upcoming Constellation Placeholder -->
-            <div class="p-6 bg-slate-900/20 border border-slate-800/50 rounded-xl space-y-2 border-dashed">
-                <div class="flex items-center justify-between text-slate-500">
-                    <h3 class="text-base font-semibold">Catalog & CPQ Infrastructure</h3>
-                    <span class="text-xs font-mono">Planned</span>
-                </div>
-                <p class="text-xs text-slate-600">
-                    Flexible offer, pricing, and inventory mapping abstractions for complex domain catalogs.
-                </p>
-            </div>
-            
-        <hr class="border-slate-800" />
+        </div>
 
-        <!-- Philosophy / Disclaimer -->
-        <div class="bg-slate-900/40 p-5 rounded-lg border border-slate-800/80 text-sm text-slate-400 space-y-2">
-            <p class="font-semibold text-slate-300">A Note on Development Status:</p>
-            <p>
-                These tools are being actively built out in the open to address real-world operational challenges. While core execution and parser mechanics are fully tested, APIs are subject to change prior to v1.0 stability.
+        <hr class="border-slate-200" />
+
+        <!-- Architecture Summary Callout -->
+        <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-3">
+            <h3 class="font-semibold text-slate-900 text-base">The Modular Monolith Advantage</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                Rather than forcing businesses into a rigid, all-or-nothing software suite, Saccharine components operate independently while fitting together cleanly. This reduces key person risk, invites open-source collaboration, and provides total control over business logic and data.
             </p>
         </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="max-w-3xl mx-auto w-full border-t border-slate-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+    <footer class="max-w-4xl mx-auto w-full border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
         <p>&copy; 2026 Saccharine Project. Released under the MIT License.</p>
         <div class="flex space-x-6">
-            <a href="https://github.com/saccharine-app" class="hover:text-slate-300">GitHub Organization</a>
-            <a href="https://packagist.org/packages/saccharine/" class="hover:text-slate-300">Packagist Vendor</a>
+            <a href="https://github.com/saccharine-app" class="hover:text-slate-600">GitHub Organization</a>
+            <a href="https://packagist.org/packages/saccharine/" class="hover:text-slate-600">Packagist Vendor</a>
+            <a href="https://demo.saccharine.app" class="text-indigo-600 hover:text-indigo-300">Demo Instance</a>
         </div>
     </footer>
 
