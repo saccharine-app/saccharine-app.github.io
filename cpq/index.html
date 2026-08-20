@@ -81,6 +81,48 @@
         </div>
     </section>
 
+    <!-- Abstract Visual Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="relative bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-slate-200 max-w-lg mx-auto">
+                <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-300 rounded-2xl blur opacity-10"></div>
+                
+                <div class="relative flex flex-col items-center">
+                    <!-- Master Catalog SKU -->
+                    <div class="w-full flex justify-between items-center bg-slate-50 border border-slate-200 rounded-lg p-3.5 shadow-sm relative z-10">
+                        <div class="text-xs font-bold text-slate-700">Master Catalog Item: <span class="font-mono text-amber-600 ml-1">SRV-01</span></div>
+                        <div class="text-[10px] uppercase text-slate-400 font-bold tracking-wider">Global Base</div>
+                    </div>
+                    
+                    <div class="flex justify-center"><div class="w-0.5 h-6 bg-slate-300"></div></div>
+                    
+                    <!-- Context Polymorphism Split -->
+                    <div class="w-full flex gap-4 relative z-10">
+                        <div class="w-1/2 border border-slate-200 rounded-lg p-3 bg-white text-center shadow-sm border-t-[3px] border-t-amber-400">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase mb-1">Local Context A</div>
+                            <div class="text-sm font-semibold text-slate-800">$1,200.00</div>
+                        </div>
+                        <div class="w-1/2 border border-slate-200 rounded-lg p-3 bg-white text-center shadow-sm border-t-[3px] border-t-amber-400 opacity-60">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase mb-1">Local Context B</div>
+                            <div class="text-sm font-semibold text-slate-800">$1,350.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center px-[25%]"><div class="w-0.5 h-6 bg-slate-300"></div></div>
+                    
+                    <!-- Output Manifest -->
+                    <div class="w-full bg-slate-900 rounded-lg p-4 text-left font-mono text-[11px] text-emerald-400 shadow-inner relative z-10">
+                        <span class="text-slate-400">{</span><br>
+                        &nbsp;&nbsp;<span class="text-sky-300">"quote_id"</span>: <span class="text-amber-300">"qt_9a8b"</span>,<br>
+                        &nbsp;&nbsp;<span class="text-sky-300">"line_items"</span>: [<span class="text-amber-300">"SRV-01"</span>],<br>
+                        &nbsp;&nbsp;<span class="text-sky-300">"total_cents"</span>: <span class="text-purple-300">120000</span><br>
+                        <span class="text-slate-400">}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <hr class="border-slate-100" />
 
     <!-- Technical Architecture Section -->
