@@ -1,0 +1,115 @@
+---
+title: Document Generation & Envelope Ledger
+packageName: Documents
+githubUrl: https://github.com/saccharine-app/documents
+packagistUrl: https://packagist.org/packages/saccharine/documents
+demoUrl: https://demo.saccharine.app
+---
+@extends('_layouts.main')
+
+@section('content')
+    <!-- Hero Section -->
+    <header class="bg-animated-gradient border-b border-slate-100">
+        <div class="container mx-auto px-6 py-24 text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                Format-agnostic paperwork <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-500">generation & logging.</span>
+            </h1>
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                A robust pipeline that merges complex application data with standard templates, outputting compliant PDFs and tracking them historically inside an immutable ledger.
+            </p>
+        </div>
+    </header>
+
+    <!-- The "How It Works" Section -->
+    <section class="py-20 bg-white space-y-6">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">How It Works</h2>
+                <div class="w-24 h-1 bg-sky-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. Build Templates</h3>
+                    <p class="text-slate-600">Create document layouts using standard Blade views, Markdown files, or by uploading fillable PDFs directly.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. Hydrate & Render</h3>
+                    <p class="text-slate-600">The stateless engine flattens your Eloquent data and passes it to drivers like Gotenberg or Pdftk to generate the finalized artifact.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. Track the Ledger</h3>
+                    <p class="text-slate-600">Generated artifacts are attached to application models and bundled into Document Envelopes for strict lifecycle and e-signature management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-100" />
+
+    <!-- Technical Architecture Section -->
+    <section class="py-20 bg-slate-50">
+       <div class="container mx-auto px-6 max-w-5xl">
+            <div class="mb-12">
+                <span class="text-xs font-semibold uppercase tracking-wider text-sky-600 bg-sky-100 px-3 py-1 rounded-full">Under the Hood</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-4 mb-4">Architecture & Engineering</h2>
+                <p class="text-slate-600 max-w-2xl">
+                    By separating the mechanical rendering pipeline from the stateful business logic, this package keeps controllers clean while providing an audit-ready compliance trail.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Tech Card 1 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Engine vs. Ledger Paradigm</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Split logically into two concepts: A stateless <code>DocumentEngine</code> that merges arrays and generates files, and a database-aware <code>DocumentManager</code> orchestrating temporal versions and polymorphic persistence.
+                    </p>
+                </div>
+                <!-- Tech Card 2 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Data Transformation Layer</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        To keep domain logic out of controllers, the package utilizes an abstract <code>BaseDocumentMapper</code> (extending Laravel's JsonResource) to flatten complex relationships into predictable key-value arrays.
+                    </p>
+                </div>
+                <!-- Tech Card 3 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Headless Testing Compatibility</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Initial tests powered by Pest verify Blade hydration and Markdown parsing strictly within the Document Engine, requiring absolutely no database connection to assert rendering logic.
+                    </p>
+                </div>
+                <!-- Tech Card 4 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Filament Generator UI</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Designed to be fully headless, but conditionally loads a complete UI (featuring Monaco code editors, routing streams, and template previews) if Filament is detected in the host application.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+@section('footer_cta')
+    <div class="h-10 w-10 rounded-lg bg-sky-500 flex items-center justify-center font-bold text-white shadow-lg shadow-sky-500/30 mb-6">
+        S
+    </div>
+    <h3 class="text-xl font-bold mb-4">Ready to automate your compliance?</h3>
+    <p class="text-slate-400 max-w-2xl mx-auto mb-8 text-sm leading-relaxed">
+        Start generating multi-format templates and tracking immutable artifacts in your Laravel application today.
+    </p>
+@endsection
