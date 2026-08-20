@@ -8,7 +8,7 @@ demoUrl: https://demo.saccharine.app
     <header class="bg-animated-gradient border-b border-slate-100">
         <div class="container mx-auto px-6 py-24 text-center max-w-4xl">
             <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">Enterprise operations</span> without monolithic vendor lock-in.
+                Enterprise operations without monolithic vendor lock-in.
             </h1>
             <p class="text-xl text-slate-600 mb-10 leading-relaxed">
                 Saccharine is an open-source suite of independent, modular engines designed to automate complex workflows, manage dynamic pricing, and generate compliant documentation.
