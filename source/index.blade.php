@@ -88,10 +88,10 @@ demoUrl: https://demo.saccharine.app
                 <!-- Card Header -->
                 <div class="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-4">
                     <div>
-                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Pricing & Configuration</span>
+                        <span class="text-xs font-semibold text-amber-500 uppercase tracking-wider">Pricing & Configuration</span>
                         <!-- Make the title a clickable link to the internal page -->
                         <a href="/cpq" class="block mt-1 group">
-                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">Dynamic Catalog & CPQ Engine</h3>
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-amber-500 transition">Dynamic Catalog & CPQ Engine</h3>
                         </a>
                     </div>
                     <span class="inline-flex items-center text-xs text-slate-500 font-mono bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit">
@@ -123,10 +123,10 @@ demoUrl: https://demo.saccharine.app
                 <!-- Card Header -->
                 <div class="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-4">
                     <div>
-                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Compliance & Paperwork</span>
+                        <span class="text-xs font-semibold text-sky-500 uppercase tracking-wider">Compliance & Paperwork</span>
                         <!-- Make the title a clickable link to the internal page -->
                         <a href="/cpq" class="block mt-1 group">
-                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">Document Generation & Envelope Ledger</h3>
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-sky-500 transition">Document Generation & Envelope Ledger</h3>
                         </a>
                     </div>
                     <span class="inline-flex items-center text-xs text-slate-500 font-mono bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit">
