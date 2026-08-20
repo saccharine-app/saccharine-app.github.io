@@ -142,7 +142,7 @@ demoUrl: https://demo.saccharine.app
                 <!-- Card Footer (The Links) -->
                 <div class="pt-4 mt-6 flex flex-wrap items-center justify-between gap-4 text-sm font-medium border-t border-slate-100">
                     <!-- Primary Action -->
-                    <a href="/cpq" class="inline-flex items-center justify-center gap-1 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-100 transition font-semibold">
+                    <a href="/documents" class="inline-flex items-center justify-center gap-1 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-100 transition font-semibold">
                         Explore Module &rarr;
                     </a>
                     <!-- Secondary Actions -->
