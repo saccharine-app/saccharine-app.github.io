@@ -91,62 +91,107 @@
             </div>
 
             <!-- BPMN Engine Card -->
-            <div class="p-6 bg-white border border-slate-200 rounded-xl space-y-4 hover:border-slate-700 transition">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+            <div class="p-6 bg-white border border-slate-200 rounded-xl flex flex-col hover:border-indigo-300 hover:shadow-md transition duration-200">
+                <!-- Card Header -->
+                <div class="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-4">
                     <div>
                         <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Workflow Orchestration</span>
-                        <h3 class="text-xl font-bold text-slate-900">BPMN Process Engine</h3>
+                        <!-- Make the title a clickable link to the internal page -->
+                        <a href="/bpmn" class="block mt-1 group">
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">BPMN Process Engine</h3>
+                        </a>
                     </div>
-                    <span class="inline-flex items-center text-xs text-emerald-400 font-mono bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 w-fit">
+                    <span class="inline-flex items-center text-xs text-slate-500 font-mono bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit">
                         saccharine/bpmn-engine
                     </span>
                 </div>
-                <p class="text-sm text-slate-600 leading-relaxed">
+                
+                <!-- Card Body -->
+                <p class="text-sm text-slate-600 leading-relaxed flex-grow">
                     Turns standard visual flowcharts (BPMN 2.0) into durable background tasks. Handles automated actions, human approvals, timeouts, and error escalations without relying on third-party SaaS workflow engines.
                 </p>
-                <div class="pt-2 flex flex-wrap items-center gap-4 text-sm font-medium border-t border-slate-200/80">
-                    <a href="https://github.com/saccharine-app/bpmn-engine" class="text-indigo-600 hover:text-indigo-300">GitHub Repository &rarr;</a>
-                    <a href="https://packagist.org/packages/saccharine/bpmn-engine" class="text-slate-400 hover:text-slate-200">Packagist</a>
+                
+                <!-- Card Footer (The Links) -->
+                <div class="pt-4 mt-6 flex flex-wrap items-center justify-between gap-4 text-sm font-medium border-t border-slate-100">
+                    <!-- Primary Action -->
+                    <a href="/bpmn" class="inline-flex items-center justify-center gap-1 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-100 transition font-semibold">
+                        Explore Module &rarr;
+                    </a>
+                    <!-- Secondary Actions -->
+                    <div class="flex items-center gap-4 text-xs">
+                        <a href="https://github.com/saccharine-app/bpmn-engine" class="text-slate-400 hover:text-slate-700 transition">GitHub</a>
+                        <a href="https://packagist.org/packages/saccharine/bpmn-engine" class="text-slate-400 hover:text-slate-700 transition">Packagist</a>
+                    </div>
                 </div>
             </div>
 
             <!-- CPQ Engine Card -->
-            <div class="p-6 bg-white border border-slate-200 rounded-xl space-y-4 hover:border-slate-700 transition">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+            <div class="p-6 bg-white border border-slate-200 rounded-xl flex flex-col hover:border-indigo-300 hover:shadow-md transition duration-200">
+                <!-- Card Header -->
+                <div class="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-4">
                     <div>
-                        <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Pricing & Configuration</span>
-                        <h3 class="text-xl font-bold text-slate-900">Dynamic Catalog & CPQ Engine</h3>
+                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Pricing & Configuration</span>
+                        <!-- Make the title a clickable link to the internal page -->
+                        <a href="/cpq" class="block mt-1 group">
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">Dynamic Catalog & CPQ Engine</h3>
+                        </a>
                     </div>
-                    <span class="inline-flex items-center text-xs text-emerald-400 font-mono bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 w-fit">
+                    <span class="inline-flex items-center text-xs text-slate-500 font-mono bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit">
                         saccharine/cpq-contracts
                     </span>
                 </div>
-                <p class="text-sm text-slate-600 leading-relaxed">
+                
+                <!-- Card Body -->
+                <p class="text-sm text-slate-600 leading-relaxed flex-grow">
                     Headless Configure-Price-Quote system for complex products and services. Features point-in-time temporal pricing, multi-location catalog aliasing, and an instant reactive frontend configurator.
                 </p>
-                <div class="pt-2 flex flex-wrap items-center gap-4 text-sm font-medium border-t border-slate-200/80">
-                    <a href="https://github.com/saccharine-app/cpq-contracts" class="text-indigo-600 hover:text-indigo-300">GitHub Repository &rarr;</a>
-                    <!-- <a href="https://packagist.org/packages/saccharine/cpq-contracts" class="text-slate-400 hover:text-slate-200">Packagist</a> -->
+                
+                <!-- Card Footer (The Links) -->
+                <div class="pt-4 mt-6 flex flex-wrap items-center justify-between gap-4 text-sm font-medium border-t border-slate-100">
+                    <!-- Primary Action -->
+                    <a href="/cpq" class="inline-flex items-center justify-center gap-1 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-100 transition font-semibold">
+                        Explore Module &rarr;
+                    </a>
+                    <!-- Secondary Actions -->
+                    <div class="flex items-center gap-4 text-xs">
+                        <a href="https://github.com/saccharine-app/cpq-contracts" class="text-slate-400 hover:text-slate-700 transition">GitHub</a>
+                        <!-- <a href="https://packagist.org/packages/saccharine/cpq-contracts" class="text-slate-400 hover:text-slate-700 transition">Packagist</a> -->
+                    </div>
                 </div>
             </div>
             
             <!-- Document Manager Card -->
-            <div class="p-6 bg-white border border-slate-200 rounded-xl space-y-4 hover:border-slate-700 transition">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+            <div class="p-6 bg-white border border-slate-200 rounded-xl flex flex-col hover:border-indigo-300 hover:shadow-md transition duration-200">
+                <!-- Card Header -->
+                <div class="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-4">
                     <div>
-                        <span class="text-xs font-semibold text-sky-400 uppercase tracking-wider">Compliance & Paperwork</span>
-                        <h3 class="text-xl font-bold text-slate-900">Document Generation & Envelope Ledger</h3>
+                        <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Compliance & Paperwork</span>
+                        <!-- Make the title a clickable link to the internal page -->
+                        <a href="/cpq" class="block mt-1 group">
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">Document Generation & Envelope Ledger</h3>
+                        </a>
                     </div>
-                    <span class="inline-flex items-center text-xs text-emerald-400 font-mono bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20 w-fit">
+                    <span class="inline-flex items-center text-xs text-slate-500 font-mono bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit">
                         saccharine/documents
                     </span>
                 </div>
-                <p class="text-sm text-slate-600 leading-relaxed">
+                
+                <!-- Card Body -->
+                <p class="text-sm text-slate-600 leading-relaxed flex-grow">
                     Converts dynamic application data into compliant PDFs (via Blade, Markdown, or fillable PDF templates). Tracks document versions over time and manages e-signature envelope lifecycles.
                 </p>
-                <div class="pt-2 flex flex-wrap items-center gap-4 text-sm font-medium border-t border-slate-200/80">
-                    <a href="https://github.com/saccharine-app/documents" class="text-indigo-600 hover:text-indigo-300">GitHub Repository &rarr;</a>
-                    <!-- <a href="https://packagist.org/packages/saccharine/documents" class="text-slate-400 hover:text-slate-200">Packagist</a> -->
+                
+                <!-- Card Footer (The Links) -->
+                <div class="pt-4 mt-6 flex flex-wrap items-center justify-between gap-4 text-sm font-medium border-t border-slate-100">
+                    <!-- Primary Action -->
+                    <a href="/cpq" class="inline-flex items-center justify-center gap-1 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-100 transition font-semibold">
+                        Explore Module &rarr;
+                    </a>
+                    <!-- Secondary Actions -->
+                    <div class="flex items-center gap-4 text-xs">
+                        <a href="https://github.com/saccharine-app/documents" class="text-slate-400 hover:text-slate-700 transition">GitHub</a>
+                        <!-- <a href="https://packagist.org/packages/saccharine/documents" class="text-slate-400 hover:text-slate-700 transition">Packagist</a> -->
+                    </div>
                 </div>
             </div>
             
