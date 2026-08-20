@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saccharine BPMN | Visual Workflow Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom gentle gradient animation for the hero background */
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white">
+
+    <!-- Navigation -->
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-sm">
+                S
+            </div>
+            <div class="text-xl font-extrabold text-indigo-600 tracking-tighter">
+                Saccharine<span class="text-slate-800 font-medium">BPMN</span>
+            </div>
+        </div>
+        <div class="flex space-x-6 text-sm font-medium">
+            <a href="https://saccharine.app" class="text-slate-500 hover:text-indigo-600 transition">Ecosystem Hub</a>
+            <a href="https://github.com/saccharine-app/bpmn-engine" class="text-slate-500 hover:text-indigo-600 transition">GitHub &rarr;</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-animated-gradient border-b border-slate-100">
+        <div class="container mx-auto px-6 py-24 text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                What if your business flowchart <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">was the actual software?</span>
+            </h1>
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                Usually, stakeholders draw how a company should run on a whiteboard, and developers spend months trying to code it. We built a tool that skips the translation: <strong>draw the map, and the software runs it automatically.</strong>
+            </p>
+        </div>
+    </header>
+
+    <!-- The "Explain it to my family" Section (Preserved) -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">How It Works</h2>
+                <div class="w-24 h-1 bg-indigo-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. Draw the Process</h3>
+                    <p class="text-slate-600">Use our visual, drag-and-drop web canvas to map out a business process. Connect tasks, set routing rules, and define the finish line.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. The Engine Takes Over</h3>
+                    <p class="text-slate-600">The software reads your drawing like a set of instructions. It silently moves behind the scenes, following the exact paths and logic you designed.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. Work Gets Done</h3>
+                    <p class="text-slate-600">It halts for human approvals, calculates complex pricing via the CPQ module, or outputs signed PDFs, automating operational overhead.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-100" />
+
+    <!-- Technical Architecture Section (NEW) -->
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="mb-12">
+                <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full">Under the Hood</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-4 mb-4">Architecture & Engineering</h2>
+                <p class="text-slate-600 max-w-2xl">
+                    Built natively for modern PHP, this package delivers enterprise-grade workflow orchestration without the heavy infrastructure, Java dependencies, or licensing costs of tools like Camunda.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Tech Card 1 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Decoupled Orchestration</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        The engine strictly isolates orchestration from your host application's domain logic. A published configuration file acts as a registry, mapping generic BPMN task keys to specific Action or Trigger classes within your app.
+                    </p>
+                </div>
+                <!-- Tech Card 2 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Native Queue Execution</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Integrates the <code>durable-workflow</code> package to execute graphs across standard background queues. This ensures crash recovery, automated retries, and the ability to hibernate processes for human-in-the-loop tasks via Signals.
+                    </p>
+                </div>
+                <!-- Tech Card 3 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Vite-Bundled Visual Modeler</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        The open-source <code>bpmn-js</code> library is bundled via Vite and embedded directly into Blade views. Custom JavaScript providers restrict the drawing palette to supported elements, ensuring non-technical users only draw executable paths.
+                    </p>
+                </div>
+                <!-- Tech Card 4 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Developer Experience (DX)</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Easily developed locally using multi-environment Docker Compose workflows. Comprehensive automated test coverage is powered by Pest, utilizing in-memory SQLite to test complex graph navigation and routing deterministically.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center flex flex-col items-center">
+            <div class="h-10 w-10 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30 mb-6">
+                S
+            </div>
+            <h3 class="text-xl font-bold mb-4">Ready to start orchestrating?</h3>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8 text-sm leading-relaxed">
+                Install the package via Composer, publish the generic UI scaffolding, and drop it into your existing Laravel or Filament application today. 
+            </p>
+            <a href="https://github.com/saccharine-app/bpmn-engine" class="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-lg hover:bg-slate-100 transition shadow-sm text-sm">
+                View Repository & Documentation
+            </a>
+            <div class="mt-12 text-xs text-slate-600 border-t border-slate-800 pt-8 w-full max-w-4xl flex flex-col md:flex-row justify-between items-center gap-4">
+                <span>&copy; <span id="year"></span> Saccharine Project. MIT Licensed.</span>
+                <div class="flex gap-6">
+                    <a href="https://packagist.org/packages/saccharine/bpmn-engine" class="hover:text-slate-400 transition">Packagist</a>
+                    <a href="https://demo.saccharine.app" class="hover:text-slate-400 transition">Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
