@@ -1,8 +1,8 @@
 ---
 title: Visual Workflow Automation
 packageName: BPMN
-githubUrl: https://github.com/saccharine-app/bpmn-engine
-packagistUrl: https://packagist.org/packages/saccharine/bpmn-engine
+githubUrl: https://github.com/saccharine-app/bpmn
+packagistUrl: https://packagist.org/packages/saccharine/bpmn
 demoUrl: https://demo.saccharine.app
 ---
 @extends('_layouts.main')
