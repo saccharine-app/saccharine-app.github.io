@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modeler &amp; Filament Integration | Saccharine</title>
+    <meta name="description" content="Saccharine BPMN provides visual tooling for both authoring workflows and monitoring active tokens in real time.">
+    <meta property="og:title" content="Modeler &amp; Filament Integration | Saccharine">
+    <meta property="og:description" content="Saccharine BPMN provides visual tooling for both authoring workflows and monitoring active tokens in real time.">
+    <meta property="og:image" content="https://saccharine.app/assets/images/og-preview.png">
+    <meta property="og:url" content="https://saccharine.app/bpmn/docs/modeler-and-filament">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white flex flex-col min-h-full">
+    <!-- Top Global Navigation Bar -->
+    <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="/" class="flex items-center space-x-2.5 group">
+                    <div class="h-8 w-8 rounded-lg bg-indigo-600 group-hover:bg-indigo-500 transition flex items-center justify-center font-bold text-white shadow-sm">
+                        S
+                    </div>
+                    <span class="text-lg font-extrabold text-slate-900 tracking-tight">Saccharine</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-1 pl-4 border-l border-slate-200 text-sm font-medium">
+                    <a href="/bpmn" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        BPMN Workflow
+                    </a>
+                    <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
+                        Documentation
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span>Live Sandbox</span>
+                    <span class="text-slate-400">&nearr;</span>
+                </a>
+                <a href="https://github.com/saccharine-app/bpmn" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-900 transition flex items-center gap-1 text-xs">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Injection -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
+        <!-- Reusable Sidebar Partial -->
+        <aside class="w-full lg:w-64 shrink-0">
+    <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Package</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold border border-indigo-100">
+                saccharine/bpmn
+            </span>
+        </div>
+
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Getting Started
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/introduction" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Introduction &amp; Stack
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/quickstart" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Quickstart Guide
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Engine Mechanics
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/core-concepts" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Core Concepts &amp; Replay
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    UI &amp; Modeler
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/modeler-and-filament" class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                                Modeler &amp; Filament
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Community &amp; RFC
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/roadmap-rfc" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Roadmap &amp; RFC
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+        
+        <div class="pt-4 border-t border-slate-200 text-xs text-slate-500 space-y-2">
+            <div class="font-semibold text-slate-700">Need help or found a bug?</div>
+            <a href="https://github.com/saccharine-app/bpmn/issues" target="_blank" rel="noopener" class="text-indigo-600 hover:underline flex items-center gap-1">
+                Open an Issue on GitHub &rarr;
+            </a>
+        </div>
+    </div>
+</aside>
+        <!-- Main Documentation Content Panel -->
+        <article class="flex-1 py-8 lg:pl-10 lg:border-l border-slate-200 min-w-0">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-6">
+                <a href="/bpmn" class="hover:text-slate-600">bpmn</a>
+                <span>/</span>
+                <span class="text-slate-500">docs</span>
+                <span>/</span>
+                <span class="text-indigo-600 font-semibold">UI &amp; Modeler</span>
+            </nav>
+
+            <!-- Prose Markdown/Blade container -->
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
+                    <h1>Modeler & Filament Integration</h1>
+    <p class="lead text-lg text-slate-600">
+        <code>saccharine/bpmn</code> provides visual tooling for both authoring workflows and monitoring active tokens in real time. It operates as a standalone web interface or embeds seamlessly into <strong>Filament v5</strong> panels.
+    </p>
+
+    <hr>
+
+    <h2>1. The Visual Modeler (<code>bpmn-js</code>)</h2>
+    <p>
+        The package embeds Camunda's open-source <code>bpmn-js</code> web modeler directly inside a responsive Blade view.
+    </p>
+
+    <h3>Custom Palette & Context Pad</h3>
+    <p>
+        The standard BPMN 2.0 specification contains over 80 node types, many of which (such as manual message choreographies or complex transaction boundaries) are unnecessary for typical queue automation.
+    </p>
+    <p>
+        To prevent users from drafting diagrams that the backend engine cannot execute, the modeler includes custom JavaScript providers:
+    </p>
+    <ul>
+        <li>
+            <strong><code>CustomPaletteProvider.js</code>:</strong> Replaces the default left toolbar with a curated palette containing only supported shapes:
+            <ul>
+                <li>Start Events & End Events</li>
+                <li>Service Tasks (Automated activities)</li>
+                <li>User Tasks (Human approval and form nodes)</li>
+                <li>Exclusive Gateways (XOR conditional splits)</li>
+                <li>Parallel Gateways (AND concurrent splits and joins)</li>
+                <li>Call Activities & Sub-Processes</li>
+            </ul>
+        </li>
+        <li>
+            <strong><code>CustomContextPadProvider.js</code>:</strong> Restricts the context menu when clicking on existing shapes, ensuring sequence flows connect only to supported node types.
+        </li>
+    </ul>
+
+    <h2>2. Element Templates</h2>
+    <p>
+        Rather than requiring users to manually input raw XML properties, the modeler supports Camunda-compatible <strong>Element Templates</strong> via <code>@bpmn-io/element-template-chooser</code>.
+    </p>
+    <p>
+        Element Templates transform the right-hand properties panel into structured form inputs tailored to your application's specific domain activities.
+    </p>
+
+    <h3>Example Template: <code>send-notification.json</code></h3>
+
+    <pre><code class="language-json">{
+  "$schema": "https://unpkg.com/@bpmn-io/element-templates@0.8.0/resources/element-template.json",
+  "name": "Send Notification Activity",
+  "id": "saccharine.activity.send-notification",
+  "appliesTo": ["bpmn:ServiceTask"],
+  "properties": [
+    {
+      "label": "Delivery Channel",
+      "type": "Dropdown",
+      "value": "mail",
+      "choices": [
+        {"name": "Email Mailable", "value": "mail"},
+        {"name": "Slack Webhook", "value": "slack"},
+        {"name": "System Audit Log", "value": "log"}
+      ],
+      "binding": {
+        "type": "camunda:property",
+        "name": "channel"
+      }
+    },
+    {
+      "label": "Recipient Template",
+      "type": "String",
+      "value": "{{ customer_email }}",
+      "binding": {
+        "type": "camunda:inputParameter",
+        "name": "recipient"
+      }
+    }
+  ]
+}</code></pre>
+
+    <p>
+        When saved, these values are written to the BPMN 2.0 XML and compiled into the <code>input_parameters</code> JSON column on the <code>workflow_nodes</code> database table.
+    </p>
+
+    <h2>3. Real-Time Telemetry & Token Cockpit</h2>
+    <p>
+        The package includes an interactive execution viewer built with <code>bpmn-js/lib/NavigatedViewer</code> and paired with real-time polling endpoints (<code>/tokens</code> and <code>/telemetry</code>).
+    </p>
+
+    <div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
+        <pre>
+        ┌─────────────────────────────────────────────────────────────┐
+        │                   Live Telemetry Canvas                     │
+        │                                                             │
+        │  ┌──────────┐       ┌──────────────┐       ┌─────────────┐  │
+        │  │  Start   ├──────►│ Check Credit ├──────►│ User Review │  │
+        │  └──────────┘       └──────────────┘       └──────┬──────┘  │
+        │   (Completed)         (Completed)                 │         │
+        │   Solid Blue          Solid Blue            Pulse Green     │
+        │                                            (Active Token)   │
+        └─────────────────────────────────────────────────────────────┘
+        </pre>
+    </div>
+
+    <h3>Dynamic Token Styling</h3>
+    <p>Nodes on the canvas reflect live database execution states:</p>
+    <ul>
+        <li><strong>Completed Nodes (<code>.bpmn-history-completed</code>):</strong> Displayed with solid blue outlines and backgrounds, indicating that the token passed through the node successfully.</li>
+        <li><strong>Active Waiting Nodes (<code>.bpmn-active-token</code>):</strong> Highlighted with an emerald green border and a pulsing CSS indicator, showing that a coroutine is currently hibernated at this step.</li>
+        <li><strong>Failed / Halted Nodes (<code>.bpmn-failed-token</code>):</strong> Rendered in red, showing where an unhandled exception occurred or where an administrative halt stopped the process.</li>
+    </ul>
+
+    <h3>Interactive In-Page Signals</h3>
+    <p>
+        Clicking an active User Task node on the canvas opens a modal displaying current <code>$userData</code> and available action buttons (such as <strong>Approve</strong>, <strong>Reject</strong>, or <strong>Request Changes</strong>). Submitting the modal immediately sends the required inbox signal to resume background queue processing.
+    </p>
+
+    <h2>4. Filament v5 Admin Integration</h2>
+    <p>
+        If your application uses Filament, <code>saccharine/bpmn</code> integrates into your admin panel via <code>BpmnFilamentPlugin</code>.
+    </p>
+
+    <h3>Registering the Plugin</h3>
+    <p>Register the plugin in your Filament panel provider (<code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
+
+    <pre><code class="language-php">use Saccharine\Bpmn\Filament\BpmnFilamentPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->default()
+        ->id('admin')
+        ->path('admin')
+        ->plugin(BpmnFilamentPlugin::make());
+}</code></pre>
+
+    <h3>Included Resources</h3>
+    <ul>
+        <li>
+            <strong><code>WorkflowDefinitionResource</code>:</strong> Manage workflow keys, versions, and deployment states. Includes a fullscreen modal canvas for updating and compiling diagrams.
+        </li>
+        <li>
+            <strong><code>WorkflowInstanceResource</code>:</strong> Inspect active, completed, suspended, and failed workflows. Includes the live SVG token cockpit and header actions to Suspend, Resume, or Halt running instances.
+        </li>
+        <li>
+            <strong>Authorization with Filament Shield:</strong> All package resources enforce standard Laravel policies and register permissions automatically (e.g., <code>view_any_workflow</code>, <code>suspend_instance</code>).
+        </li>
+    </ul>
+
+    <h3>Zero Asset Pollution</h3>
+    <p>
+        Package stylesheets and modeler JavaScript bundles are injected exclusively on package routes using Filament's <code>PanelsRenderHook</code> (<code>HEAD_END</code> and <code>BODY_END</code>). Global panel load times and unrelated resources remain completely unaffected.
+    </p>
+            </div>
+
+            <!-- Sequential Next / Prev Pagination -->
+            <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+                                    <a href="/bpmn/docs/core-concepts" class="flex items-center gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto">
+                        <span>&larr;</span>
+                        <div class="text-left">
+                            <span class="text-[10px] text-slate-400 block uppercase">Previous</span>
+                            <span class="font-bold font-sans">Core Concepts &amp; Replay</span>
+                        </div>
+                    </a>
+                
+                                    <a href="/bpmn/docs/roadmap-rfc" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block uppercase">Next</span>
+                            <span class="font-bold font-sans">Roadmap &amp; RFC</span>
+                        </div>
+                        <span>&rarr;</span>
+                    </a>
+                            </div>
+        </article>
+    </div>
+</div>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-6 w-6 rounded bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <span class="font-bold text-slate-200">Saccharine Open Source</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Domain-agnostic operational primitives and workflow orchestration for Laravel.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <a href="/bpmn" class="hover:text-white transition">BPMN Workflow</a>
+                    <a href="/bpmn/docs/introduction" class="hover:text-white transition">Docs</a>
+                    <a href="https://github.com/saccharine-app/bpmn" class="hover:text-white transition" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://opensource.org/licenses/MIT" class="hover:text-white transition" target="_blank" rel="noopener">MIT License</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800/80 text-center md:text-left text-xs text-slate-500">
+                &copy; 2026 Saccharine. BPMN 2.0 is an OMG standard. Web canvas powered by bpmn-js (Camunda). Durable execution powered by durable-workflow.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

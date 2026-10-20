@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Composable Operational Infrastructure for Laravel' }}</title>
+    <title>{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}</title>
     <meta name="description" content="{{ $page->description ?? 'Open-source, domain-agnostic Laravel packages for workflows, quoting, and paperwork.' }}">
+    <meta property="og:title" content="{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}">
+    <meta property="og:description" content="{{ $page->description ?? 'Open-source, domain-agnostic Laravel packages for workflows, quoting, and paperwork.' }}">
+    <meta property="og:image" content="https://saccharine.app/assets/images/og-preview.png">
+    <meta property="og:url" content="https://saccharine.app{{ $page->getPath() }}">
+    <meta name="twitter:card" content="summary_large_image">
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <style>
         .bg-animated-gradient {

@@ -1,5 +1,6 @@
 ---
 title: Roadmap & Community RFC
+description: We are gathering real-world architectural feedback, testing engine assumptions across enterprise use cases, and inviting contributions from the Laravel community.
 sectionTitle: Community & RFC
 package: bpmn
 prevUrl: /bpmn/docs/modeler-and-filament

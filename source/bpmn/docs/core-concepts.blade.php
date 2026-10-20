@@ -1,5 +1,6 @@
 ---
 title: Core Concepts & Replay Safety
+description: Learn how tasks execute, how state persists, and how deterministic replay guarantees stability across queue restarts.
 sectionTitle: Core Concepts
 package: bpmn
 prevUrl: /bpmn/docs/quickstart

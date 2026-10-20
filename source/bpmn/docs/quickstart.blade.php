@@ -1,5 +1,6 @@
 ---
 title: Quickstart Guide
+description: Get up and running with Saccharine BPMN in under five minutes.
 sectionTitle: Quickstart
 package: bpmn
 prevUrl: /bpmn/docs/introduction

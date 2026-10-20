@@ -1,5 +1,6 @@
 ---
 title: Modeler & Filament Integration
+description: Saccharine BPMN provides visual tooling for both authoring workflows and monitoring active tokens in real time.
 sectionTitle: UI & Modeler
 package: bpmn
 prevUrl: /bpmn/docs/core-concepts
