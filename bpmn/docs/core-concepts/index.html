@@ -169,43 +169,43 @@
         Activities inherit from the package base class and implement a clean, isolated <code>execute()</code> method:
     </p>
 
-    <pre><code class="language-php">&lt;?php
-
-namespace App\Workflows\Activities;
-
-use Saccharine\Bpmn\Activities\Activity;
-use Illuminate\Support\Facades\Http;
-
-class VerifyFraudScoreActivity extends Activity
-{
-    /**
-     * Executes the task.
-     * Receives the current process state ($userData).
-     * Returns an array of state mutations to merge back into the instance.
-     */
-    public function execute(array $userData): array
-    {
-        $response = Http::post('https://fraud-service.internal/check', [
-            'email' => $userData['customer_email'],
-            'amount' => $userData['order_total'],
-        ]);
-
-        return [
-            'fraud_score' => $response->json('score'),
-            'fraud_verified_at' => now()->toISOString(),
-        ];
-    }
-}</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">&lt;?</span><span style="color:#79B8FF">php</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">namespace</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">App\Workflows\Activities</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Activities\Activity</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Illuminate\Support\Facades\Http</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">VerifyFraudScoreActivity</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">extends</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">Activity</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D">     * Executes the task.</span></span>
+<span class="line"><span style="color:#6A737D">     * Receives the current process state ($userData).</span></span>
+<span class="line"><span style="color:#6A737D">     * Returns an array of state mutations to merge back into the instance.</span></span>
+<span class="line"><span style="color:#6A737D">     */</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">public</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">array</span><span style="color:#E1E4E8"> $userData)</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">array</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#E1E4E8">        $response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Http</span><span style="color:#F97583">::</span><span style="color:#B392F0">post</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;https://fraud-service.internal/check&#39;</span><span style="color:#E1E4E8">, [</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#9ECBFF">&#39;email&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> $userData[</span><span style="color:#9ECBFF">&#39;customer_email&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#9ECBFF">&#39;amount&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> $userData[</span><span style="color:#9ECBFF">&#39;order_total&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">        ]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#9ECBFF">&#39;fraud_score&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> $response</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;score&#39;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#9ECBFF">&#39;fraud_verified_at&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">now</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">toISOString</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">        ];</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 
     <h3>Decoupled Configuration Mapping</h3>
     <p>
         In <code>config/saccharine-bpmn.php</code>, tasks declared on the visual canvas are mapped to PHP classes using task IDs or element templates:
     </p>
 
-    <pre><code class="language-php">'activities' => [
-    'verify-fraud' => \App\Workflows\Activities\VerifyFraudScoreActivity::class,
-    'send-notification' => \App\Workflows\Activities\SendNotificationActivity::class,
-],</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#9ECBFF">&#39;activities&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;verify-fraud&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">\App\Workflows\Activities\VerifyFraudScoreActivity</span><span style="color:#F97583">::class</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;send-notification&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">\App\Workflows\Activities\SendNotificationActivity</span><span style="color:#F97583">::class</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">],</span></span></code></pre>
 
     <p>
         When the activity finishes, its returned array merges deterministically back into the process <code>$userData</code> payload.
@@ -225,29 +225,29 @@ class VerifyFraudScoreActivity extends Activity
         <li><strong>No worker processes, CPU cycles, or threads are held in memory while awaiting user action.</strong></li>
     </ol>
 
-    <pre><code class="language-plaintext">
-[Token Enters User Task]
-        │
-        ▼
-Yields Awaitable Signal ──► Database Checkpoint Saved ──► Queue Worker Released
-                                                                │
-                                                                ▼
-                                                        (Hours or Days Later)
-                                                                │
-                                                                ▼
-Queue Worker Resumes ◄── Workflow Stub Woken Up ◄── Signal Received via HTTP/UI
-</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8"></span></span>
+<span class="line"><span style="color:#e1e4e8">[Token Enters User Task]</span></span>
+<span class="line"><span style="color:#e1e4e8">        │</span></span>
+<span class="line"><span style="color:#e1e4e8">        ▼</span></span>
+<span class="line"><span style="color:#e1e4e8">Yields Awaitable Signal ──► Database Checkpoint Saved ──► Queue Worker Released</span></span>
+<span class="line"><span style="color:#e1e4e8">                                                                │</span></span>
+<span class="line"><span style="color:#e1e4e8">                                                                ▼</span></span>
+<span class="line"><span style="color:#e1e4e8">                                                        (Hours or Days Later)</span></span>
+<span class="line"><span style="color:#e1e4e8">                                                                │</span></span>
+<span class="line"><span style="color:#e1e4e8">                                                                ▼</span></span>
+<span class="line"><span style="color:#e1e4e8">Queue Worker Resumes ◄── Workflow Stub Woken Up ◄── Signal Received via HTTP/UI</span></span>
+<span class="line"><span style="color:#e1e4e8"></span></span></code></pre>
 
     <h3>Resuming via Signal</h3>
     <p>When an authorized user submits their review in the host application, dispatch a signal:</p>
 
-    <pre><code class="language-php">use Saccharine\Bpmn\Facades\Bpmn;
-
-Bpmn::signalInstance($workflowInstanceId, 'submitUserTask', [
-    'task_id' => 'manager_approval_node',
-    'approved' => true,
-    'reviewed_by' => auth()->id(),
-]);</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Facades\Bpmn</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Bpmn</span><span style="color:#F97583">::</span><span style="color:#B392F0">signalInstance</span><span style="color:#E1E4E8">($workflowInstanceId, </span><span style="color:#9ECBFF">&#39;submitUserTask&#39;</span><span style="color:#E1E4E8">, [</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;task_id&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&#39;manager_approval_node&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;approved&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;reviewed_by&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">auth</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">]);</span></span></code></pre>
 
     <p>
         The durable engine locates the hibernated instance, verifies the inbox signal, and dispatches a queue job to advance the token down outgoing sequence flows.
@@ -263,12 +263,12 @@ Bpmn::signalInstance($workflowInstanceId, 'submitUserTask', [
         To prevent code injection and avoid raw PHP <code>eval()</code>, conditions are parsed safely through <strong>Symfony ExpressionLanguage</strong> with the instance payload injected into scope:
     </p>
 
-    <pre><code class="language-xml">&lt;!-- Example compiled sequence flow condition --&gt;
-&lt;bpmn:sequenceFlow id="Flow_1" sourceRef="Gateway_XOR" targetRef="Task_Approval"&gt;
-  &lt;bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"&gt;
-    order_total &gt;= 1000 and customer_tier in ['vip', 'enterprise']
-  &lt;/bpmn:conditionExpression&gt;
-&lt;/bpmn:sequenceFlow&gt;</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D">&lt;!-- Example compiled sequence flow condition --&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">bpmn:sequenceFlow</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;Flow_1&quot;</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">sourceRef</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;Gateway_XOR&quot;</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">targetRef</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;Task_Approval&quot;</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">bpmn:conditionExpression</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">xsi:type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;bpmn:tFormalExpression&quot;</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    order_total &gt;= 1000 and customer_tier in [&#39;vip&#39;, &#39;enterprise&#39;]</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">bpmn:conditionExpression</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">bpmn:sequenceFlow</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
 
     <p>
         If no condition evaluates to <code>true</code>, the engine routes through the designated <code>default</code> sequence flow.
@@ -280,7 +280,7 @@ Bpmn::signalInstance($workflowInstanceId, 'submitUserTask', [
         <li>The engine creates isolated child coroutine stubs for each outgoing branch.</li>
         <li>Active tokens are tracked independently across concurrent branches in <code>workflow_tokens</code>.</li>
         <li>At the converging join gateway, the engine executes a barrier join:
-            <pre><code class="language-php">yield all($parallelBranchStubs);</code></pre>
+            <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">yield</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">all</span><span style="color:#E1E4E8">($parallelBranchStubs);</span></span></code></pre>
         </li>
         <li>Only when <strong>all</strong> parallel branches have finished does the parent workflow resume and proceed to downstream nodes.</li>
     </ol>
@@ -295,17 +295,17 @@ Bpmn::signalInstance($workflowInstanceId, 'submitUserTask', [
         If an activity writes directly to an external API or database during execution, a coroutine replay could inadvertently execute those operations multiple times:
     </p>
 
-    <pre><code class="language-php">// ❌ DANGEROUS: Re-executes multiple times during coroutine replays!
-DB::table('orders')->where('id', $orderId)->update(['status' => 'processing']);
-
-// ✅ SAFE: Wrapped in sideEffect to run once and cache during replays
-WorkflowStub::sideEffect(function () use ($nodeId, $userData) {
-    WorkflowHistory::create([
-        'workflow_instance_id' => $this->instanceId,
-        'node_id' => $nodeId,
-        'payload_snapshot' => $userData,
-    ]);
-});</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D">// ❌ DANGEROUS: Re-executes multiple times during coroutine replays!</span></span>
+<span class="line"><span style="color:#79B8FF">DB</span><span style="color:#F97583">::</span><span style="color:#B392F0">table</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;orders&#39;</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">where</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;id&#39;</span><span style="color:#E1E4E8">, $orderId)</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">update</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">&#39;status&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&#39;processing&#39;</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ✅ SAFE: Wrapped in sideEffect to run once and cache during replays</span></span>
+<span class="line"><span style="color:#79B8FF">WorkflowStub</span><span style="color:#F97583">::</span><span style="color:#B392F0">sideEffect</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">use</span><span style="color:#E1E4E8"> ($nodeId, $userData) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#79B8FF">WorkflowHistory</span><span style="color:#F97583">::</span><span style="color:#B392F0">create</span><span style="color:#E1E4E8">([</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#9ECBFF">&#39;workflow_instance_id&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">$this</span><span style="color:#F97583">-&gt;</span><span style="color:#E1E4E8">instanceId,</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#9ECBFF">&#39;node_id&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> $nodeId,</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#9ECBFF">&#39;payload_snapshot&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> $userData,</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
 
     <p>
         During the initial run, the closure executes and caches its return value. During subsequent replays, the engine skips closure execution and returns the cached result directly.
