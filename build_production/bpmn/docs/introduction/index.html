@@ -171,28 +171,26 @@
         <code>saccharine/bpmn</code> is not an engine built from scratch in isolation. It serves as an <strong>integration bridge</strong> uniting battle-tested open-source technologies:
     </p>
 
-    <div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
-        <pre>
-        ┌────────────────────────────────────────────────────────┐
-        │       bpmn-js (Camunda) - Visual Modeler & SVG         │
-        └───────────────────────────┬────────────────────────────┘
-                                    │ BPMN 2.0 XML
-                                    ▼
-        ┌────────────────────────────────────────────────────────┐
-        │      saccharine/bpmn - XPath Parser & Graph Schema     │
-        └───────────────────────────┬────────────────────────────┘
-                                    │ Coroutine Promises
-                                    ▼
-        ┌────────────────────────────────────────────────────────┐
-        │  durable-workflow - Deterministic State & Inboxes      │
-        └───────────────────────────┬────────────────────────────┘
-                                    │ Scheduled Jobs
-                                    ▼
-        ┌────────────────────────────────────────────────────────┐
-        │    Laravel Queue Workers (Redis / SQS / Database)      │
-        └────────────────────────────────────────────────────────┘
-        </pre>
-    </div>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8"></span></span>
+<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span style="color:#e1e4e8">│       bpmn-js (Camunda) - Visual Modeler &amp; SVG         │</span></span>
+<span class="line"><span style="color:#e1e4e8">└───────────────────────────┬────────────────────────────┘</span></span>
+<span class="line"><span style="color:#e1e4e8">                            │ BPMN 2.0 XML</span></span>
+<span class="line"><span style="color:#e1e4e8">                            ▼</span></span>
+<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span style="color:#e1e4e8">│      saccharine/bpmn - XPath Parser &amp; Graph Schema     │</span></span>
+<span class="line"><span style="color:#e1e4e8">└───────────────────────────┬────────────────────────────┘</span></span>
+<span class="line"><span style="color:#e1e4e8">                            │ Coroutine Promises</span></span>
+<span class="line"><span style="color:#e1e4e8">                            ▼</span></span>
+<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span style="color:#e1e4e8">│  durable-workflow - Deterministic State &amp; Inboxes      │</span></span>
+<span class="line"><span style="color:#e1e4e8">└───────────────────────────┬────────────────────────────┘</span></span>
+<span class="line"><span style="color:#e1e4e8">                            │ Scheduled Jobs</span></span>
+<span class="line"><span style="color:#e1e4e8">                            ▼</span></span>
+<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span style="color:#e1e4e8">│    Laravel Queue Workers (Redis / SQS / Database)      │</span></span>
+<span class="line"><span style="color:#e1e4e8">└────────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span style="color:#e1e4e8"></span></span></code></pre>
 
     <ul>
         <li>

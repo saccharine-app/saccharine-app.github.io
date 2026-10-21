@@ -166,11 +166,11 @@
     <h2>1. Installation</h2>
     <p>Install the package into your Laravel application via Composer:</p>
 
-    <pre><code class="language-bash">composer require saccharine/bpmn</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">composer</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">require</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">saccharine/bpmn</span></span></code></pre>
 
     <p>Run the interactive package installer command:</p>
 
-    <pre><code class="language-bash">php artisan bpmn:install</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:install</span></span></code></pre>
 
     <p>This automated command handles initial setup:</p>
     <ol>
@@ -185,7 +185,7 @@
         The package includes an end-to-end order processing scenario with Exclusive Gateways, User Task approval pauses, and automated notification activities:
     </p>
 
-    <pre><code class="language-bash">php artisan bpmn:demo</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:demo</span></span></code></pre>
 
     <p>The demo command configures:</p>
     <ul>
@@ -200,28 +200,27 @@
     <h3>Terminal A: Start Queue Workers</h3>
     <p>Start your standard Laravel queue worker to process workflow steps:</p>
 
-    <pre><code class="language-bash">php artisan queue:work</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">queue:work</span></span></code></pre>
 
     <h3>Terminal B: Dispatch a Workflow Instance</h3>
     <p>Trigger the demo process using the test CLI command:</p>
 
-    <pre><code class="language-bash"># Triggers an order requiring human approval (total >= 1000)
-php artisan bpmn:test-order --amount=1500 --customer="alex@example.com"</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Triggers an order requiring human approval (total &gt;= 1000)</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:test-order</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--amount=1500</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--customer=</span><span style="color:#9ECBFF">&quot;alex@example.com&quot;</span></span></code></pre>
 
     <p>Your terminal will output the execution lifecycle:</p>
 
-    <div class="my-4 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 space-y-1">
-        <div class="text-slate-400">[BPMN] Workflow instance dispatched: wf_inst_01j98k2...</div>
-        <div class="text-slate-400">[BPMN] Start Event: Process initiated.</div>
-        <div class="text-emerald-400">[BPMN] Exclusive Gateway: Evaluated (amount >= 1000 -&gt; true).</div>
-        <div class="text-amber-400">[BPMN] User Task reached: 'Manager Approval Required'.</div>
-        <div class="text-indigo-400">[BPMN] Coroutine hibernated safely in relational database. Worker released.</div>
-    </div>
+    
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#959da5">[BPMN] Workflow instance dispatched: wf_inst_01j98k2...</span></span>
+<span class="line"><span style="color:#959da5">[BPMN] Start Event: Process initiated.</span></span>
+<span class="line"><span style="color:#34d058">[BPMN] Exclusive Gateway: Evaluated (amount &gt;= 1000 -&gt; true).</span></span>
+<span class="line"><span style="color:#ffea7f">[BPMN] User Task reached: &#39;Manager Approval Required&#39;.</span></span>
+<span class="line"><span style="color:#2188ff">[BPMN] Coroutine hibernated safely in relational database. Worker released.</span></span></code></pre>
 
     <h2>4. Inspecting the Visual Cockpit</h2>
     <p>Navigate to the standalone workflow definitions dashboard in your browser:</p>
 
-    <pre><code class="language-text">http://your-app.test/bpmn/workflows/definitions</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8">http://your-app.test/bpmn/workflows/definitions</span></span></code></pre>
 
     <div class="my-4 p-4 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-900">
         <strong>Note for Filament users:</strong> If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/workflows</code> instead.
@@ -244,14 +243,14 @@ php artisan bpmn:test-order --amount=1500 --customer="alex@example.com"</code></
     <h2>Artisan Scaffolding Helpers</h2>
     <p>Generate workflow components directly from the CLI:</p>
 
-    <pre><code class="language-bash"># Create a new custom Service Task Activity
-php artisan bpmn:make-activity ProcessPaymentActivity
-
-# Create a Message/Event Trigger listener
-php artisan bpmn:make-trigger OrderPaidTrigger
-
-# Create a Camunda-compatible Element Template JSON definition
-php artisan bpmn:make-template payment-service</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Create a new custom Service Task Activity</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-activity</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">ProcessPaymentActivity</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Create a Message/Event Trigger listener</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-trigger</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">OrderPaidTrigger</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Create a Camunda-compatible Element Template JSON definition</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-template</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">payment-service</span></span></code></pre>
             </div>
 
             <!-- Sequential Next / Prev Pagination -->

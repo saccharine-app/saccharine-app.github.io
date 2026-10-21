@@ -194,37 +194,37 @@
 
     <h3>Example Template: <code>send-notification.json</code></h3>
 
-    <pre><code class="language-json">{
-  "$schema": "https://unpkg.com/@bpmn-io/element-templates@0.8.0/resources/element-template.json",
-  "name": "Send Notification Activity",
-  "id": "saccharine.activity.send-notification",
-  "appliesTo": ["bpmn:ServiceTask"],
-  "properties": [
-    {
-      "label": "Delivery Channel",
-      "type": "Dropdown",
-      "value": "mail",
-      "choices": [
-        {"name": "Email Mailable", "value": "mail"},
-        {"name": "Slack Webhook", "value": "slack"},
-        {"name": "System Audit Log", "value": "log"}
-      ],
-      "binding": {
-        "type": "camunda:property",
-        "name": "channel"
-      }
-    },
-    {
-      "label": "Recipient Template",
-      "type": "String",
-      "value": "{{ customer_email }}",
-      "binding": {
-        "type": "camunda:inputParameter",
-        "name": "recipient"
-      }
-    }
-  ]
-}</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span><span style="color:#79B8FF">&quot;$schema&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;https://unpkg.com/@bpmn-io/element-templates@0.8.0/resources/element-template.json&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span><span style="color:#79B8FF">&quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Send Notification Activity&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span><span style="color:#79B8FF">&quot;id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;saccharine.activity.send-notification&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span><span style="color:#79B8FF">&quot;appliesTo&quot;</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;bpmn:ServiceTask&quot;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span><span style="color:#79B8FF">&quot;properties&quot;</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;label&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Delivery Channel&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Dropdown&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;value&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;mail&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;choices&quot;</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#79B8FF">&quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Email Mailable&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">&quot;value&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;mail&quot;</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#79B8FF">&quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Slack Webhook&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">&quot;value&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;slack&quot;</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#79B8FF">&quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;System Audit Log&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">&quot;value&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;log&quot;</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      ],</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;binding&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;camunda:property&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;channel&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;label&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Recipient Template&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;String&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;value&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;{{ customer_email }}&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      </span><span style="color:#79B8FF">&quot;binding&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;camunda:inputParameter&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;recipient&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 
     <p>
         When saved, these values are written to the BPMN 2.0 XML and compiled into the <code>input_parameters</code> JSON column on the <code>workflow_nodes</code> database table.
@@ -236,18 +236,18 @@
     </p>
 
     <div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
-        <pre>
-        ┌─────────────────────────────────────────────────────────────┐
-        │                   Live Telemetry Canvas                     │
-        │                                                             │
-        │  ┌──────────┐       ┌──────────────┐       ┌─────────────┐  │
-        │  │  Start   ├──────►│ Check Credit ├──────►│ User Review │  │
-        │  └──────────┘       └──────────────┘       └──────┬──────┘  │
-        │   (Completed)         (Completed)                 │         │
-        │   Solid Blue          Solid Blue            Pulse Green     │
-        │                                            (Active Token)   │
-        └─────────────────────────────────────────────────────────────┘
-        </pre>
+        <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8"></span></span>
+<span class="line"><span style="color:#e1e4e8">┌─────────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span style="color:#e1e4e8">│                   Live Telemetry Canvas                     │</span></span>
+<span class="line"><span style="color:#e1e4e8">│                                                             │</span></span>
+<span class="line"><span style="color:#e1e4e8">│  ┌──────────┐       ┌──────────────┐       ┌─────────────┐  │</span></span>
+<span class="line"><span style="color:#e1e4e8">│  │  Start   ├──────►│ Check Credit ├──────►│ User Review │  │</span></span>
+<span class="line"><span style="color:#e1e4e8">│  └──────────┘       └──────────────┘       └──────┬──────┘  │</span></span>
+<span class="line"><span style="color:#e1e4e8">│   (Completed)         (Completed)                 │         │</span></span>
+<span class="line"><span style="color:#e1e4e8">│   Solid Blue          Solid Blue            Pulse Green     │</span></span>
+<span class="line"><span style="color:#e1e4e8">│                                            (Active Token)   │</span></span>
+<span class="line"><span style="color:#e1e4e8">└─────────────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span style="color:#e1e4e8"></span></span></code></pre>
     </div>
 
     <h3>Dynamic Token Styling</h3>
@@ -271,16 +271,16 @@
     <h3>Registering the Plugin</h3>
     <p>Register the plugin in your Filament panel provider (<code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
 
-    <pre><code class="language-php">use Saccharine\Bpmn\Filament\BpmnFilamentPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->default()
-        ->id('admin')
-        ->path('admin')
-        ->plugin(BpmnFilamentPlugin::make());
-}</code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Filament\BpmnFilamentPlugin</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">public</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">panel</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Panel</span><span style="color:#E1E4E8"> $panel)</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Panel</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> $panel</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">default</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;admin&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">path</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;admin&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">plugin</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">BpmnFilamentPlugin</span><span style="color:#F97583">::</span><span style="color:#B392F0">make</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 
     <h3>Included Resources</h3>
     <ul>
