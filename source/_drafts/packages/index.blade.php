@@ -14,7 +14,7 @@ demoUrl: https://demo.saccharine.app
                 <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-mono font-semibold rounded-full uppercase">
                     Developer Hub
                 </span>
-                <span class="text-xs text-slate-400 font-mono">PHP 8.3+ • Laravel 11+ • MIT Licensed</span>
+                <span class="text-xs text-slate-400 font-mono">PHP 8.3+ • Laravel 12+ • MIT Licensed</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
                 Headless engines for modular monoliths.

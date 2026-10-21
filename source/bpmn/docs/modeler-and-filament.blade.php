@@ -98,7 +98,11 @@ nextTitle: Roadmap & RFC
         The package includes an interactive execution viewer built with <code>bpmn-js/lib/NavigatedViewer</code> and paired with real-time polling endpoints (<code>/tokens</code> and <code>/telemetry</code>).
     </p>
 
-    <div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
+    <div>
+        <img alt="Screenshot of the live telemetry canvas" src="/assets/images/saccharine-bpmn-live-telemetry.png">
+    </div>
+
+    <!--<div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
         <pre><code class="language-plaintext">
 ┌─────────────────────────────────────────────────────────────┐
 │                   Live Telemetry Canvas                     │
@@ -111,7 +115,7 @@ nextTitle: Roadmap & RFC
 │                                            (Active Token)   │
 └─────────────────────────────────────────────────────────────┘
 </code></pre>
-    </div>
+    </div>-->
 
     <h3>Dynamic Token Styling</h3>
     <p>Nodes on the canvas reflect live database execution states:</p>

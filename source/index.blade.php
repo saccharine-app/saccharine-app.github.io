@@ -13,7 +13,7 @@ description: Open-source, domain-agnostic Laravel packages for durable workflows
                     Open Source Laravel Ecosystem
                 </span>
                 <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono rounded-full hidden sm:inline-block">
-                    PHP 8.3+ & Laravel 11/12
+                    PHP 8.3+ & Laravel 12/13
                 </span>
             </div>
 
@@ -96,7 +96,7 @@ description: Open-source, domain-agnostic Laravel packages for durable workflows
                         </span>
                         <span class="text-xs font-mono text-slate-400">v0.5.0-alpha</span>
                         <span class="text-xs font-mono text-slate-400">&bull;</span>
-                        <span class="text-xs font-mono text-slate-500">Laravel 11 & 12</span>
+                        <span class="text-xs font-mono text-slate-500">Laravel 12 & 13</span>
                     </div>
 
                     <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">

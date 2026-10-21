@@ -75,11 +75,9 @@ php artisan bpmn:test-order --amount=1500 --customer="alex@example.com"</code></
 
     @php
     $terminalOutput = implode("\n", [
-        "\e[90m[BPMN] Workflow instance dispatched: wf_inst_01j98k2...\e[0m",
-        "\e[90m[BPMN] Start Event: Process initiated.\e[0m",
-        "\e[32m[BPMN] Exclusive Gateway: Evaluated (amount >= 1000 -> true).\e[0m",
-        "\e[33m[BPMN] User Task reached: 'Manager Approval Required'.\e[0m",
-        "\e[34m[BPMN] Coroutine hibernated safely in relational database. Worker released.\e[0m",
+        "\e[34m[BPMN:ENGINE]\e[0m [#1] (Start_OrderPlaced) Process started from node [Start_OrderPlaced].",
+        "\e[33m[BPMN:GATEWAY]\e[0m [#1] (Gateway_VIP) Evaluated conditions. Routing token -> [Task_ManualReview].",
+        "\e[35m[BPMN:HIBERNATE]\e[0m [#1] (Task_ManualReview) User Task [Manager Review] reached. Workflow hibernating in database awaiting signal.",
     ]);
 @endphp
 

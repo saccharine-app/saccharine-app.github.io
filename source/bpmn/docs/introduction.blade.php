@@ -34,7 +34,11 @@ nextTitle: Quickstart Guide
         <code>saccharine/bpmn</code> is not an engine built from scratch in isolation. It serves as an <strong>integration bridge</strong> uniting battle-tested open-source technologies:
     </p>
 
-    <pre><code class="language-plaintext">
+    <div>
+        <img alt="Diagram showing pipeline from bpmn-js -> saccharine/bpmn -> durable-workflow -> Laravel Queue Workers" src="/assets/images/saccharine-bpmn-integration-architecture.jpg">
+    </div>
+
+    <!--<pre><code class="language-plaintext">
 ┌────────────────────────────────────────────────────────┐
 │       bpmn-js (Camunda) - Visual Modeler & SVG         │
 └───────────────────────────┬────────────────────────────┘
@@ -53,7 +57,7 @@ nextTitle: Quickstart Guide
 ┌────────────────────────────────────────────────────────┐
 │    Laravel Queue Workers (Redis / SQS / Database)      │
 └────────────────────────────────────────────────────────┘
-</code></pre>
+</code></pre>-->
 
     <ul>
         <li>
