@@ -10,7 +10,12 @@
     <meta property="og:image" content="https://saccharine.app/assets/images/og-preview.png">
     <meta property="og:url" content="https://saccharine.app{{ $page->getPath() }}">
     <meta name="twitter:card" content="summary_large_image">
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    {{-- Enables hot reload during 'npm run dev' --}}
+    @viteRefresh()
+
+    {{-- Resolves compiled CSS and JS via Jigsaw's helper --}}
+    <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
+    <!--<script defer src="{{ vite('source/_assets/js/main.js') }}"></script>-->
     <style>
         .bg-animated-gradient {
             background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
