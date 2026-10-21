@@ -69,7 +69,7 @@ nextTitle: Core Concepts & Replay
     <p>Trigger the demo process using the test CLI command:</p>
 
     <pre><code class="language-bash"># Triggers an order requiring human approval (total >= 1000)
-php artisan bpmn:test-order --amount=1500 --customer="alex@example.com"</code></pre>
+php artisan bpmn:test-order --amount=1500 --name="Demo Customer" --email="demo@example.com"</code></pre>
 
     <p>Your terminal will output the execution lifecycle:</p>
 
