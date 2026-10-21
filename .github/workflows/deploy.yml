@@ -15,6 +15,8 @@ jobs:
           php-version: '8.4'
       - name: Install Composer Dependencies
         run: composer install --prefer-dist --no-progress
+      - name: Install NPM Dependencies
+        run: npm install
       - name: Build NPM Resources
         run: npm run build
       - name: Build Jigsaw (Production)
