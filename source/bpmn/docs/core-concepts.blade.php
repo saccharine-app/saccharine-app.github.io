@@ -84,20 +84,18 @@ class VerifyFraudScoreActivity extends Activity
         <li><strong>No worker processes, CPU cycles, or threads are held in memory while awaiting user action.</strong></li>
     </ol>
 
-    <div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
-        <pre>
-        [Token Enters User Task]
-               │
-               ▼
-        Yields Awaitable Signal ──► Database Checkpoint Saved ──► Queue Worker Released
-                                                                        │
-                                                                        ▼
-                                                               (Hours or Days Later)
-                                                                        │
-                                                                        ▼
-        Queue Worker Resumes ◄── Workflow Stub Woken Up ◄── Signal Received via HTTP/UI
-        </pre>
-    </div>
+    <pre><code class="language-plaintext">
+[Token Enters User Task]
+        │
+        ▼
+Yields Awaitable Signal ──► Database Checkpoint Saved ──► Queue Worker Released
+                                                                │
+                                                                ▼
+                                                        (Hours or Days Later)
+                                                                │
+                                                                ▼
+Queue Worker Resumes ◄── Workflow Stub Woken Up ◄── Signal Received via HTTP/UI
+</code></pre>
 
     <h3>Resuming via Signal</h3>
     <p>When an authorized user submits their review in the host application, dispatch a signal:</p>

@@ -34,28 +34,26 @@ nextTitle: Quickstart Guide
         <code>saccharine/bpmn</code> is not an engine built from scratch in isolation. It serves as an <strong>integration bridge</strong> uniting battle-tested open-source technologies:
     </p>
 
-    <div class="my-6 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 leading-relaxed overflow-x-auto">
-        <pre>
-        ┌────────────────────────────────────────────────────────┐
-        │       bpmn-js (Camunda) - Visual Modeler & SVG         │
-        └───────────────────────────┬────────────────────────────┘
-                                    │ BPMN 2.0 XML
-                                    ▼
-        ┌────────────────────────────────────────────────────────┐
-        │      saccharine/bpmn - XPath Parser & Graph Schema     │
-        └───────────────────────────┬────────────────────────────┘
-                                    │ Coroutine Promises
-                                    ▼
-        ┌────────────────────────────────────────────────────────┐
-        │  durable-workflow - Deterministic State & Inboxes      │
-        └───────────────────────────┬────────────────────────────┘
-                                    │ Scheduled Jobs
-                                    ▼
-        ┌────────────────────────────────────────────────────────┐
-        │    Laravel Queue Workers (Redis / SQS / Database)      │
-        └────────────────────────────────────────────────────────┘
-        </pre>
-    </div>
+    <pre><code class="language-plaintext">
+┌────────────────────────────────────────────────────────┐
+│       bpmn-js (Camunda) - Visual Modeler & SVG         │
+└───────────────────────────┬────────────────────────────┘
+                            │ BPMN 2.0 XML
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│      saccharine/bpmn - XPath Parser & Graph Schema     │
+└───────────────────────────┬────────────────────────────┘
+                            │ Coroutine Promises
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│  durable-workflow - Deterministic State & Inboxes      │
+└───────────────────────────┬────────────────────────────┘
+                            │ Scheduled Jobs
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│    Laravel Queue Workers (Redis / SQS / Database)      │
+└────────────────────────────────────────────────────────┘
+</code></pre>
 
     <ul>
         <li>

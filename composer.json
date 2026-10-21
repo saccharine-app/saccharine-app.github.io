@@ -1,5 +1,6 @@
 {
     "require": {
-        "tightenco/jigsaw": "^1.8.8"
+        "tightenco/jigsaw": "^1.8.8",
+        "spatie/shiki-php": "^2.4"
     }
 }

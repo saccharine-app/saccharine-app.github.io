@@ -73,13 +73,17 @@ php artisan bpmn:test-order --amount=1500 --customer="alex@example.com"</code></
 
     <p>Your terminal will output the execution lifecycle:</p>
 
-    <div class="my-4 p-4 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800 space-y-1">
-        <div class="text-slate-400">[BPMN] Workflow instance dispatched: wf_inst_01j98k2...</div>
-        <div class="text-slate-400">[BPMN] Start Event: Process initiated.</div>
-        <div class="text-emerald-400">[BPMN] Exclusive Gateway: Evaluated (amount >= 1000 -&gt; true).</div>
-        <div class="text-amber-400">[BPMN] User Task reached: 'Manager Approval Required'.</div>
-        <div class="text-indigo-400">[BPMN] Coroutine hibernated safely in relational database. Worker released.</div>
-    </div>
+    @php
+    $terminalOutput = implode("\n", [
+        "\e[90m[BPMN] Workflow instance dispatched: wf_inst_01j98k2...\e[0m",
+        "\e[90m[BPMN] Start Event: Process initiated.\e[0m",
+        "\e[32m[BPMN] Exclusive Gateway: Evaluated (amount >= 1000 -> true).\e[0m",
+        "\e[33m[BPMN] User Task reached: 'Manager Approval Required'.\e[0m",
+        "\e[34m[BPMN] Coroutine hibernated safely in relational database. Worker released.\e[0m",
+    ]);
+@endphp
+
+<pre><code class="language-ansi">{!! $terminalOutput !!}</code></pre>
 
     <h2>4. Inspecting the Visual Cockpit</h2>
     <p>Navigate to the standalone workflow definitions dashboard in your browser:</p>
