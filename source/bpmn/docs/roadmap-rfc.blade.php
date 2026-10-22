@@ -31,7 +31,7 @@ nextTitle: null
         <li><strong>Exclusive Gateways (XOR):</strong> Safe expression evaluation via Symfony ExpressionLanguage without raw PHP <code>eval()</code>.</li>
         <li><strong>Parallel Gateways (AND):</strong> Spawns concurrent branch coroutines and resolves synchronization join barriers via <code>yield all()</code>.</li>
         <li><strong>Sub-Processes & Call Activities:</strong> Scoped execution of modular sub-graphs with <code>parent_element_id</code> isolation.</li>
-        <li><strong>Visual Modeler:</strong> Embedded <code>bpmn-js</code> canvas with custom restricted palettes and element templates.</li>
+        <li><strong>Visual Modeler:</strong> Embedded <code>bpmn-js</code> canvas driven by an engine capability registry with filter middleware for the palette, context pad, and replace menu, along with Camunda element template support.</li>
         <li><strong>Live Token Cockpit:</strong> Interactive SVG telemetry overlay with real-time status polling.</li>
         <li><strong>Filament Integration:</strong> Standalone Blade dashboard plus optional <code>php artisan bpmn:filament</code> stub scaffolding for embedding BPMN resources into an existing Filament v5 panel.</li>
     </ul>
