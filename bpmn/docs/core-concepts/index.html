@@ -13,7 +13,7 @@
     
     
     
-    <link rel="stylesheet" href="/assets/build/assets/main-D0DOiYE0.css">
+    <link rel="stylesheet" href="/assets/build/assets/main-BaCH65c8.css">
     <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
     <style>
         .bg-animated-gradient {
@@ -173,7 +173,7 @@
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">namespace</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">App\Workflows\Activities</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Activities\Activity</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Workflow\Activity</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Illuminate\Support\Facades\Http</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">class</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">VerifyFraudScoreActivity</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">extends</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">Activity</span></span>
@@ -219,7 +219,7 @@
     <h3>How Hibernation Works</h3>
     <p>When an execution token arrives at a <code>userTask</code> node:</p>
     <ol>
-        <li>The engine yields an awaitable signal inbox method: <code>#[SignalMethod] submitUserTask($taskId, $payload)</code>.</li>
+        <li>The engine yields an awaitable signal inbox method: <code>#[SignalMethod] submitUserTask($payload)</code>.</li>
         <li>The coroutine suspends execution immediately.</li>
         <li>The queue worker commits the current execution pointer to <code>workflow_tokens</code> and frees itself to pick up other application jobs.</li>
         <li><strong>No worker processes, CPU cycles, or threads are held in memory while awaiting user action.</strong></li>
