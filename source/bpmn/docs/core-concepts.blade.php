@@ -32,7 +32,7 @@ nextTitle: Modeler & Filament
 
 namespace App\Workflows\Activities;
 
-use Saccharine\Bpmn\Activities\Activity;
+use Workflow\Activity;
 use Illuminate\Support\Facades\Http;
 
 class VerifyFraudScoreActivity extends Activity
@@ -78,7 +78,7 @@ class VerifyFraudScoreActivity extends Activity
     <h3>How Hibernation Works</h3>
     <p>When an execution token arrives at a <code>userTask</code> node:</p>
     <ol>
-        <li>The engine yields an awaitable signal inbox method: <code>#[SignalMethod] submitUserTask($taskId, $payload)</code>.</li>
+        <li>The engine yields an awaitable signal inbox method: <code>#[SignalMethod] submitUserTask($payload)</code>.</li>
         <li>The coroutine suspends execution immediately.</li>
         <li>The queue worker commits the current execution pointer to <code>workflow_tokens</code> and frees itself to pick up other application jobs.</li>
         <li><strong>No worker processes, CPU cycles, or threads are held in memory while awaiting user action.</strong></li>

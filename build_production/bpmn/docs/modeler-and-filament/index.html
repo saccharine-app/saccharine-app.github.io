@@ -13,7 +13,7 @@
     
     
     
-    <link rel="stylesheet" href="/assets/build/assets/main-D0DOiYE0.css">
+    <link rel="stylesheet" href="/assets/build/assets/main-BaCH65c8.css">
     <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
     <style>
         .bg-animated-gradient {
@@ -271,15 +271,30 @@
         Clicking an active User Task node on the canvas opens a modal displaying current <code>$userData</code> and available action buttons (such as <strong>Approve</strong>, <strong>Reject</strong>, or <strong>Request Changes</strong>). Submitting the modal immediately sends the required inbox signal to resume background queue processing.
     </p>
 
-    <h2>4. Filament v5 Admin Integration</h2>
+        <h2>4. Filament v5 Admin Integration (Stub-Based)</h2>
     <p>
-        If your application uses Filament, <code>saccharine/bpmn</code> integrates into your admin panel via <code>BpmnFilamentPlugin</code>.
+        The package does <strong>not</strong> include a pre-built <code>BpmnFilamentPlugin</code> class or panel-level render hooks. Instead, it provides the <code>php artisan bpmn:filament</code> command, which copies ready-to-use Filament resource stubs into your application. You then register those resources in your existing Filament panel provider.
     </p>
 
-    <h3>Registering the Plugin</h3>
-    <p>Register the plugin in your Filament panel provider (<code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
+    <h3>Scaffolding Filament Resources</h3>
+    <p>Run the following Artisan command to publish resource stubs into your app:</p>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Filament\BpmnFilamentPlugin</span><span style="color:#E1E4E8">;</span></span>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:filament</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--demo</span></span></code></pre>
+
+    <p>This publishes:</p>
+    <ul>
+        <li><code>app/Filament/Resources/Bpmn/WorkflowDefinitionResource.php</code> — Manage workflow keys, versions, and deployment states.</li>
+        <li><code>app/Filament/Resources/Bpmn/WorkflowInstanceResource.php</code> — Inspect active, completed, suspended, and failed workflows.</li>
+        <li><code>app/Filament/Resources/Bpmn/DemoOrderResource.php</code> (with <code>--demo</code>) — Interactive CRUD for testing model event triggers.</li>
+    </ul>
+
+    <p>Each resource includes its own page classes (e.g., <code>ListWorkflowDefinitions</code>) copied from the package stubs at <code>resources/stubs/filament/</code>. Use <code>--force</code> to overwrite existing stubs.</p>
+
+    <h3>Registering in Your Filament Panel</h3>
+    <p>After scaffolding, add the resources to your panel provider (<code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
+
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">App\\Filament\\Resources\\Bpmn\\WorkflowDefinitionResource</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">App\\Filament\\Resources\\Bpmn\\WorkflowInstanceResource</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">public</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">panel</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Panel</span><span style="color:#E1E4E8"> $panel)</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Panel</span></span>
 <span class="line"><span style="color:#E1E4E8">{</span></span>
@@ -287,7 +302,10 @@
 <span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">default</span><span style="color:#E1E4E8">()</span></span>
 <span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;admin&#39;</span><span style="color:#E1E4E8">)</span></span>
 <span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">path</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;admin&#39;</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">plugin</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">BpmnFilamentPlugin</span><span style="color:#F97583">::</span><span style="color:#B392F0">make</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">resources</span><span style="color:#E1E4E8">([</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#79B8FF">WorkflowDefinitionResource</span><span style="color:#F97583">::class</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#79B8FF">WorkflowInstanceResource</span><span style="color:#F97583">::class</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        ]);</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 
     <h3>Included Resources</h3>
@@ -296,17 +314,17 @@
             <strong><code>WorkflowDefinitionResource</code>:</strong> Manage workflow keys, versions, and deployment states. Includes a fullscreen modal canvas for updating and compiling diagrams.
         </li>
         <li>
-            <strong><code>WorkflowInstanceResource</code>:</strong> Inspect active, completed, suspended, and failed workflows. Includes the live SVG token cockpit and header actions to Suspend, Resume, or Halt running instances.
+            <strong><code>WorkflowInstanceResource</code>:</strong> Inspect active, completed, suspended, and failed workflows. Includes header actions to Suspend, Resume, or Halt running instances.
         </li>
         <li>
-            <strong>Authorization with Filament Shield:</strong> All package resources enforce standard Laravel policies and register permissions automatically (e.g., <code>view_any_workflow</code>, <code>suspend_instance</code>).
+            <strong>Authorization:</strong> All package resources enforce standard Laravel policies defined in <code>Saccharine\\Bpmn\\Policies\\</code>. Permission values include <code>Bpmn:View</code>, <code>Bpmn:Edit</code>, <code>Bpmn:Delete</code>, <code>Bpmn:SuspendInstance</code>, <code>Bpmn:ResumeInstance</code>, and <code>Bpmn:HaltInstance</code>.
         </li>
     </ul>
 
-    <h3>Zero Asset Pollution</h3>
-    <p>
-        Package stylesheets and modeler JavaScript bundles are injected exclusively on package routes using Filament's <code>PanelsRenderHook</code> (<code>HEAD_END</code> and <code>BODY_END</code>). Global panel load times and unrelated resources remain completely unaffected.
+    <p class="text-sm text-slate-500 italic mt-4">
+        The standalone Blade dashboard at <code>/bpmn/workflows/definitions</code> remains available even without Filament. Filament integration is entirely optional and stub-based — no package-level render hooks or global asset injection are performed.
     </p>
+
             </div>
 
             <!-- Sequential Next / Prev Pagination -->

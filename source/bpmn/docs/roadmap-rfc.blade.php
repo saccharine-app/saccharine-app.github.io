@@ -33,7 +33,7 @@ nextTitle: null
         <li><strong>Sub-Processes & Call Activities:</strong> Scoped execution of modular sub-graphs with <code>parent_element_id</code> isolation.</li>
         <li><strong>Visual Modeler:</strong> Embedded <code>bpmn-js</code> canvas with custom restricted palettes and element templates.</li>
         <li><strong>Live Token Cockpit:</strong> Interactive SVG telemetry overlay with real-time status polling.</li>
-        <li><strong>Filament v5 Plugin:</strong> Pre-built admin resources, policies, and Filament Shield permission integration.</li>
+        <li><strong>Filament Integration:</strong> Standalone Blade dashboard plus optional <code>php artisan bpmn:filament</code> stub scaffolding for embedding BPMN resources into an existing Filament v5 panel.</li>
     </ul>
 
     <h2>Known Boundaries & Limitations</h2>

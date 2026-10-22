@@ -130,15 +130,30 @@ nextTitle: Roadmap & RFC
         Clicking an active User Task node on the canvas opens a modal displaying current <code>$userData</code> and available action buttons (such as <strong>Approve</strong>, <strong>Reject</strong>, or <strong>Request Changes</strong>). Submitting the modal immediately sends the required inbox signal to resume background queue processing.
     </p>
 
-    <h2>4. Filament v5 Admin Integration</h2>
+        <h2>4. Filament v5 Admin Integration (Stub-Based)</h2>
     <p>
-        If your application uses Filament, <code>saccharine/bpmn</code> integrates into your admin panel via <code>BpmnFilamentPlugin</code>.
+        The package does <strong>not</strong> include a pre-built <code>BpmnFilamentPlugin</code> class or panel-level render hooks. Instead, it provides the <code>php artisan bpmn:filament</code> command, which copies ready-to-use Filament resource stubs into your application. You then register those resources in your existing Filament panel provider.
     </p>
 
-    <h3>Registering the Plugin</h3>
-    <p>Register the plugin in your Filament panel provider (<code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
+    <h3>Scaffolding Filament Resources</h3>
+    <p>Run the following Artisan command to publish resource stubs into your app:</p>
 
-    <pre><code class="language-php">use Saccharine\Bpmn\Filament\BpmnFilamentPlugin;
+    <pre><code class="language-bash">php artisan bpmn:filament --demo</code></pre>
+
+    <p>This publishes:</p>
+    <ul>
+        <li><code>app/Filament/Resources/Bpmn/WorkflowDefinitionResource.php</code> — Manage workflow keys, versions, and deployment states.</li>
+        <li><code>app/Filament/Resources/Bpmn/WorkflowInstanceResource.php</code> — Inspect active, completed, suspended, and failed workflows.</li>
+        <li><code>app/Filament/Resources/Bpmn/DemoOrderResource.php</code> (with <code>--demo</code>) — Interactive CRUD for testing model event triggers.</li>
+    </ul>
+
+    <p>Each resource includes its own page classes (e.g., <code>ListWorkflowDefinitions</code>) copied from the package stubs at <code>resources/stubs/filament/</code>. Use <code>--force</code> to overwrite existing stubs.</p>
+
+    <h3>Registering in Your Filament Panel</h3>
+    <p>After scaffolding, add the resources to your panel provider (<code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
+
+    <pre><code class="language-php">use App\\Filament\\Resources\\Bpmn\\WorkflowDefinitionResource;
+use App\\Filament\\Resources\\Bpmn\\WorkflowInstanceResource;
 
 public function panel(Panel $panel): Panel
 {
@@ -146,7 +161,10 @@ public function panel(Panel $panel): Panel
         ->default()
         ->id('admin')
         ->path('admin')
-        ->plugin(BpmnFilamentPlugin::make());
+        ->resources([
+            WorkflowDefinitionResource::class,
+            WorkflowInstanceResource::class,
+        ]);
 }</code></pre>
 
     <h3>Included Resources</h3>
@@ -155,15 +173,15 @@ public function panel(Panel $panel): Panel
             <strong><code>WorkflowDefinitionResource</code>:</strong> Manage workflow keys, versions, and deployment states. Includes a fullscreen modal canvas for updating and compiling diagrams.
         </li>
         <li>
-            <strong><code>WorkflowInstanceResource</code>:</strong> Inspect active, completed, suspended, and failed workflows. Includes the live SVG token cockpit and header actions to Suspend, Resume, or Halt running instances.
+            <strong><code>WorkflowInstanceResource</code>:</strong> Inspect active, completed, suspended, and failed workflows. Includes header actions to Suspend, Resume, or Halt running instances.
         </li>
         <li>
-            <strong>Authorization with Filament Shield:</strong> All package resources enforce standard Laravel policies and register permissions automatically (e.g., <code>view_any_workflow</code>, <code>suspend_instance</code>).
+            <strong>Authorization:</strong> All package resources enforce standard Laravel policies defined in <code>Saccharine\\Bpmn\\Policies\\</code>. Permission values include <code>Bpmn:View</code>, <code>Bpmn:Edit</code>, <code>Bpmn:Delete</code>, <code>Bpmn:SuspendInstance</code>, <code>Bpmn:ResumeInstance</code>, and <code>Bpmn:HaltInstance</code>.
         </li>
     </ul>
 
-    <h3>Zero Asset Pollution</h3>
-    <p>
-        Package stylesheets and modeler JavaScript bundles are injected exclusively on package routes using Filament's <code>PanelsRenderHook</code> (<code>HEAD_END</code> and <code>BODY_END</code>). Global panel load times and unrelated resources remain completely unaffected.
+    <p class="text-sm text-slate-500 italic mt-4">
+        The standalone Blade dashboard at <code>/bpmn/workflows/definitions</code> remains available even without Filament. Filament integration is entirely optional and stub-based — no package-level render hooks or global asset injection are performed.
     </p>
+
 @endsection
