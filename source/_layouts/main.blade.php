@@ -11,6 +11,7 @@
     "@type": "WebSite",
     @endverbatim
     "name": "{{ $page->baseName }}",
+    "alternateName": ["{{ $page->baseName }} App"],
     "url": "{{ $page->baseUrl }}"
     @verbatim
     }
