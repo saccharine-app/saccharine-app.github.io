@@ -52,7 +52,7 @@ nextTitle: Core Concepts & Replay
 
     <p>The demo command configures:</p>
     <ul>
-        <li>An <strong>Order Fulfillment</strong> BPMN 2.0 XML graph compiled into relational definition tables.</li>
+        <li>An <strong>Order Processing</strong> BPMN 2.0 XML graph compiled into relational definition tables.</li>
         <li>A sample domain activity class: <code>App\Workflows\Activities\SendNotificationActivity</code>.</li>
         <li>Pre-mapped test payloads with sample order values and customer contact data.</li>
     </ul>
@@ -84,27 +84,29 @@ php artisan bpmn:test-order --amount=1500 --name="Demo Customer" --email="demo@e
 <pre><code class="language-ansi">{!! $terminalOutput !!}</code></pre>
 
     <h2>4. Inspecting the Visual Cockpit</h2>
-    <p>Navigate to the standalone workflow definitions dashboard in your browser:</p>
+    <p>Navigate to the standalone workflow instances dashboard in your browser:</p>
 
-    <pre><code class="language-text">http://your-app.test/bpmn/workflows/definitions</code></pre>
+    <pre><code class="language-text">http://your-app.test/bpmn/workflows/instances</code></pre>
 
     <div class="my-4 p-4 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-900">
-        <strong>Note for Filament users:</strong> If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/workflows</code> instead.
+        <strong>Note for Filament users:</strong> If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/instances</code> instead.
     </div>
 
     <p>From the dashboard:</p>
     <ol>
-        <li>Click <strong>Order Fulfillment Workflow</strong>.</li>
-        <li>Inspect the visual diagram powered by <code>bpmn-js</code>.</li>
-        <li>Click the active running instance to open the <strong>Live Token Cockpit</strong>:
+        <li>For the running instance of <strong>Demo: Order Processing</strong> click <strong>Live Cockpit</strong>.</li>
             <ul>
                 <li>Completed nodes are styled in solid slate blue.</li>
                 <li>The waiting User Task node pulses in vivid green.</li>
             </ul>
         </li>
-        <li>Click the pulsing node to open the approval modal, then select <strong>Approve</strong>.</li>
+        <li>Click the pulsing node to open the approval modal, then select <strong>Submit & Resume</strong>.</li>
         <li>Watch your queue worker wake the coroutine, advance the token past the join, trigger <code>SendNotificationActivity</code>, and complete the process at the End Event.</li>
     </ol>
+
+    <div>
+        <img alt="Screenshot of the live telemetry dashboard" src="/assets/images/saccharine-bpmn-live-telemetry.png">
+    </div>
 
     <h2>Artisan Scaffolding Helpers</h2>
     <p>Generate workflow components directly from the CLI:</p>
