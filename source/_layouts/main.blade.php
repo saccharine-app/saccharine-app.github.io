@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}</title>
+    @verbatim
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    @endverbatim
+    "name": "{{ $page->baseName }}",
+    "url": "{{ $page->baseUrl }}"
+    @verbatim
+    }
+    </script>
+    @endverbatim
     <meta name="description" content="{{ $page->description ?? 'Open-source, domain-agnostic Laravel packages for workflows, quoting, and paperwork.' }}">
     <meta property="og:title" content="{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}">
     <meta property="og:description" content="{{ $page->description ?? 'Open-source, domain-agnostic Laravel packages for workflows, quoting, and paperwork.' }}">

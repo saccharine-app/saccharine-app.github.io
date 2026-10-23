@@ -4,6 +4,7 @@ return [
     'production' => false,
     'baseUrl' => 'https://saccharine.app',
     'title' => 'Saccharine',
-    'description' => 'Website description.',
+    'baseName' => 'Saccharine',
+    'description' => 'Open-source, domain-agnostic Laravel package ecosystem.',
     'collections' => [],
 ];
