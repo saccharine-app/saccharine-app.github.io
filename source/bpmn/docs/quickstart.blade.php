@@ -89,7 +89,7 @@ php artisan bpmn:test-order --amount=1500 --name="Demo Customer" --email="demo@e
     <pre><code class="language-text">http://your-app.test/bpmn/workflows/instances</code></pre>
 
     <div class="my-4 p-4 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-900">
-        <strong>Note for Filament users:</strong> If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/instances</code> instead.
+        <strong>Note:</strong> The default web prefix is `bpmn/workflows`. You can configure this in `config/saccharine-bpmn.php` under `prefix.web`. If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/instances</code> instead.
     </div>
 
     <p>From the dashboard:</p>

@@ -172,6 +172,6 @@ public function panel(Panel $panel): Panel
     </ul>
 
     <p class="text-sm text-slate-500 italic mt-4">
-        The standalone Blade dashboard at <code>/bpmn/workflows/definitions</code> remains available even without Filament. Filament integration is entirely optional and stub-based — no package-level render hooks or global asset injection are performed.
+        The standalone Blade dashboard at the default address<code>/bpmn/workflows/definitions</code> remains available even without Filament. Filament integration is entirely optional and stub-based — no package-level render hooks or global asset injection are performed. The UI filtering for the modeler (Palette, Context Pad, Replace Menu) is dynamically driven by `engineCapabilities.js` to ensure only supported BPMN elements are available.
     </p>
 @endsection
