@@ -1,6 +1,6 @@
 ---
-title: Saccharine - Composable Operational Modules for Laravel
-description: Open-source, domain-agnostic Laravel packages for durable workflows, dynamic quoting, document pipelines, and operational triage.
+title: Saccharine - Operational Platform for Laravel
+description: Open-source, Laravel packages for durable workflows, dynamic quoting, document pipelines, and operational triage.
 ---
 @extends('_layouts.main')
 
@@ -13,19 +13,19 @@ description: Open-source, domain-agnostic Laravel packages for durable workflows
                     Open Source Laravel Ecosystem
                 </span>
                 <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono rounded-full hidden sm:inline-block">
-                    PHP 8.3+ & Laravel 12/13
+                    PHP 8.4 · Laravel 13
                 </span>
             </div>
 
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
-                Composable modules for <br class="hidden sm:inline">
+                Operational building blocks <br class="hidden sm:inline">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">
-                    complex operational software.
+                    for Laravel.
                 </span>
             </h1>
 
             <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-                Saccharine is an evolving collection of headless, domain-agnostic Laravel packages built to solve high-stakes operational problems—from executable workflows to temporal pricing and document ledgers.
+                A modular suite of headless packages for visual workflows, dynamic quoting, document ledgers, and operational triage.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-semibold">
@@ -42,7 +42,7 @@ description: Open-source, domain-agnostic Laravel packages for durable workflows
     </header>
 
     <!-- Core Philosophy: Modularity & Pragmatism -->
-    <section class="py-16 bg-white border-b border-slate-200">
+    <!-- <section class="py-16 bg-white border-b border-slate-200">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="space-y-2">
@@ -76,7 +76,7 @@ description: Open-source, domain-agnostic Laravel packages for durable workflows
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Primary Spotlight: saccharine/bpmn (Current Focus) -->
     <section class="py-20 bg-slate-50 border-b border-slate-200">
@@ -94,9 +94,9 @@ description: Open-source, domain-agnostic Laravel packages for durable workflows
                         <span class="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded border border-indigo-100">
                             saccharine/bpmn
                         </span>
-                        <span class="text-xs font-mono text-slate-400">v0.5.0-alpha</span>
+                        <span class="text-xs font-mono text-slate-400">v0.5.3-alpha</span>
                         <span class="text-xs font-mono text-slate-400">&bull;</span>
-                        <span class="text-xs font-mono text-slate-500">Laravel 12 & 13</span>
+                        <span class="text-xs font-mono text-slate-500">Laravel 13</span>
                     </div>
 
                     <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">

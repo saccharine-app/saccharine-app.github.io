@@ -10,56 +10,103 @@ description: Native BPMN 2.0 graph orchestration running over Laravel background
         <div class="container mx-auto px-6 py-20 text-center max-w-4xl">
             <div class="flex items-center justify-center gap-2 mb-6">
                 <span class="px-3 py-1 bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-bold rounded-full uppercase tracking-wider">
-                    v0.5.0-alpha
+                    v0.5.3-alpha
                 </span>
                 <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono rounded-full">
-                    PHP 8.3 / 8.4
+                    PHP 8.4
                 </span>
                 <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono rounded-full">
-                    Laravel 12 & 13
+                    Laravel 13
                 </span>
             </div>
 
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
-                Executable BPMN workflows. <br/>
+                Saccharine BPMN <br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">
-                    Native to Laravel.
+                    Automate processes visually.
                 </span>
             </h1>
 
-            <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-3xl mx-auto">
-                Model complex multi-step processes in your browser with Camunda's <code>bpmn-js</code>, and execute them durably using standard Laravel queues and <code>durable-workflow</code>.
+            <p class="text-lgg md:text-lg text-slate-600 mb-10 leading-relaxed max-w-3xl mx-auto">
+                A process orchestrator for Laravel that turns flowcharts into durable background queue jobs.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-semibold">
-                <a href="/bpmn/docs/introduction" class="w-full sm:w-auto px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2">
-                    <span>Read Documentation</span>
-                    <span>&rarr;</span>
-                </a>
-                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 rounded-lg transition shadow-sm flex items-center justify-center gap-2">
-                    <span>Launch Live Sandbox</span>
-                    <span class="text-slate-400">&nearr;</span>
-                </a>
-            </div>
-
-            <!-- Install command snippet -->
-            <div class="mt-8 max-w-md mx-auto">
-                <div class="bg-slate-900 text-slate-300 font-mono text-xs px-4 py-3 rounded-lg border border-slate-800 flex justify-between items-center shadow-inner">
-                    <span>composer require saccharine/bpmn</span>
-                    <span class="text-slate-500 text-[10px]">MIT</span>
+            <div class="relative max-w-lg mx-auto">
+                <!-- Soft background glow -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-indigo-300 rounded-2xl blur opacity-10"></div>
+                
+                <div class="relative space-y-0">
+                    <!-- Start Event -->
+                    <div class="flex justify-center"><div class="w-10 h-10 rounded-full border-[3px] border-emerald-400 bg-emerald-50"></div></div>
+                    <div class="flex justify-center"><div class="w-0.5 h-6 bg-slate-300"></div></div>
+                    
+                    <!-- Gateway Diamond -->
+                    <div class="flex justify-center relative z-20">
+                        <div class="w-8 h-8 bg-amber-50 border-[3px] border-amber-400 transform rotate-45"></div>
+                    </div>
+                    
+                    <!-- Branching Connector Lines -->
+                    <div class="flex justify-center px-[25%] mt-[-16px]">
+                        <div class="w-1/2 border-t-2 border-l-2 border-slate-300 rounded-tl-xl h-8 translate-x-[1px]"></div>
+                        <div class="w-1/2 border-t-2 border-r-2 border-slate-300 rounded-tr-xl h-8 -translate-x-[1px]"></div>
+                    </div>
+                    
+                    <!-- Outcomes -->
+                    <div class="flex justify-between gap-12">
+                        <div class="w-1/2 flex flex-col items-center">
+                            <a href="/bpmn/docs/introduction" class="bg-indigo-600 border border-indigo-700 text-white text-center w-full py-2.5 rounded-lg font-semibold text-xs shadow-sm flex items-center justify-center gap-1.5">Get Started <span>&rarr;</span></a>
+                        </div>
+                        <div class="w-1/2 flex flex-col items-center">
+                            <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="bg-slate-50 border border-slate-200 text-slate-700 text-center w-full py-2.5 rounded-lg font-semibold text-xs shadow-sm">Live Sandbox <span class="text-slate-400">&nearr;</span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
+    
+    
+    <!-- The "Explain it to my family" Section (Preserved) -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. Draw the Process</h3>
+                    <p class="text-slate-600">Use a visual, drag-and-drop web canvas to map out a business process. Connect tasks, set routing rules, and define the finish line.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. The Engine Takes Over</h3>
+                    <p class="text-slate-600">The software reads your drawing like a set of instructions. It silently moves behind the scenes, following the exact paths and logic you designed.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. Work Gets Done</h3>
+                    <p class="text-slate-600">It reacts to events, halts for human approvals, and runs system tasks, automating operational overhead.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-slate-200" />
 
     <!-- Standing on the Shoulders of Giants (Attribution Strip) -->
     <section class="py-16 bg-white border-b border-slate-200">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-xs font-mono font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded">Integration Architecture</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-3">An integration bridge on proven foundations</h2>
-                <p class="text-slate-600 text-sm mt-2">
-                    <code>saccharine/bpmn</code> is not built from scratch in isolation. It unites industry-standard tools into a cohesive, native Laravel package.
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-3">Built on proven foundations</h2>
+                <p class="text-slate-600 mt-2">
+                    <code>saccharine/bpmn</code> unites industry-standard tools into a cohesive, native Laravel package.
                 </p>
             </div>
 
@@ -67,102 +114,58 @@ description: Native BPMN 2.0 graph orchestration running over Laravel background
                 <!-- Tool 1: bpmn-js -->
                 <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                     <div>
-                        <div class="font-bold text-slate-900 text-sm mb-1">bpmn-js (Camunda)</div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <div class="font-bold text-slate-900 text-lg mb-1">bpmn-js (Camunda)</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
                             Powers the embeddable visual SVG modeler, custom palettes, and live execution telemetry tracking.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-mono text-indigo-600">
-                        Camunda / bpmn.io
+                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-sm font-mono text-indigo-600">
+                        <a href="https://bpmn.io">Camunda / bpmn.io</a>
                     </div>
                 </div>
 
                 <!-- Tool 2: durable-workflow -->
                 <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                     <div>
-                        <div class="font-bold text-slate-900 text-sm mb-1">durable-workflow</div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <div class="font-bold text-slate-900 text-lg mb-1">durable-workflow</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
                             Deterministic coroutines, database snapshots, and inbox signals for human-in-the-loop tasks.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-mono text-indigo-600">
-                        durable-workflow.com
+                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-sm font-mono text-indigo-600">
+                        <a href="https://durable-workflow.com">durable-workflow.com</a>
                     </div>
                 </div>
 
                 <!-- Tool 3: Symfony ExpressionLanguage -->
                 <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                     <div>
-                        <div class="font-bold text-slate-900 text-sm mb-1">Symfony Expression</div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <div class="font-bold text-slate-900 text-lg mb-1">Symfony Expression</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
                             Evaluates Exclusive Gateway routing rules safely against payload state without PHP <code>eval()</code>.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-mono text-indigo-600">
-                        symfony.com
+                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-sm font-mono text-indigo-600">
+                        <a href="https://symfony.com">symfony.com</a>
                     </div>
                 </div>
 
                 <!-- Tool 4: Laravel Queues -->
                 <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
                     <div>
-                        <div class="font-bold text-slate-900 text-sm mb-1">Native Laravel</div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <div class="font-bold text-slate-900 text-lg mb-1">Native Laravel</div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
                             Runs entirely on your existing queues (Redis/SQS/DB) and standard Eloquent relational migrations.
                         </p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-mono text-indigo-600">
-                        laravel.com
+                    <div class="mt-4 pt-3 border-t border-slate-200/80 text-sm font-mono text-indigo-600">
+                        <a href="https://laravel.com">laravel.com</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- The 3 Pillars Section -->
-    <section class="py-20 bg-slate-50">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-slate-900">Stop translating whiteboards into spaghetti code</h2>
-                <p class="text-slate-600 text-sm mt-2">
-                    When the diagram is the software, changes to routing, delays, and approvals are visible, auditable, and self-documenting.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-4 border border-indigo-100">
-                        1
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base mb-2">Visual Process Modeling</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Design and edit workflows directly in your browser or Filament panel. Custom palettes ensure users only model nodes supported by the queue engine.
-                    </p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-4 border border-indigo-100">
-                        2
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base mb-2">Zero-Worker Blocking</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        User tasks and timers hibernate safely in relational tables. Queue workers are released instantly and only resume when approvals or timers fire.
-                    </p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-4 border border-indigo-100">
-                        3
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base mb-2">Live Token Cockpit</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Inspect active instances with real-time SVG overlays. Completed steps turn blue, active waiting tasks pulse green, and one-click actions resume workflows.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Walkthrough CTA -->
     <section class="py-16 bg-slate-900 text-white">
         <div class="container mx-auto px-6 max-w-5xl flex flex-col md:flex-row items-center justify-between gap-8">
@@ -174,7 +177,7 @@ description: Native BPMN 2.0 graph orchestration running over Laravel background
                 </p>
             </div>
             <a href="/bpmn/docs/quickstart" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold text-sm transition whitespace-nowrap">
-                Start Quickstart &rarr;
+                Quickstart &rarr;
             </a>
         </div>
     </section>

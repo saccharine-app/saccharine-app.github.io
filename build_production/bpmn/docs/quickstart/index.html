@@ -18,6 +18,7 @@
     </script>
     
     <meta name="description" content="Get up and running with Saccharine BPMN in under five minutes.">
+    <meta property="og:site_name" content="Saccharine">
     <meta property="og:title" content="Quickstart Guide | Saccharine">
     <meta property="og:description" content="Get up and running with Saccharine BPMN in under five minutes.">
     <meta property="og:image" content="https://saccharine.app/assets/images/og-preview.png">
@@ -174,8 +175,8 @@
 
     <h2>Requirements</h2>
     <ul>
-        <li><strong>PHP:</strong> 8.3 or 8.4</li>
-        <li><strong>Laravel Framework:</strong> 12.0 || 13.0</li>
+        <li><strong>PHP:</strong>8.4</li>
+        <li><strong>Laravel Framework:</strong>13.0</li>
         <li><strong>Database:</strong> MySQL 8+, MariaDB 10.3+, PostgreSQL 13+, or SQLite 3.35+</li>
         <li><strong>Queue Driver:</strong> Redis, Database, or SQS (Sync queues can be used for local testing, but persistent background workers are recommended for durable workflows)</li>
     </ul>
@@ -202,9 +203,11 @@
         The package includes an end-to-end order processing scenario with Exclusive Gateways, User Task approval pauses, and automated notification activities:
     </p>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:demo</span></span></code></pre>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">db:seed</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--class=</span><span style="color:#9ECBFF">&#39;Saccharine\Bpmn\Database\Seeders\BpmnDemoSeeder&#39;</span></span></code></pre>
 
-    <p>The demo command configures:</p>
+    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:publish-filament-stubs</span></span></code></pre>
+
+    <p>The demo configures:</p>
     <ul>
         <li>An <strong>Order Processing</strong> BPMN 2.0 XML graph compiled into relational definition tables.</li>
         <li>A sample domain activity class: <code>App\Workflows\Activities\SendNotificationActivity</code>.</li>
@@ -238,7 +241,7 @@
     <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8">http://your-app.test/bpmn/workflows/instances</span></span></code></pre>
 
     <div class="my-4 p-4 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-900">
-        <strong>Note for Filament users:</strong> If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/instances</code> instead.
+        <strong>Note:</strong> The default web prefix is `bpmn/workflows`. You can configure this in `config/saccharine-bpmn.php` under `prefix.web`. If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/instances</code> instead.
     </div>
 
     <p>From the dashboard:</p>

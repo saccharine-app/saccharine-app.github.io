@@ -20,8 +20,8 @@ nextTitle: Core Concepts & Replay
 
     <h2>Requirements</h2>
     <ul>
-        <li><strong>PHP:</strong> 8.3 or 8.4</li>
-        <li><strong>Laravel Framework:</strong> 12.0 || 13.0</li>
+        <li><strong>PHP:</strong>8.4</li>
+        <li><strong>Laravel Framework:</strong>13.0</li>
         <li><strong>Database:</strong> MySQL 8+, MariaDB 10.3+, PostgreSQL 13+, or SQLite 3.35+</li>
         <li><strong>Queue Driver:</strong> Redis, Database, or SQS (Sync queues can be used for local testing, but persistent background workers are recommended for durable workflows)</li>
     </ul>
@@ -48,9 +48,11 @@ nextTitle: Core Concepts & Replay
         The package includes an end-to-end order processing scenario with Exclusive Gateways, User Task approval pauses, and automated notification activities:
     </p>
 
-    <pre><code class="language-bash">php artisan bpmn:demo</code></pre>
+    <pre><code class="language-bash">php artisan db:seed --class='Saccharine\Bpmn\Database\Seeders\BpmnDemoSeeder'</code></pre>
 
-    <p>The demo command configures:</p>
+    <pre><code class="language-bash">php artisan bpmn:publish-filament-stubs</code></pre>
+
+    <p>The demo configures:</p>
     <ul>
         <li>An <strong>Order Processing</strong> BPMN 2.0 XML graph compiled into relational definition tables.</li>
         <li>A sample domain activity class: <code>App\Workflows\Activities\SendNotificationActivity</code>.</li>
