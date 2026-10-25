@@ -23,7 +23,7 @@ description: Native BPMN 2.0 graph orchestration running over Laravel background
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
                 Saccharine BPMN <br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400">
-                    Automate processes visually.
+                    Automate workflows visually.
                 </span>
             </h1>
 
