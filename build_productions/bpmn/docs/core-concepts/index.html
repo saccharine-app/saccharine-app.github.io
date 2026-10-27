@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN6PPNHB');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Concepts &amp; Replay Safety | Saccharine</title>
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    
+    "name": "Saccharine",
+    "alternateName": ["Saccharine App"],
+    "url": "https://saccharine.app"
+    
+    }
+    </script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="description" content="Learn how tasks execute, how state persists, and how deterministic replay guarantees stability across queue restarts.">
+    <meta property="og:site_name" content="Saccharine">
+    <meta property="og:title" content="Core Concepts &amp; Replay Safety | Saccharine">
+    <meta property="og:description" content="Learn how tasks execute, how state persists, and how deterministic replay guarantees stability across queue restarts.">
+    <meta property="og:image" content="https://saccharine.app/assets/images/bpmn-index.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
+    <meta property="og:url" content="https://saccharine.app/bpmn/docs/core-concepts">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/build/assets/main-CEWNCbMv.css">
+    <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
+    <style>
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white flex flex-col min-h-full">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN6PPNHB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Top Global Navigation Bar -->
+    <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="/" class="flex items-center space-x-2.5 group">
+                    <div class="h-8 w-8 rounded-lg bg-indigo-600 group-hover:bg-indigo-500 transition flex items-center justify-center font-bold text-white shadow-sm">
+                        S
+                    </div>
+                    <span class="text-lg font-extrabold text-slate-900 tracking-tight">Saccharine</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-1 pl-4 border-l border-slate-200 text-sm font-medium">
+                    <a href="/bpmn" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        BPMN Workflow
+                    </a>
+                    <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
+                        Documentation
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span>Live Sandbox</span>
+                    <span class="text-slate-400">&nearr;</span>
+                </a>
+                <a href="https://github.com/saccharine-app/bpmn" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-900 transition flex items-center gap-1 text-xs">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Injection -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
+        <!-- Reusable Sidebar Partial -->
+        <aside class="w-full lg:w-64 shrink-0">
+    <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Package</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold border border-indigo-100">
+                saccharine/bpmn
+            </span>
+        </div>
+
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Getting Started
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/introduction" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Introduction &amp; Stack
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/quickstart" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Quickstart Guide
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Engine Mechanics
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/core-concepts" class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                                Core Concepts &amp; Replay
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    UI &amp; Modeler
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/modeler-and-filament" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Modeler &amp; Filament
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Community &amp; RFC
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/roadmap-rfc" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Roadmap &amp; RFC
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+        
+        <div class="pt-4 border-t border-slate-200 text-xs text-slate-500 space-y-2">
+            <div class="font-semibold text-slate-700">Need help or found a bug?</div>
+            <a href="https://github.com/saccharine-app/bpmn/issues" target="_blank" rel="noopener" class="text-indigo-600 hover:underline flex items-center gap-1">
+                Open an Issue on GitHub &rarr;
+            </a>
+        </div>
+    </div>
+</aside>
+        <!-- Main Documentation Content Panel -->
+        <article class="flex-1 py-8 lg:pl-10 lg:border-l border-slate-200 min-w-0">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-6">
+                <a href="/bpmn" class="hover:text-slate-600">bpmn</a>
+                <span>/</span>
+                <span class="text-slate-500">docs</span>
+                <span>/</span>
+                <span class="text-indigo-600 font-semibold">Core Concepts</span>
+            </nav>
+
+            <!-- Prose Markdown/Blade container -->
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
+                    <h1>Core Concepts & Execution Mechanics</h1>
+    <p class="lead text-lg text-slate-600">
+        <code>saccharine/bpmn</code> translates BPMN 2.0 visual graph specifications into durable PHP coroutines. Learn how tasks execute, how state persists, and how deterministic replay guarantees stability across queue restarts.
+    </p>
+
+    <hr>
+
+    <h2>1. Service Tasks (Automated Work)</h2>
+    <p>
+        A <strong>Service Task</strong> represents automated work performed by code without manual intervention. When a workflow token arrives at a Service Task, the engine delegates execution to a registered Activity class.
+    </p>
+
+    <h3>Defining an Activity Class</h3>
+    <p>
+        Activities inherit from the package base class and implement a clean, isolated <code>execute()</code> method:
+    </p>
+
+    <pre><code class="language-php">&lt;?php
+
+namespace App\Workflows\Activities;
+
+use Workflow\Activity;
+use Illuminate\Support\Facades\Http;
+
+class VerifyFraudScoreActivity extends Activity
+{
+    /**
+     * Executes the task.
+     * Receives the current process state ($userData).
+     * Returns an array of state mutations to merge back into the instance.
+     */
+    public function execute(array $userData): array
+    {
+        $response = Http::post('https://fraud-service.internal/check', [
+            'email' => $userData['customer_email'],
+            'amount' => $userData['order_total'],
+        ]);
+
+        return [
+            'fraud_score' => $response->json('score'),
+            'fraud_verified_at' => now()->toISOString(),
+        ];
+    }
+}</code></pre>
+
+    <h3>Decoupled Configuration Mapping</h3>
+    <p>
+        In <code>config/saccharine-bpmn.php</code>, tasks declared on the visual canvas are mapped to PHP classes using task IDs or element templates:
+    </p>
+
+    <pre><code class="language-php">'activities' => [
+    'verify-fraud' => \App\Workflows\Activities\VerifyFraudScoreActivity::class,
+    'send-notification' => \App\Workflows\Activities\SendNotificationActivity::class,
+],</code></pre>
+
+    <p>
+        When the activity finishes, its returned array merges deterministically back into the process <code>$userData</code> payload.
+    </p>
+
+    <h2>2. User Tasks (Human-in-the-Loop Hibernation)</h2>
+    <p>
+        Unlike script-based jobs that must execute to completion within standard worker timeouts, real-world business processes often pause for human intervention (approvals, form entries, or signatures).
+    </p>
+
+    <h3>How Hibernation Works</h3>
+    <p>When an execution token arrives at a <code>userTask</code> node:</p>
+    <ol>
+        <li>The engine yields an awaitable signal inbox method: <code>#[SignalMethod] submitUserTask($payload)</code>.</li>
+        <li>The coroutine suspends execution immediately.</li>
+        <li>The queue worker commits the current execution pointer to <code>workflow_tokens</code> and frees itself to pick up other application jobs.</li>
+        <li><strong>No worker processes, CPU cycles, or threads are held in memory while awaiting user action.</strong></li>
+    </ol>
+
+    <pre><code class="language-plaintext">
+[Token Enters User Task]
+        │
+        ▼
+Yields Awaitable Signal ──► Database Checkpoint Saved ──► Queue Worker Released
+                                                                │
+                                                                ▼
+                                                        (Hours or Days Later)
+                                                                │
+                                                                ▼
+Queue Worker Resumes ◄── Workflow Stub Woken Up ◄── Signal Received via HTTP/UI
+</code></pre>
+
+    <h3>Resuming via Signal</h3>
+    <p>When an authorized user submits their review in the host application, dispatch a signal:</p>
+
+    <pre><code class="language-php">use Saccharine\Bpmn\Facades\Bpmn;
+
+Bpmn::signalInstance($workflowInstanceId, 'submitUserTask', [
+    'task_id' => 'manager_approval_node',
+    'approved' => true,
+    'reviewed_by' => auth()->id(),
+]);</code></pre>
+
+    <p>
+        The durable engine locates the hibernated instance, verifies the inbox signal, and dispatches a queue job to advance the token down outgoing sequence flows.
+    </p>
+
+    <h2>3. Gateways & Sandboxed Expressions</h2>
+
+    <h3>Exclusive Gateways (XOR)</h3>
+    <p>
+        Exclusive Gateways evaluate conditions on outgoing sequence flows and select exactly one path.
+    </p>
+    <p>
+        To prevent code injection and avoid raw PHP <code>eval()</code>, conditions are parsed safely through <strong>Symfony ExpressionLanguage</strong> with the instance payload injected into scope:
+    </p>
+
+    <pre><code class="language-xml">&lt;!-- Example compiled sequence flow condition --&gt;
+&lt;bpmn:sequenceFlow id="Flow_1" sourceRef="Gateway_XOR" targetRef="Task_Approval"&gt;
+  &lt;bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"&gt;
+    order_total &gt;= 1000 and customer_tier in ['vip', 'enterprise']
+  &lt;/bpmn:conditionExpression&gt;
+&lt;/bpmn:sequenceFlow&gt;</code></pre>
+
+    <p>
+        If no condition evaluates to <code>true</code>, the engine routes through the designated <code>default</code> sequence flow.
+    </p>
+
+    <h3>Parallel Gateways (AND Splits & Joins)</h3>
+    <p>When a process branches across a Parallel Gateway:</p>
+    <ol>
+        <li>The engine creates isolated child coroutine stubs for each outgoing branch.</li>
+        <li>Active tokens are tracked independently across concurrent branches in <code>workflow_tokens</code>.</li>
+        <li>At the converging join gateway, the engine executes a barrier join:
+            <pre><code class="language-php">yield all($parallelBranchStubs);</code></pre>
+        </li>
+        <li>Only when <strong>all</strong> parallel branches have finished does the parent workflow resume and proceed to downstream nodes.</li>
+    </ol>
+
+    <h2>4. Replay Safety & Determinism</h2>
+    <p>
+        Durable coroutines operate on an <strong>event-sourcing model</strong>. When a suspended workflow wakes after an inbox signal or worker restart, the coroutine function replays from the beginning, checking off previously recorded events against its history log.
+    </p>
+
+    <h3>Protecting Side-Effects via <code>WorkflowStub::sideEffect()</code></h3>
+    <p>
+        If an activity writes directly to an external API or database during execution, a coroutine replay could inadvertently execute those operations multiple times:
+    </p>
+
+    <pre><code class="language-php">// ❌ DANGEROUS: Re-executes multiple times during coroutine replays!
+DB::table('orders')->where('id', $orderId)->update(['status' => 'processing']);
+
+// ✅ SAFE: Wrapped in sideEffect to run once and cache during replays
+WorkflowStub::sideEffect(function () use ($nodeId, $userData) {
+    WorkflowHistory::create([
+        'workflow_instance_id' => $this->instanceId,
+        'node_id' => $nodeId,
+        'payload_snapshot' => $userData,
+    ]);
+});</code></pre>
+
+    <p>
+        During the initial run, the closure executes and caches its return value. During subsequent replays, the engine skips closure execution and returns the cached result directly.
+    </p>
+
+    <h2>5. Lifecycle Controls: Suspend, Resume, and Halt</h2>
+    <p>Workflows support administrative lifecycle commands via #[SignalMethod] handlers:</p>
+    <ul>
+        <li><strong>Suspend:</strong> Pauses execution at the next node barrier. The workflow yields <code>await(fn () =&gt; !$this-&gt;isSuspended)</code>.</li>
+        <li><strong>Resume:</strong> Clears the suspension flag and wakes queue workers to process pending steps.</li>
+        <li><strong>Halt:</strong> Aborts the workflow instance permanently, writes a cancellation audit record, and terminates all active tokens.</li>
+    </ul>
+            </div>
+
+            <!-- Sequential Next / Prev Pagination -->
+            <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+                                    <a href="/bpmn/docs/quickstart" class="flex items-center gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto">
+                        <span>&larr;</span>
+                        <div class="text-left">
+                            <span class="text-[10px] text-slate-400 block uppercase">Previous</span>
+                            <span class="font-bold font-sans">Quickstart Guide</span>
+                        </div>
+                    </a>
+                
+                                    <a href="/bpmn/docs/modeler-and-filament" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block uppercase">Next</span>
+                            <span class="font-bold font-sans">Modeler &amp; Filament</span>
+                        </div>
+                        <span>&rarr;</span>
+                    </a>
+                            </div>
+        </article>
+    </div>
+</div>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-6 w-6 rounded bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <span class="font-bold text-slate-200">Saccharine Open Source</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Domain-agnostic operational primitives and workflow orchestration for Laravel.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <a href="/bpmn" class="hover:text-white transition">BPMN Workflow</a>
+                    <a href="/bpmn/docs/introduction" class="hover:text-white transition">Docs</a>
+                    <a href="https://github.com/saccharine-app/bpmn" class="hover:text-white transition" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://opensource.org/licenses/MIT" class="hover:text-white transition" target="_blank" rel="noopener">MIT License</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800/80 text-center md:text-left text-xs text-slate-500">
+                &copy; 2026 Saccharine. BPMN 2.0 is an OMG standard. Web canvas powered by bpmn-js (Camunda). Durable execution powered by durable-workflow.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN6PPNHB');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction &amp; Architecture | Saccharine</title>
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    
+    "name": "Saccharine",
+    "alternateName": ["Saccharine App"],
+    "url": "https://saccharine.app"
+    
+    }
+    </script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="description" content="Saccharine BPMN turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application.">
+    <meta property="og:site_name" content="Saccharine">
+    <meta property="og:title" content="Introduction &amp; Architecture | Saccharine">
+    <meta property="og:description" content="Saccharine BPMN turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application.">
+    <meta property="og:image" content="https://saccharine.app/assets/images/bpmn-index.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
+    <meta property="og:url" content="https://saccharine.app/bpmn/docs/introduction">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/build/assets/main-CEWNCbMv.css">
+    <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
+    <style>
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white flex flex-col min-h-full">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN6PPNHB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Top Global Navigation Bar -->
+    <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="/" class="flex items-center space-x-2.5 group">
+                    <div class="h-8 w-8 rounded-lg bg-indigo-600 group-hover:bg-indigo-500 transition flex items-center justify-center font-bold text-white shadow-sm">
+                        S
+                    </div>
+                    <span class="text-lg font-extrabold text-slate-900 tracking-tight">Saccharine</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-1 pl-4 border-l border-slate-200 text-sm font-medium">
+                    <a href="/bpmn" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        BPMN Workflow
+                    </a>
+                    <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
+                        Documentation
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span>Live Sandbox</span>
+                    <span class="text-slate-400">&nearr;</span>
+                </a>
+                <a href="https://github.com/saccharine-app/bpmn" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-900 transition flex items-center gap-1 text-xs">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Injection -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
+        <!-- Reusable Sidebar Partial -->
+        <aside class="w-full lg:w-64 shrink-0">
+    <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Package</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold border border-indigo-100">
+                saccharine/bpmn
+            </span>
+        </div>
+
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Getting Started
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/introduction" class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                                Introduction &amp; Stack
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/quickstart" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Quickstart Guide
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Engine Mechanics
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/core-concepts" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Core Concepts &amp; Replay
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    UI &amp; Modeler
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/modeler-and-filament" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Modeler &amp; Filament
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Community &amp; RFC
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/roadmap-rfc" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Roadmap &amp; RFC
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+        
+        <div class="pt-4 border-t border-slate-200 text-xs text-slate-500 space-y-2">
+            <div class="font-semibold text-slate-700">Need help or found a bug?</div>
+            <a href="https://github.com/saccharine-app/bpmn/issues" target="_blank" rel="noopener" class="text-indigo-600 hover:underline flex items-center gap-1">
+                Open an Issue on GitHub &rarr;
+            </a>
+        </div>
+    </div>
+</aside>
+        <!-- Main Documentation Content Panel -->
+        <article class="flex-1 py-8 lg:pl-10 lg:border-l border-slate-200 min-w-0">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-6">
+                <a href="/bpmn" class="hover:text-slate-600">bpmn</a>
+                <span>/</span>
+                <span class="text-slate-500">docs</span>
+                <span>/</span>
+                <span class="text-indigo-600 font-semibold">Introduction</span>
+            </nav>
+
+            <!-- Prose Markdown/Blade container -->
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
+                    <h1>Introduction: Native BPMN 2.0 for Laravel</h1>
+    <p class="lead text-lg text-slate-600">
+        <code>saccharine/bpmn</code> turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application.
+    </p>
+
+    <hr>
+
+    <h2>What is BPMN 2.0?</h2>
+    <p>
+        Business Process Model and Notation (BPMN 2.0) is an open, vendor-neutral standard maintained by the Object Management Group (OMG). It establishes a standardized visual syntax—flowcharts composed of events, activities, gateways, and sequence flows—designed to bridge the communication gap between business analysts and software developers.
+    </p>
+    <p>
+        In traditional applications, workflows drawn on whiteboards inevitably diverge from code. Business rules end up scattered across nested controller conditions, queued jobs, cron schedules, and event listeners. 
+    </p>
+    <p>
+        <strong>With this package, the visual diagram is the executable source of truth.</strong> The XML graph drawn in your browser is compiled directly into database records and executed by your existing Laravel queue workers.
+    </p>
+
+    <h2>The Integration Bridge</h2>
+    <p>
+        <code>saccharine/bpmn</code> is not an engine built from scratch in isolation. It serves as an <strong>integration bridge</strong> uniting battle-tested open-source technologies:
+    </p>
+
+    <div>
+        <img alt="Diagram showing pipeline from bpmn-js -> saccharine/bpmn -> durable-workflow -> Laravel Queue Workers" src="/assets/images/saccharine-bpmn-integration-architecture.jpg">
+    </div>
+
+    <!--<pre><code class="language-plaintext">
+┌────────────────────────────────────────────────────────┐
+│       bpmn-js (Camunda) - Visual Modeler & SVG         │
+└───────────────────────────┬────────────────────────────┘
+                            │ BPMN 2.0 XML
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│      saccharine/bpmn - XPath Parser & Graph Schema     │
+└───────────────────────────┬────────────────────────────┘
+                            │ Coroutine Promises
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│  durable-workflow - Deterministic State & Inboxes      │
+└───────────────────────────┬────────────────────────────┘
+                            │ Scheduled Jobs
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│    Laravel Queue Workers (Redis / SQS / Database)      │
+└────────────────────────────────────────────────────────┘
+</code></pre>-->
+
+    <ul>
+        <li>
+            <strong>Visual Canvas via <a href="https://bpmn.io/toolkit/bpmn-js/" target="_blank" rel="noopener">bpmn-js</a> (Camunda):</strong> 
+            Embeds a zero-dependency SVG modeler and execution viewer in your web browser or Filament admin panel.
+        </li>
+        <li>
+            <strong>Durable Coroutines via <a href="https://durable-workflow.com" target="_blank" rel="noopener">durable-workflow</a>:</strong> 
+            Provides deterministic coroutine persistence. Workflows pause, hibernate to the database, and resume without holding queue worker threads or memory.
+        </li>
+        <li>
+            <strong>Sandboxed Decisions via <a href="https://symfony.com/doc/current/components/expression_language.html" target="_blank" rel="noopener">Symfony ExpressionLanguage</a>:</strong> 
+            Evaluates conditional branching on Exclusive Gateways safely against execution payloads without raw PHP <code>eval()</code>.
+        </li>
+        <li>
+            <strong>Native Laravel Infrastructure:</strong> 
+            Runs on your existing database connections and queue workers without requiring dedicated Java servers or external daemons.
+        </li>
+    </ul>
+
+    <h2>Architectural Principles</h2>
+
+    <h3>1. Blueprint vs. Runtime Separation</h3>
+    <p>
+        The engine maintains a strict architectural boundary between workflow blueprints and runtime state:
+    </p>
+    <ul>
+        <li>
+            <strong>Blueprints (Compiled Definitions):</strong> When a BPMN diagram is saved, the engine's XPath compiler parses the XML and writes the graph structure into relational tables (<code>workflow_definitions</code>, <code>workflow_versions</code>, <code>workflow_nodes</code>, and <code>workflow_edges</code>). At runtime, token routing executes indexed SQL queries rather than re-parsing raw XML strings.
+        </li>
+        <li>
+            <strong>Runtime State (Tokens & Audit Logs):</strong> Running workflow instances track active execution pointers inside <code>workflow_tokens</code>, while <code>workflow_histories</code> records an immutable audit log of completed steps and data snapshots.
+        </li>
+    </ul>
+
+    <h3>2. Zero Worker Blocking</h3>
+    <p>
+        Long-running processes (such as awaiting a manager's approval or waiting 48 hours for a customer response) <strong>never block a queue worker</strong>. 
+    </p>
+    <p>
+        When a workflow reaches a User Task or Timer, the coroutine yields execution, records its state snapshot into the relational database, and releases the queue worker immediately. When the required event or approval signal occurs, the workflow is pushed back onto the queue to continue from that exact step.
+    </p>
+            </div>
+
+            <!-- Sequential Next / Prev Pagination -->
+            <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+                                    <div></div>
+                
+                                    <a href="/bpmn/docs/quickstart" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block uppercase">Next</span>
+                            <span class="font-bold font-sans">Quickstart Guide</span>
+                        </div>
+                        <span>&rarr;</span>
+                    </a>
+                            </div>
+        </article>
+    </div>
+</div>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-6 w-6 rounded bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <span class="font-bold text-slate-200">Saccharine Open Source</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Domain-agnostic operational primitives and workflow orchestration for Laravel.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <a href="/bpmn" class="hover:text-white transition">BPMN Workflow</a>
+                    <a href="/bpmn/docs/introduction" class="hover:text-white transition">Docs</a>
+                    <a href="https://github.com/saccharine-app/bpmn" class="hover:text-white transition" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://opensource.org/licenses/MIT" class="hover:text-white transition" target="_blank" rel="noopener">MIT License</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800/80 text-center md:text-left text-xs text-slate-500">
+                &copy; 2026 Saccharine. BPMN 2.0 is an OMG standard. Web canvas powered by bpmn-js (Camunda). Durable execution powered by durable-workflow.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
