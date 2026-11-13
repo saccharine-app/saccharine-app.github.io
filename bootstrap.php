@@ -32,7 +32,15 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     foreach ($files as $file) {
         $filePath = $file[0]; // RegexIterator returns an array, pick the string path
         $content = file_get_contents($filePath);
+
+        // Convert Mermaid blocks into <div class="mermaid"> before Shiki touches them
+        $content = preg_replace_callback(
+            '/<pre><code class="language-mermaid">(.*?)<\/code><\/pre>/s',
+            fn ($matches) => '<div class="mermaid my-8 flex justify-center">' . html_entity_decode($matches[1], ENT_QUOTES, 'UTF-8') . '</div>',
+            $content
+        );
         
+        // Highlight all remaining code blocks with Shiki
         // This targets <pre><code class="language-xyz">...</code></pre> blocks 
         // that Jigsaw spits out during the build phase.
         $content = preg_replace_callback('/<pre><code class="language-([A-Za-z0-9_-]+)">(.*?)<\/code><\/pre>/s', function ($matches) {

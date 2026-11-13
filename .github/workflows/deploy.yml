@@ -1,26 +1,47 @@
-name: Deploy Jigsaw Site
+name: Build & Deploy Saccharine Site
+
 on:
   push:
     branches: [ main ]
+  workflow_dispatch: # Allows one-click manual rebuilds when package docs change
+  # schedule:
+    # - cron: '0 6 * * *' # Optional: nightly sync check
+
 permissions:
   contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup PHP
+      - name: Checkout Website Repo
+        uses: actions/checkout@v4
+
+      - name: Pull Latest BPMN Docs
+        uses: actions/checkout@v4
+        with:
+          repository: saccharine-app/bpmn
+          path: .tmp-bpmn
+          sparse-checkout: docs
+          sparse-checkout-cone-mode: false
+
+      - name: Sync BPMN Docs into Jigsaw Collection
+        run: |
+          rm -rf source/_bpmn_docs/*.md
+          cp .tmp-bpmn/docs/*.md source/_bpmn_docs/
+          rm -rf .tmp-bpmn
+
+      - name: Setup PHP & Node
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-      - name: Install Composer Dependencies
-        run: composer install --prefer-dist --no-progress
-      - name: Install NPM Dependencies
-        run: npm install
-      - name: Build NPM Resources
-        run: npm run build
-      - name: Build Jigsaw (Production)
-        run: ./vendor/bin/jigsaw build production
+          
+      - name: Install Dependencies & Build Jigsaw
+        run: |
+          composer install --no-interaction --prefer-dist
+          npm ci && npm run build
+          ./vendor/bin/jigsaw build production
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

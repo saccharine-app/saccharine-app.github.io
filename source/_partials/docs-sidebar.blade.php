@@ -1,27 +1,8 @@
 @php
-    // Structured navigation tree easily expanded to support multiple packages
     $package = $package ?? 'bpmn';
-    $currentPath = rtrim($page->getPath(), '/');
-
-    $navSections = [
-        'bpmn' => [
-            'Getting Started' => [
-                ['title' => 'Introduction & Stack', 'path' => '/bpmn/docs/introduction'],
-                ['title' => 'Quickstart Guide', 'path' => '/bpmn/docs/quickstart'],
-            ],
-            'Engine Mechanics' => [
-                ['title' => 'Core Concepts & Replay', 'path' => '/bpmn/docs/core-concepts'],
-            ],
-            'UI & Modeler' => [
-                ['title' => 'Modeler & Filament', 'path' => '/bpmn/docs/modeler-and-filament'],
-            ],
-            'Community & RFC' => [
-                ['title' => 'Roadmap & RFC', 'path' => '/bpmn/docs/roadmap-rfc'],
-            ],
-        ],
-    ];
-
-    $sections = $navSections[$package] ?? [];
+    $currentPath = '/' . trim($page->getPath(), '/');
+    // Group all documents in the 'bpmn_docs' collection by their front-matter 'sectionTitle'
+    $groupedDocs = $bpmn_docs->groupBy('sectionTitle');
 @endphp
 
 <aside class="w-full lg:w-64 shrink-0">
@@ -33,7 +14,7 @@
             </span>
         </div>
 
-        @foreach($sections as $sectionTitle => $items)
+        @foreach($groupedDocs as $sectionTitle => $items)
             <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
                     {{ $sectionTitle }}
@@ -41,11 +22,13 @@
                 <ul class="space-y-1 text-sm">
                     @foreach($items as $item)
                         @php
-                            $isActive = $currentPath === rtrim($item['path'], '/');
+                            $itemPath = '/' . trim($item->getPath(), '/');
+                            $isActive = ($currentPath === $itemPath);
                         @endphp
                         <li>
-                            <a href="{{ $item['path'] }}" class="block px-3 py-1.5 rounded-md transition text-xs font-medium {{ $isActive ? 'bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
-                                {{ $item['title'] }}
+                            <a href="{{ $itemPath }}" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium {{ $isActive ? 'bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
+                                {{ $item->title }}
                             </a>
                         </li>
                     @endforeach

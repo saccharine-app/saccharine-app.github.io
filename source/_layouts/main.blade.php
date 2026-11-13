@@ -80,6 +80,9 @@
                     <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition {{ str_starts_with($page->getPath(), '/bpmn/docs') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-600 hover:text-slate-900' }}">
                         Documentation
                     </a>
+                    <!-- <a href="/blog" class="px-3 py-1.5 rounded-md transition {{ str_starts_with($page->getPath(), '/blog') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-600 hover:text-slate-900' }}">
+                        Blog
+                    </a> -->
                 </div>
             </div>
 

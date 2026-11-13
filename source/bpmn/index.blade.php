@@ -33,7 +33,7 @@ description: Native BPMN 2.0 graph orchestration running over Laravel background
 
             <div class="relative max-w-lg mx-auto">
                 <!-- Soft background glow -->
-                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-indigo-300 rounded-2xl blur opacity-10"></div>
+                <!-- <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-indigo-300 rounded-2xl blur opacity-10"></div> -->
                 
                 <div class="relative space-y-0">
                     <!-- Start Event -->
