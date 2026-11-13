@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction &amp; Architecture | Saccharine</title>
+    <title>Introduction &amp; Overview | Saccharine</title>
     
     <script type="application/ld+json">
     {
@@ -28,7 +28,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta name="description" content="Saccharine BPMN turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application.">
     <meta property="og:site_name" content="Saccharine">
-    <meta property="og:title" content="Introduction &amp; Architecture | Saccharine">
+    <meta property="og:title" content="Introduction &amp; Overview | Saccharine">
     <meta property="og:description" content="Saccharine BPMN turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application.">
     <meta property="og:image" content="https://saccharine.app/assets/images/bpmn-index.png" />
     <meta property="og:image:width" content="1200" />
@@ -40,7 +40,7 @@
     
     
     
-    <link rel="stylesheet" href="/assets/build/assets/main-BOeUU8cu.css">
+    <link rel="stylesheet" href="/assets/build/assets/main-fEbv5a62.css">
     <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
     <style>
         .bg-animated-gradient {
@@ -79,6 +79,9 @@
                     <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
                         Documentation
                     </a>
+                    <!-- <a href="/blog" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        Blog
+                    </a> -->
                 </div>
             </div>
 
@@ -99,7 +102,8 @@
     <main class="flex-grow">
         <div class="container mx-auto px-6 max-w-6xl">
     <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
-        <!-- Reusable Sidebar Partial -->
+        <!-- Dynamic Sidebar -->
+        
         <aside class="w-full lg:w-64 shrink-0">
     <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
         <div class="flex items-center justify-between pb-4 border-b border-slate-200">
@@ -115,12 +119,14 @@
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/introduction" class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
-                                Introduction &amp; Stack
+                            <a href="/bpmn/docs/introduction" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                                Introduction &amp; Overview
                             </a>
                         </li>
                                                                     <li>
-                            <a href="/bpmn/docs/quickstart" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                            <a href="/bpmn/docs/quickstart" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
                                 Quickstart Guide
                             </a>
                         </li>
@@ -128,36 +134,51 @@
             </div>
                     <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
-                    Engine Mechanics
+                    Building Workflows
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/core-concepts" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Core Concepts &amp; Replay
+                            <a href="/bpmn/docs/activities_triggers_gateways" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Activities, Triggers &amp; Gateways
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/visual_modeler" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Visual Modeler &amp; Element Templates
                             </a>
                         </li>
                                     </ul>
             </div>
                     <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
-                    UI &amp; Modeler
+                    Operations &amp; Filament
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/modeler-and-filament" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Modeler &amp; Filament
+                            <a href="/bpmn/docs/operations_and_filament" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Operations, Telemetry &amp; Filament
                             </a>
                         </li>
                                     </ul>
             </div>
                     <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
-                    Community &amp; RFC
+                    Architecture &amp; RFC
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/roadmap-rfc" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Roadmap &amp; RFC
+                            <a href="/bpmn/docs/architecture_and_roadmap" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Architecture, Limitations &amp; Roadmap
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/bpmn_2_0_compatibility_matrix" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                BPMN 2.0 Compatibility Matrix
                             </a>
                         </li>
                                     </ul>
@@ -179,104 +200,90 @@
                 <span>/</span>
                 <span class="text-slate-500">docs</span>
                 <span>/</span>
-                <span class="text-indigo-600 font-semibold">Introduction</span>
+                <span class="text-indigo-600 font-semibold">Getting Started</span>
             </nav>
 
-            <!-- Prose Markdown/Blade container -->
+            <!-- Prose Markdown Container -->
             <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
-                    <h1>Introduction: Native BPMN 2.0 for Laravel</h1>
-    <p class="lead text-lg text-slate-600">
-        <code>saccharine/bpmn</code> turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application.
-    </p>
+                <h1>Introduction: Native BPMN 2.0 for Laravel</h1>
 
-    <hr>
+<p><code>saccharine/bpmn</code> turns standardized visual process diagrams into executable, queue-driven workflows inside your Laravel application. It bridges the gap between visual process modeling and Laravel domain logic by pairing <code>bpmn-js</code> for interactive modeling with <code>durable-workflow/workflow</code> v2 for stateful, queue-backed PHP Fibers.</p>
 
-    <h2>What is BPMN 2.0?</h2>
-    <p>
-        Business Process Model and Notation (BPMN 2.0) is an open, vendor-neutral standard maintained by the Object Management Group (OMG). It establishes a standardized visual syntax—flowcharts composed of events, activities, gateways, and sequence flows—designed to bridge the communication gap between business analysts and software developers.
-    </p>
-    <p>
-        In traditional applications, workflows drawn on whiteboards inevitably diverge from code. Business rules end up scattered across nested controller conditions, queued jobs, cron schedules, and event listeners. 
-    </p>
-    <p>
-        <strong>With this package, the visual diagram is the executable source of truth.</strong> The XML graph drawn in your browser is compiled directly into database records and executed by your existing Laravel queue workers.
-    </p>
+<hr />
 
-    <h2>The Integration Bridge</h2>
-    <p>
-        <code>saccharine/bpmn</code> is not an engine built from scratch in isolation. It serves as an <strong>integration bridge</strong> uniting battle-tested open-source technologies:
-    </p>
+<h2>What is BPMN 2.0?</h2>
 
-    <div>
-        <img alt="Diagram showing pipeline from bpmn-js -> saccharine/bpmn -> durable-workflow -> Laravel Queue Workers" src="/assets/images/saccharine-bpmn-integration-architecture.jpg">
-    </div>
+<p>Business Process Model and Notation (BPMN 2.0) is an open, vendor-neutral standard maintained by the Object Management Group (OMG). It establishes a visual syntax—flowcharts composed of events, activities, gateways, and sequence flows—designed to align business stakeholders and software developers.</p>
 
-    <!--<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8"></span></span>
-<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
-<span class="line"><span style="color:#e1e4e8">│       bpmn-js (Camunda) - Visual Modeler &amp; SVG         │</span></span>
-<span class="line"><span style="color:#e1e4e8">└───────────────────────────┬────────────────────────────┘</span></span>
-<span class="line"><span style="color:#e1e4e8">                            │ BPMN 2.0 XML</span></span>
-<span class="line"><span style="color:#e1e4e8">                            ▼</span></span>
-<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
-<span class="line"><span style="color:#e1e4e8">│      saccharine/bpmn - XPath Parser &amp; Graph Schema     │</span></span>
-<span class="line"><span style="color:#e1e4e8">└───────────────────────────┬────────────────────────────┘</span></span>
-<span class="line"><span style="color:#e1e4e8">                            │ Coroutine Promises</span></span>
-<span class="line"><span style="color:#e1e4e8">                            ▼</span></span>
-<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
-<span class="line"><span style="color:#e1e4e8">│  durable-workflow - Deterministic State &amp; Inboxes      │</span></span>
-<span class="line"><span style="color:#e1e4e8">└───────────────────────────┬────────────────────────────┘</span></span>
-<span class="line"><span style="color:#e1e4e8">                            │ Scheduled Jobs</span></span>
-<span class="line"><span style="color:#e1e4e8">                            ▼</span></span>
-<span class="line"><span style="color:#e1e4e8">┌────────────────────────────────────────────────────────┐</span></span>
-<span class="line"><span style="color:#e1e4e8">│    Laravel Queue Workers (Redis / SQS / Database)      │</span></span>
-<span class="line"><span style="color:#e1e4e8">└────────────────────────────────────────────────────────┘</span></span>
-<span class="line"><span style="color:#e1e4e8"></span></span></code></pre>-->
+<p>In traditional applications, workflows drawn on whiteboards inevitably diverge from code. Business rules end up scattered across nested controller conditions, queued jobs, cron schedules, and event listeners.</p>
 
-    <ul>
-        <li>
-            <strong>Visual Canvas via <a href="https://bpmn.io/toolkit/bpmn-js/" target="_blank" rel="noopener">bpmn-js</a> (Camunda):</strong> 
-            Embeds a zero-dependency SVG modeler and execution viewer in your web browser or Filament admin panel.
-        </li>
-        <li>
-            <strong>Durable Coroutines via <a href="https://durable-workflow.com" target="_blank" rel="noopener">durable-workflow</a>:</strong> 
-            Provides deterministic coroutine persistence. Workflows pause, hibernate to the database, and resume without holding queue worker threads or memory.
-        </li>
-        <li>
-            <strong>Sandboxed Decisions via <a href="https://symfony.com/doc/current/components/expression_language.html" target="_blank" rel="noopener">Symfony ExpressionLanguage</a>:</strong> 
-            Evaluates conditional branching on Exclusive Gateways safely against execution payloads without raw PHP <code>eval()</code>.
-        </li>
-        <li>
-            <strong>Native Laravel Infrastructure:</strong> 
-            Runs on your existing database connections and queue workers without requiring dedicated Java servers or external daemons.
-        </li>
-    </ul>
+<p><strong>With <code>saccharine/bpmn</code>, the visual diagram is the executable source of truth.</strong> The XML graph drawn in your browser is compiled directly into relational database records and executed by your existing Laravel queue workers.</p>
 
-    <h2>Architectural Principles</h2>
+<hr />
 
-    <h3>1. Blueprint vs. Runtime Separation</h3>
-    <p>
-        The engine maintains a strict architectural boundary between workflow blueprints and runtime state:
-    </p>
-    <ul>
-        <li>
-            <strong>Blueprints (Compiled Definitions):</strong> When a BPMN diagram is saved, the engine's XPath compiler parses the XML and writes the graph structure into relational tables (<code>workflow_definitions</code>, <code>workflow_versions</code>, <code>workflow_nodes</code>, and <code>workflow_edges</code>). At runtime, token routing executes indexed SQL queries rather than re-parsing raw XML strings.
-        </li>
-        <li>
-            <strong>Runtime State (Tokens & Audit Logs):</strong> Running workflow instances track active execution pointers inside <code>workflow_tokens</code>, while <code>workflow_histories</code> records an immutable audit log of completed steps and data snapshots.
-        </li>
-    </ul>
+<h2>The Integration Bridge</h2>
 
-    <h3>2. Zero Worker Blocking</h3>
-    <p>
-        Long-running processes (such as awaiting a manager's approval or waiting 48 hours for a customer response) <strong>never block a queue worker</strong>. 
-    </p>
-    <p>
-        When a workflow reaches a User Task or Timer, the coroutine yields execution, records its state snapshot into the relational database, and releases the queue worker immediately. When the required event or approval signal occurs, the workflow is pushed back onto the queue to continue from that exact step.
-    </p>
+<p><code>saccharine/bpmn</code> serves as an <strong>integration bridge</strong> uniting battle-tested open-source technologies inside a native Composer package:</p>
+
+<pre><code>┌────────────────────────────────────────────────────────┐
+│       bpmn-js (Camunda) - Visual Modeler &amp; SVG         │
+└───────────────────────────┬────────────────────────────┘
+                            │ BPMN 2.0 XML
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│   saccharine/bpmn - XPath Decomposition &amp; Schema       │
+└───────────────────────────┬────────────────────────────┘
+                            │ Fiber Coroutines
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│   durable-workflow v2 - Deterministic Fiber State      │
+└───────────────────────────┬────────────────────────────┘
+                            │ Scheduled Jobs
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│    Laravel Queue Workers (Redis / SQS / Database)      │
+└────────────────────────────────────────────────────────┘
+</code></pre>
+
+<ul>
+<li><strong>Visual Canvas via <a href="https://bpmn.io/toolkit/bpmn-js/">bpmn-js</a>:</strong> Embeds an interactive SVG modeler, capability-filtered palettes, Camunda-compatible Element Templates, and a real-time execution viewer in your browser or Filament v5 admin panel.</li>
+<li><strong>Native Fiber Engine via <a href="https://durable-workflow.com">durable-workflow</a> v2:</strong> Coordinates execution via native PHP 8.1+ Fibers. Workflows pause, hibernate to the database, and resume without holding queue worker threads or memory.</li>
+<li><strong>Sandboxed Routing via <a href="https://symfony.com/doc/current/components/expression_language.html">Symfony ExpressionLanguage</a>:</strong> Evaluates conditional branching on Exclusive Gateways safely against execution payloads without raw PHP <code>eval()</code>.</li>
+<li><strong>Native Laravel Infrastructure:</strong> Runs on your existing database connections and queue workers without requiring dedicated Java runtime servers or external daemons.</li>
+</ul>
+
+<hr />
+
+<h2>Core Architectural Principles</h2>
+
+<h3>1. Blueprint vs. Runtime Separation</h3>
+
+<p>The engine maintains a strict boundary between workflow blueprints and runtime state:</p>
+
+<ul>
+<li><strong>Blueprints (Compiled Definitions):</strong> When a BPMN diagram is saved, <code>BpmnParserService</code> validates OMG BPMN 2.0 namespaces, parses XML elements via XPath, and writes the relational graph into indexed tables (<code>process_definitions</code>, <code>process_versions</code>, <code>process_nodes</code>, and <code>process_edges</code>). At runtime, graph traversal occurs via indexed database queries rather than in-memory XML parsing.</li>
+<li><strong>Runtime State (Tokens &amp; Audit Logs):</strong> Running workflow instances track active execution pointers inside <code>process_tokens</code>, while <code>process_history_events</code> records an immutable audit trail of completed steps alongside JSON snapshots of the <code>$userData</code> payload.</li>
+</ul>
+
+<h3>2. Zero Worker Blocking</h3>
+
+<p>Long-running business processes—such as waiting for human approval or pausing for an ISO 8601 timer duration—<strong>never block a queue worker</strong>.</p>
+
+<p>When a process reaches a User Task or Timer:
+1. The Fiber suspends transparently inside the execution runtime.
+2. The queue worker commits the token checkpoint to <code>process_tokens</code> and releases its memory immediately.
+3. The queue worker picks up the next job on the queue.
+4. When an operator submits human input or a timer expires, the workflow instance wakes up, replays its deterministic event log, and advances from that exact step.</p>
+
+<h3>3. Decoupled Host Domain Logic</h3>
+
+<p>Your business logic stays inside standard Laravel classes:
+* <strong>Service Tasks</strong> map string implementation keys in <code>config/saccharine-bpmn.php</code> to isolated <code>Workflow\V2\Activity</code> classes.
+* <strong>Start Events</strong> listen to Eloquent model lifecycle hooks (<code>TriggersBpmnProcesses</code>) or custom <code>BpmnTriggerableEvent</code> classes with database-enforced idempotency.</p>
             </div>
 
-            <!-- Sequential Next / Prev Pagination -->
-            <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+            <!-- Dynamic Sequential Next / Prev Pagination -->
+                        <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
                                     <div></div>
                 
                                     <a href="/bpmn/docs/quickstart" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
@@ -290,6 +297,19 @@
         </article>
     </div>
 </div>
+
+<script type="module">
+    if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs')
+            .then(({ default: mermaid }) => {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'neutral', // Matches Tailwind's slate palette cleanly
+                });
+                mermaid.run({ querySelector: '.mermaid' });
+            });
+    }
+</script>
     </main>
 
     <!-- Universal Footer -->

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN6PPNHB');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations, Telemetry &amp; Filament | Saccharine</title>
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    
+    "name": "Saccharine",
+    "alternateName": ["Saccharine App"],
+    "url": "https://saccharine.app"
+    
+    }
+    </script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="description" content="Monitor live tokens in the Cockpit, control running instances via CLI, HTTP, or PHP, and integrate with Filament v5 and Filament Shield.">
+    <meta property="og:site_name" content="Saccharine">
+    <meta property="og:title" content="Operations, Telemetry &amp; Filament | Saccharine">
+    <meta property="og:description" content="Monitor live tokens in the Cockpit, control running instances via CLI, HTTP, or PHP, and integrate with Filament v5 and Filament Shield.">
+    <meta property="og:image" content="https://saccharine.app/assets/images/bpmn-index.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
+    <meta property="og:url" content="https://saccharine.app/bpmn/docs/operations_and_filament">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/build/assets/main-fEbv5a62.css">
+    <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
+    <style>
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white flex flex-col min-h-full">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN6PPNHB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Top Global Navigation Bar -->
+    <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="/" class="flex items-center space-x-2.5 group">
+                    <div class="h-8 w-8 rounded-lg bg-indigo-600 group-hover:bg-indigo-500 transition flex items-center justify-center font-bold text-white shadow-sm">
+                        S
+                    </div>
+                    <span class="text-lg font-extrabold text-slate-900 tracking-tight">Saccharine</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-1 pl-4 border-l border-slate-200 text-sm font-medium">
+                    <a href="/bpmn" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        BPMN Workflow
+                    </a>
+                    <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
+                        Documentation
+                    </a>
+                    <!-- <a href="/blog" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        Blog
+                    </a> -->
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span>Live Sandbox</span>
+                    <span class="text-slate-400">&nearr;</span>
+                </a>
+                <a href="https://github.com/saccharine-app/bpmn" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-900 transition flex items-center gap-1 text-xs">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Injection -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
+        <!-- Dynamic Sidebar -->
+        
+        <aside class="w-full lg:w-64 shrink-0">
+    <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Package</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold border border-indigo-100">
+                saccharine/bpmn
+            </span>
+        </div>
+
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Getting Started
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/introduction" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Introduction &amp; Overview
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/quickstart" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Quickstart Guide
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Building Workflows
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/activities_triggers_gateways" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Activities, Triggers &amp; Gateways
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/visual_modeler" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Visual Modeler &amp; Element Templates
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Operations &amp; Filament
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/operations_and_filament" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                                Operations, Telemetry &amp; Filament
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Architecture &amp; RFC
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/architecture_and_roadmap" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Architecture, Limitations &amp; Roadmap
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/bpmn_2_0_compatibility_matrix" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                BPMN 2.0 Compatibility Matrix
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+        
+        <div class="pt-4 border-t border-slate-200 text-xs text-slate-500 space-y-2">
+            <div class="font-semibold text-slate-700">Need help or found a bug?</div>
+            <a href="https://github.com/saccharine-app/bpmn/issues" target="_blank" rel="noopener" class="text-indigo-600 hover:underline flex items-center gap-1">
+                Open an Issue on GitHub &rarr;
+            </a>
+        </div>
+    </div>
+</aside>
+        <!-- Main Documentation Content Panel -->
+        <article class="flex-1 py-8 lg:pl-10 lg:border-l border-slate-200 min-w-0">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-6">
+                <a href="/bpmn" class="hover:text-slate-600">bpmn</a>
+                <span>/</span>
+                <span class="text-slate-500">docs</span>
+                <span>/</span>
+                <span class="text-indigo-600 font-semibold">Operations &amp; Filament</span>
+            </nav>
+
+            <!-- Prose Markdown Container -->
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
+                <h1>Operations, Telemetry &amp; Filament Integration</h1>
+
+<p><code>saccharine/bpmn</code> provides full Day-2 operational visibility and runtime control over active process instances through its standalone <strong>Live Cockpit</strong>, Artisan CLI commands, REST telemetry endpoints, and native <strong>Filament v5</strong> plugin.</p>
+
+<hr />
+
+<h2>1. Live Cockpit &amp; Real-Time Telemetry</h2>
+
+<p>Navigate to <code>/bpmn/processes/instances</code> (or click <strong>Live Cockpit</strong> in Filament's <code>ProcessInstanceResource</code> table) to open the execution viewer at <code>/bpmn/processes/instances/{id}/track</code>.</p>
+
+<h3>Visual Token Overlays</h3>
+
+<p>The cockpit pairs <code>bpmn-js/lib/NavigatedViewer</code> with a polling loop (<code>GET /bpmn/processes/instances/{id}/telemetry</code>) that updates CSS markers on the SVG diagram in real time:</p>
+
+<ul>
+<li><strong>Completed Nodes (<code>.bpmn-history-completed</code>):</strong> Highlighted with a solid slate blue outline and fill, derived from <code>process_history_events</code>.</li>
+<li><strong>Active Waiting Nodes (<code>.bpmn-active-token</code>):</strong> Highlighted with a vivid emerald green border and a pulsing CSS animation, derived from <code>process_tokens</code>.</li>
+<li><strong>Failed / Halted Nodes (<code>.bpmn-failed-token</code>):</strong> Rendered in red when the instance enters <code>halted</code> or <code>failed</code> status.</li>
+</ul>
+
+<h3>Completing Hibernated User Tasks</h3>
+
+<p>When an active green token sits on a <code>userTask</code> node, clicking that shape on the canvas opens the <strong>Human Task Approval</strong> modal (<code>openTaskModal()</code>). Submitting the modal posts a JSON payload to <code>POST /bpmn/processes/instances/{id}/tasks/{elementId}/submit</code>, injecting <code>decision</code>, <code>approved_by</code>, <code>comments</code>, and <code>submitted_at</code> into the workflow via <code>$workflow-&gt;submitUpdate('submitUserTask', $payload)</code> and resuming the background Fiber immediately.</p>
+
+<hr />
+
+<h2>2. Runtime Process Instance Interventions</h2>
+
+<p>Operators and host application code can suspend, resume, or permanently halt running process instances at any time. All runtime interventions invoke <code>submitUpdate()</code> on the <code>durable-workflow</code> v2 stub (<code>WorkflowStub::load($instance-&gt;durable_workflow_id)</code>), ensuring state transitions are recorded deterministically in the workflow event log.</p>
+
+<h3>State Transitions Reference</h3>
+
+<table>
+<thead>
+<tr>
+  <th align="left">Action</th>
+  <th align="left">Update Method</th>
+  <th align="left">Status Transition</th>
+  <th align="left">Runtime Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left"><strong>List</strong></td>
+  <td align="left">—</td>
+  <td align="left">—</td>
+  <td align="left">Lists the 50 most recent instances, versions, statuses, and durable IDs.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Suspend</strong></td>
+  <td align="left"><code>suspendProcess</code></td>
+  <td align="left"><code>running</code> $\rightarrow$ <code>suspended</code></td>
+  <td align="left">Sets <code>$isSuspended = true</code>. At the next loop boundary (or immediately if waiting at a <code>userTask</code>), the Fiber hibernates via <code>await()</code>.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Resume</strong></td>
+  <td align="left"><code>resumeProcess</code></td>
+  <td align="left"><code>suspended</code> $\rightarrow$ <code>running</code></td>
+  <td align="left">Clears <code>$isSuspended = false</code>, waking the hibernated Fiber to advance on the next queue worker tick.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Halt</strong></td>
+  <td align="left"><code>haltProcess</code></td>
+  <td align="left"><code>running</code> / <code>suspended</code> $\rightarrow$ <code>halted</code></td>
+  <td align="left">Sets <code>$isHalted = true</code>, breaks the interpreter loop, sets <code>_system_status = 'halted'</code>, and deletes active rows from <code>process_tokens</code>.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Submit Task</strong></td>
+  <td align="left"><code>submitUserTask</code></td>
+  <td align="left"><code>running</code> (at <code>userTask</code>)</td>
+  <td align="left">Appends form payloads into <code>$pendingUserTaskPayloads</code> and wakes <code>UserTaskHandler</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+  <p><strong>Cooperative Multitasking Note:</strong> Because PHP Fibers yield cooperatively at framework boundaries (<code>activity()</code>, <code>await()</code>, <code>timer()</code>, <code>child()</code>), an intervention issued while a <code>ServiceTask</code> activity is actively executing on a queue worker takes effect as soon as that activity returns control to <code>BpmnInterpreterWorkflow</code>.</p>
+</blockquote>
+
+<h3>Artisan CLI Control (<code>bpmn:instance</code>)</h3>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Display a formatted table of the 50 most recent instances</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">list</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Suspend a running instance</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">suspend</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">{id}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Resume a suspended instance</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">resume</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">{id}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Permanently halt an active or suspended instance</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">halt</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">{id}</span></span>
+<span class="line"></span></code></pre>
+
+<h3>HTTP Endpoints</h3>
+
+<p>Web and telemetry routes are registered under <code>config('saccharine-bpmn.prefix.web')</code> (default: <code>bpmn/processes</code>):</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Instance lifecycle interventions</span></span>
+<span class="line"><span style="color:#F97583">POST</span><span style="color:#E1E4E8"> /bpmn/processes/instances/{id}/suspend</span></span>
+<span class="line"><span style="color:#F97583">POST</span><span style="color:#E1E4E8"> /bpmn/processes/instances/{id}/resume</span></span>
+<span class="line"><span style="color:#F97583">POST</span><span style="color:#E1E4E8"> /bpmn/processes/instances/{id}/halt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Real-time polling endpoints</span></span>
+<span class="line"><span style="color:#F97583">GET</span><span style="color:#E1E4E8">  /bpmn/processes/instances/{id}/tokens</span></span>
+<span class="line"><span style="color:#F97583">GET</span><span style="color:#E1E4E8">  /bpmn/processes/instances/{id}/telemetry</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Submit human input for an active User Task</span></span>
+<span class="line"><span style="color:#F97583">POST</span><span style="color:#E1E4E8"> /bpmn/processes/instances/{id}/tasks/{elementId}/submit</span></span>
+<span class="line"><span style="color:#85E89D">Content-Type</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">application/json</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#79B8FF">&quot;payload&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;decision&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;approved&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;approved_by&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Manager&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#79B8FF">&quot;comments&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Verified and approved.&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+
+<h3>Programmatic Control in PHP</h3>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Enums\ProcessInstanceStatus</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Models\ProcessInstance</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Workflow\V2\WorkflowStub</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$instance </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">ProcessInstance</span><span style="color:#F97583">::</span><span style="color:#B392F0">findOrFail</span><span style="color:#E1E4E8">($instanceId);</span></span>
+<span class="line"><span style="color:#E1E4E8">$workflow </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">WorkflowStub</span><span style="color:#F97583">::</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8">($instance</span><span style="color:#F97583">-&gt;</span><span style="color:#E1E4E8">durable_workflow_id);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Suspend execution</span></span>
+<span class="line"><span style="color:#E1E4E8">$instance</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">update</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">&#39;status&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">ProcessInstanceStatus</span><span style="color:#F97583">::</span><span style="color:#79B8FF">SUSPENDED</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">$workflow</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">submitUpdate</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;suspendProcess&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Resume execution</span></span>
+<span class="line"><span style="color:#E1E4E8">$instance</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">update</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">&#39;status&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">ProcessInstanceStatus</span><span style="color:#F97583">::</span><span style="color:#79B8FF">RUNNING</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">$workflow</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">submitUpdate</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;resumeProcess&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Permanently halt execution</span></span>
+<span class="line"><span style="color:#E1E4E8">$instance</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">update</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">&#39;status&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">ProcessInstanceStatus</span><span style="color:#F97583">::</span><span style="color:#79B8FF">HALTED</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">$workflow</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">submitUpdate</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;haltProcess&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Submit a User Task payload</span></span>
+<span class="line"><span style="color:#E1E4E8">$workflow</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">submitUpdate</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;submitUserTask&#39;</span><span style="color:#E1E4E8">, [</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;decision&#39;</span><span style="color:#E1E4E8">     </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&#39;approved&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;approved_by&#39;</span><span style="color:#E1E4E8">  </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">auth</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">user</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">?-&gt;</span><span style="color:#E1E4E8">name </span><span style="color:#F97583">??</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&#39;System&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;submitted_at&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">now</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">toIso8601String</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">]);</span></span>
+<span class="line"></span></code></pre>
+
+<hr />
+
+<h2>3. Filament v5 Admin Integration</h2>
+
+<p>The package ships with a native <strong>Filament v5</strong> plugin (<code>BpmnFilamentPlugin</code>) that registers process management resources directly inside your panel without copying resource stubs into your application.</p>
+
+<h3>Registering the Plugin</h3>
+
+<p>Register <code>BpmnFilamentPlugin::make()</code> in your panel provider (e.g., <code>app/Providers/Filament/AdminPanelProvider.php</code>):</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">namespace</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">App\Providers\Filament</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Filament\Panel</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Filament\PanelProvider</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Saccharine\Bpmn\Filament\BpmnFilamentPlugin</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">AdminPanelProvider</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">extends</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">PanelProvider</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">public</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">panel</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Panel</span><span style="color:#E1E4E8"> $panel)</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">Panel</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> $panel</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">default</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">id</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;admin&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">path</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;admin&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">            </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">plugins</span><span style="color:#E1E4E8">([</span></span>
+<span class="line"><span style="color:#E1E4E8">                </span><span style="color:#79B8FF">BpmnFilamentPlugin</span><span style="color:#F97583">::</span><span style="color:#B392F0">make</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">            ]);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+
+<p>This adds two resources under the <strong>Process Orchestration</strong> navigation group:
+* <strong><code>ProcessDefinitionResource</code> (<code>/admin/bpmn/processes/definitions</code>):</strong> Manage process definitions, view version counts, and launch the visual designer in a new tab.
+* <strong><code>ProcessInstanceResource</code> (<code>/admin/bpmn/processes/instances</code>):</strong> Monitor status badges and active token tags, open the Live Cockpit, and trigger <code>Suspend</code>, <code>Resume</code>, or <code>Halt</code> row actions with confirmation modals.</p>
+
+<h3>Unified Routing &amp; Dual-UI Resolution (<code>BpmnRouteHelper</code>)</h3>
+
+<p>Both the standalone Blade UI and the Filament resources derive their URLs from the single <code>prefix.web</code> key in <code>config/saccharine-bpmn.php</code> (default <code>bpmn/processes</code>).</p>
+
+<p><code>BpmnRouteHelper::dashboardUrl()</code> resolves the canonical dashboard link in the following priority order:
+1. An explicit <code>saccharine-bpmn.dashboard_url</code> config override, if set.
+2. The auto-detected Filament resource index route (<code>filament.{panel}.resources.bpmn.processes.definitions.index</code>), if registered.
+3. The standalone Blade dashboard route (<code>bpmn.index</code>), unless <code>saccharine-bpmn.dashboard</code> is set to <code>false</code>.</p>
+
+<p>When <code>saccharine-bpmn.filament_redirect</code> is <code>true</code> (default), visiting <code>/bpmn/processes/definitions</code> automatically redirects to the Filament resource table when present.</p>
+
+<h3>Optional Demo Order Stubs</h3>
+
+<p>To scaffold an interactive <code>DemoOrderResource</code> CRUD table and sample invoice activity into your host application for testing Eloquent triggers from Filament:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:publish-filament-stubs</span></span>
+<span class="line"></span></code></pre>
+
+<hr />
+
+<h2>4. Authentication &amp; Filament Shield Permissions</h2>
+
+<h3>Protecting Routes in Production</h3>
+
+<p>By default, <code>config/saccharine-bpmn.php</code> sets <code>'middleware.web' =&gt; ['web']</code> for friction-free local testing, and <code>BpmnServiceProvider::registerGates()</code> allows all BPMN gates automatically when <code>app()-&gt;environment('local')</code>.</p>
+
+<p>Before deploying to staging or production, add <code>'auth'</code> to your published <code>config/saccharine-bpmn.php</code>:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#9ECBFF">&#39;middleware&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;web&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">&#39;web&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;auth&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#9ECBFF">&#39;api&#39;</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">&#39;api&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">],</span></span>
+<span class="line"></span></code></pre>
+
+<blockquote>
+  <p><strong>Filament Guest Redirect Tip:</strong> Filament panels register a panel-specific login route (e.g., <code>filament.admin.auth.login</code>) rather than Laravel's default <code>login</code> route. Add <code>$middleware-&gt;redirectGuestsTo('/admin/login');</code> inside <code>withMiddleware()</code> in <code>bootstrap/app.php</code> so unauthenticated guests are redirected cleanly instead of hitting a <code>Route [login] not defined</code> exception.</p>
+</blockquote>
+
+<h3>Granular Permissions (<code>ProcessPermission</code>)</h3>
+
+<p><code>BpmnServiceProvider</code> automatically registers six custom permissions into <code>PermissionManifest</code> and injects them into <code>filament-shield.custom_permissions</code>:</p>
+
+<table>
+<thead>
+<tr>
+  <th align="left">Enum Case</th>
+  <th align="left">Permission Key</th>
+  <th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left"><code>ProcessPermission::VIEW</code></td>
+  <td align="left"><code>Bpmn:View</code></td>
+  <td align="left">View dashboards, designer canvas, and live telemetry.</td>
+</tr>
+<tr>
+  <td align="left"><code>ProcessPermission::EDIT</code></td>
+  <td align="left"><code>Bpmn:Edit</code></td>
+  <td align="left">Create definitions, save/publish versions, and submit user tasks.</td>
+</tr>
+<tr>
+  <td align="left"><code>ProcessPermission::DELETE</code></td>
+  <td align="left"><code>Bpmn:Delete</code></td>
+  <td align="left">Archive/delete process definitions.</td>
+</tr>
+<tr>
+  <td align="left"><code>ProcessPermission::SUSPEND_INSTANCE</code></td>
+  <td align="left"><code>Bpmn:SuspendInstance</code></td>
+  <td align="left">Pause running process instances.</td>
+</tr>
+<tr>
+  <td align="left"><code>ProcessPermission::RESUME_INSTANCE</code></td>
+  <td align="left"><code>Bpmn:ResumeInstance</code></td>
+  <td align="left">Resume suspended process instances.</td>
+</tr>
+<tr>
+  <td align="left"><code>ProcessPermission::HALT_INSTANCE</code></td>
+  <td align="left"><code>Bpmn:HaltInstance</code></td>
+  <td align="left">Permanently terminate running or suspended instances.</td>
+</tr>
+</tbody>
+</table>
+
+<p>In addition, standard Eloquent policies (<code>ProcessDefinitionPolicy</code>, <code>ProcessInstancePolicy</code>, and <code>DemoOrderPolicy</code>) are registered for standard resource-level authorization (<code>ViewAny:ProcessDefinition</code>, <code>Update:ProcessDefinition</code>, etc.).</p>
+            </div>
+
+            <!-- Dynamic Sequential Next / Prev Pagination -->
+                        <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+                                    <a href="/bpmn/docs/visual_modeler" class="flex items-center gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto">
+                        <span>&larr;</span>
+                        <div class="text-left">
+                            <span class="text-[10px] text-slate-400 block uppercase">Previous</span>
+                            <span class="font-bold font-sans">Visual Modeler &amp; Element Templates</span>
+                        </div>
+                    </a>
+                
+                                    <a href="/bpmn/docs/architecture_and_roadmap" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block uppercase">Next</span>
+                            <span class="font-bold font-sans">Architecture, Limitations &amp; Roadmap</span>
+                        </div>
+                        <span>&rarr;</span>
+                    </a>
+                            </div>
+        </article>
+    </div>
+</div>
+
+<script type="module">
+    if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs')
+            .then(({ default: mermaid }) => {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'neutral', // Matches Tailwind's slate palette cleanly
+                });
+                mermaid.run({ querySelector: '.mermaid' });
+            });
+    }
+</script>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-6 w-6 rounded bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <span class="font-bold text-slate-200">Saccharine Open Source</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Domain-agnostic operational primitives and workflow orchestration for Laravel.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <a href="/bpmn" class="hover:text-white transition">BPMN Workflow</a>
+                    <a href="/bpmn/docs/introduction" class="hover:text-white transition">Docs</a>
+                    <a href="https://github.com/saccharine-app/bpmn" class="hover:text-white transition" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://opensource.org/licenses/MIT" class="hover:text-white transition" target="_blank" rel="noopener">MIT License</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800/80 text-center md:text-left text-xs text-slate-500">
+                &copy; 2026 Saccharine. BPMN 2.0 is an OMG standard. Web canvas powered by bpmn-js (Camunda). Durable execution powered by durable-workflow.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

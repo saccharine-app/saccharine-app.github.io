@@ -40,7 +40,7 @@
     
     
     
-    <link rel="stylesheet" href="/assets/build/assets/main-BOeUU8cu.css">
+    <link rel="stylesheet" href="/assets/build/assets/main-fEbv5a62.css">
     <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
     <style>
         .bg-animated-gradient {
@@ -79,6 +79,9 @@
                     <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
                         Documentation
                     </a>
+                    <!-- <a href="/blog" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        Blog
+                    </a> -->
                 </div>
             </div>
 
@@ -99,7 +102,8 @@
     <main class="flex-grow">
         <div class="container mx-auto px-6 max-w-6xl">
     <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
-        <!-- Reusable Sidebar Partial -->
+        <!-- Dynamic Sidebar -->
+        
         <aside class="w-full lg:w-64 shrink-0">
     <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
         <div class="flex items-center justify-between pb-4 border-b border-slate-200">
@@ -115,12 +119,14 @@
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/introduction" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Introduction &amp; Stack
+                            <a href="/bpmn/docs/introduction" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Introduction &amp; Overview
                             </a>
                         </li>
                                                                     <li>
-                            <a href="/bpmn/docs/quickstart" class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                            <a href="/bpmn/docs/quickstart" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
                                 Quickstart Guide
                             </a>
                         </li>
@@ -128,36 +134,51 @@
             </div>
                     <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
-                    Engine Mechanics
+                    Building Workflows
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/core-concepts" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Core Concepts &amp; Replay
+                            <a href="/bpmn/docs/activities_triggers_gateways" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Activities, Triggers &amp; Gateways
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/visual_modeler" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Visual Modeler &amp; Element Templates
                             </a>
                         </li>
                                     </ul>
             </div>
                     <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
-                    UI &amp; Modeler
+                    Operations &amp; Filament
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/modeler-and-filament" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Modeler &amp; Filament
+                            <a href="/bpmn/docs/operations_and_filament" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Operations, Telemetry &amp; Filament
                             </a>
                         </li>
                                     </ul>
             </div>
                     <div class="space-y-2">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
-                    Community &amp; RFC
+                    Architecture &amp; RFC
                 </h4>
                 <ul class="space-y-1 text-sm">
                                                                     <li>
-                            <a href="/bpmn/docs/roadmap-rfc" class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
-                                Roadmap &amp; RFC
+                            <a href="/bpmn/docs/architecture_and_roadmap" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Architecture, Limitations &amp; Roadmap
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/bpmn_2_0_compatibility_matrix" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                BPMN 2.0 Compatibility Matrix
                             </a>
                         </li>
                                     </ul>
@@ -179,132 +200,163 @@
                 <span>/</span>
                 <span class="text-slate-500">docs</span>
                 <span>/</span>
-                <span class="text-indigo-600 font-semibold">Quickstart</span>
+                <span class="text-indigo-600 font-semibold">Getting Started</span>
             </nav>
 
-            <!-- Prose Markdown/Blade container -->
+            <!-- Prose Markdown Container -->
             <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
-                    <h1>Quickstart Guide</h1>
-    <p class="lead text-lg text-slate-600">
-        Get up and running with <code>saccharine/bpmn</code> in under five minutes. This guide covers package installation, running migrations, and triggering the pre-packaged demo workflow.
-    </p>
+                <h1>Quickstart Guide</h1>
 
-    <hr>
+<p>Get up and running with <code>saccharine/bpmn</code> in under five minutes. This guide walks through installing the package, running migrations, seeding the demo workflows, and tracing a live process instance from trigger to completion.</p>
 
-    <h2>Requirements</h2>
-    <ul>
-        <li><strong>PHP:</strong>8.4</li>
-        <li><strong>Laravel Framework:</strong>13.0</li>
-        <li><strong>Database:</strong> MySQL 8+, MariaDB 10.3+, PostgreSQL 13+, or SQLite 3.35+</li>
-        <li><strong>Queue Driver:</strong> Redis, Database, or SQS (Sync queues can be used for local testing, but persistent background workers are recommended for durable workflows)</li>
-    </ul>
+<hr />
 
-    <h2>1. Installation</h2>
-    <p>Install the package into your Laravel application via Composer:</p>
+<h2>Requirements</h2>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">composer</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">require</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">saccharine/bpmn</span></span></code></pre>
+<ul>
+<li><strong>PHP:</strong> <code>^8.4</code></li>
+<li><strong>Laravel Framework:</strong> <code>^13.0</code></li>
+<li><strong>Orchestration Core:</strong> <code>durable-workflow/workflow</code> <code>^2.0</code></li>
+<li><strong>Expression Parser:</strong> <code>symfony/expression-language</code> <code>^8.1</code></li>
+<li><strong>Database:</strong> MySQL 8+, MariaDB 10.3+, PostgreSQL 13+, or SQLite 3.35+</li>
+<li><strong>Queue Driver:</strong> Database, Redis, or SQS (a background worker running <code>php artisan queue:work</code> is required to advance durable workflows)</li>
+</ul>
 
-    <p>Run the interactive package installer command:</p>
+<hr />
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:install</span></span></code></pre>
+<h2>1. Installation</h2>
 
-    <p>This automated command handles initial setup:</p>
-    <ol>
-        <li>Publishes the configuration file to <code>config/saccharine-bpmn.php</code>.</li>
-        <li>Publishes migration files for workflow blueprints, runtime tokens, and history ledgers.</li>
-        <li>Runs the migrations to establish database tables.</li>
-        <li>Publishes pre-compiled assets for the embedded <code>bpmn-js</code> visual canvas and live cockpit.</li>
-    </ol>
+<p>Install the package via Composer:</p>
 
-    <h2>2. Seed the Demo Workflow</h2>
-    <p>
-        The package includes an end-to-end order processing scenario with Exclusive Gateways, User Task approval pauses, and automated notification activities:
-    </p>
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">composer</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">require</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">saccharine/bpmn</span></span>
+<span class="line"></span></code></pre>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">db:seed</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--class=</span><span style="color:#9ECBFF">&#39;Saccharine\Bpmn\Database\Seeders\BpmnDemoSeeder&#39;</span></span></code></pre>
+<p>Publish the package configuration and pre-compiled <code>bpmn-js</code> frontend assets, then run your database migrations:</p>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:publish-filament-stubs</span></span></code></pre>
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:install</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">migrate</span></span>
+<span class="line"></span></code></pre>
 
-    <p>The demo configures:</p>
-    <ul>
-        <li>An <strong>Order Processing</strong> BPMN 2.0 XML graph compiled into relational definition tables.</li>
-        <li>A sample domain activity class: <code>App\Workflows\Activities\SendNotificationActivity</code>.</li>
-        <li>Pre-mapped test payloads with sample order values and customer contact data.</li>
-    </ul>
+<ul>
+<li><code>bpmn:install</code> publishes <code>config/saccharine-bpmn.php</code> (<code>saccharine-bpmn-config</code>) and the compiled browser assets to <code>public/vendor/saccharine/bpmn</code> (<code>saccharine-bpmn-assets</code>).</li>
+<li><code>php artisan migrate</code> creates both the <code>durable-workflow</code> v2 runtime tables and the package's <code>process_*</code> tables (loaded automatically by <code>BpmnServiceProvider</code>).</li>
+</ul>
 
-    <h2>3. Running the Engine</h2>
-    <p>Open two separate terminal windows in your project directory:</p>
+<hr />
 
-    <h3>Terminal A: Start Queue Workers</h3>
-    <p>Start your standard Laravel queue worker to process workflow steps:</p>
+<h2>2. Seed the Demo Workflows</h2>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">queue:work</span></span></code></pre>
+<p>The package ships with <code>BpmnDemoSeeder</code>, which compiles four example BPMN 2.0 process definitions into your database:</p>
 
-    <h3>Terminal B: Dispatch a Workflow Instance</h3>
-    <p>Trigger the demo process using the test CLI command:</p>
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">db:seed</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--class=</span><span style="color:#9ECBFF">&#39;Saccharine\Bpmn\Database\Seeders\BpmnDemoSeeder&#39;</span></span>
+<span class="line"></span></code></pre>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Triggers an order requiring human approval (total &gt;= 1000)</span></span>
-<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:test-order</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--amount=1500</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--name=</span><span style="color:#9ECBFF">&quot;Demo Customer&quot;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--email=</span><span style="color:#9ECBFF">&quot;demo@example.com&quot;</span></span></code></pre>
+<p>This populates:
+1. <strong>Demo: Order Processing (<code>order-processing</code>):</strong> Triggered automatically when a <code>DemoOrder</code> model is created (<code>demo_order_created</code>). Routes orders <code>&gt;= $1000</code> to a <code>Manager Review</code> User Task before sending a confirmation via the built-in <code>Saccharine\Bpmn\Workflows\Activities\SendNotificationActivity</code> (<code>bpmn_send_notification</code>).
+2. <strong>Demo: Parallel Fulfillment (<code>parallel-fulfillment</code>):</strong> Demonstrates AND split/join execution across concurrent branches.
+3. <strong>Demo: SLA Escalation &amp; Error Boundaries (<code>sla-escalation</code>):</strong> Demonstrates a <code>PT24H</code> Timer Boundary Event on a User Task and an Error Boundary Event on a Service Task.
+4. <strong>Demo: Parent Pipeline with Call Activity (<code>parent-pipeline</code>):</strong> Demonstrates an inline <code>subProcess</code> followed by a <code>callActivity</code> invoking another published process definition.</p>
 
-    <p>Your terminal will output the execution lifecycle:</p>
+<p><em>(Optional)</em> If you use <strong>Filament v5</strong>, you can also publish a <code>DemoOrderResource</code> CRUD table and sample activity class to trigger orders directly from your admin panel:</p>
 
-    
-<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#2188ff">[BPMN:ENGINE]</span><span style="color:#e1e4e8"> [#1] (Start_OrderPlaced) Process started from node [Start_OrderPlaced].</span></span>
-<span class="line"><span style="color:#ffea7f">[BPMN:GATEWAY]</span><span style="color:#e1e4e8"> [#1] (Gateway_VIP) Evaluated conditions. Routing token -&gt; [Task_ManualReview].</span></span>
-<span class="line"><span style="color:#b392f0">[BPMN:HIBERNATE]</span><span style="color:#e1e4e8"> [#1] (Task_ManualReview) User Task [Manager Review] reached. Workflow hibernating in database awaiting signal.</span></span></code></pre>
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:publish-filament-stubs</span></span>
+<span class="line"></span></code></pre>
 
-    <h2>4. Inspecting the Visual Cockpit</h2>
-    <p>Navigate to the standalone workflow instances dashboard in your browser:</p>
+<hr />
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8">http://your-app.test/bpmn/workflows/instances</span></span></code></pre>
+<h2>3. Running the Engine</h2>
 
-    <div class="my-4 p-4 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-900">
-        <strong>Note:</strong> The default web prefix is `bpmn/workflows`. You can configure this in `config/saccharine-bpmn.php` under `prefix.web`. If you have Filament v5 installed, the package auto-detects the panel and mounts under <code>/admin/bpmn/instances</code> instead.
-    </div>
+<p>Open two terminal windows in your project directory:</p>
 
-    <p>From the dashboard:</p>
-    <ol>
-        <li>For the running instance of <strong>Demo: Order Processing</strong> click <strong>Live Cockpit</strong>.</li>
-            <ul>
-                <li>Completed nodes are styled in solid slate blue.</li>
-                <li>The waiting User Task node pulses in vivid green.</li>
-            </ul>
-        </li>
-        <li>Click the pulsing node to open the approval modal, then select <strong>Submit & Resume</strong>.</li>
-        <li>Watch your queue worker wake the coroutine, advance the token past the join, trigger <code>SendNotificationActivity</code>, and complete the process at the End Event.</li>
-    </ol>
+<h3>Terminal A: Start a Queue Worker</h3>
 
-    <div>
-        <img alt="Screenshot of the live telemetry dashboard" src="/assets/images/saccharine-bpmn-live-telemetry.png">
-    </div>
+<p>Start your standard Laravel queue worker to execute workflow steps:</p>
 
-    <h2>Artisan Scaffolding Helpers</h2>
-    <p>Generate workflow components directly from the CLI:</p>
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">queue:work</span></span>
+<span class="line"></span></code></pre>
 
-    <pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Create a new custom Service Task Activity</span></span>
-<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-activity</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">ProcessPaymentActivity</span></span>
+<h3>Terminal B: Trigger a Test Order</h3>
+
+<p>Create a <code>DemoOrder</code> record using the built-in test command:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Triggers an order requiring human review (total &gt;= 1000)</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:test-order</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--amount=1500</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--email=user@example.com</span></span>
+<span class="line"></span></code></pre>
+
+<p>Because <code>DemoOrder</code> uses the <code>TriggersBpmnProcesses</code> trait, creating the record dispatches <code>ModelEventTrigger</code> (<code>demo_order_created</code>), which <code>ProcessTriggerListener</code> intercepts to launch an instance of <code>order-processing</code>.</p>
+
+<p>In Terminal A, <code>BpmnConsoleLogListener</code> streams live execution transitions:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8">  [BPMN:ENGINE] [#1] (Start_OrderPlaced) Process started from node [Start_OrderPlaced].</span></span>
+<span class="line"><span style="color:#e1e4e8">  [BPMN:GATEWAY] [#1] (Gateway_VIP) Evaluated conditions. Routing token -&gt; [Task_ManualReview].</span></span>
+<span class="line"><span style="color:#e1e4e8">  [BPMN:HIBERNATE] [#1] (Task_ManualReview) User Task [Manager Review] reached. Workflow hibernating in database awaiting signal.</span></span>
+<span class="line"><span style="color:#e1e4e8"></span></span></code></pre>
+
+<hr />
+
+<h2>4. Inspecting &amp; Resuming in the Live Cockpit</h2>
+
+<p>Open the standalone process dashboard in your browser:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#e1e4e8">http://your-app.test/bpmn/processes/instances</span></span>
+<span class="line"><span style="color:#e1e4e8"></span></span></code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> The default web prefix is <code>bpmn/processes</code>, configurable via <code>prefix.web</code> in <code>config/saccharine-bpmn.php</code>. If you have registered <code>BpmnFilamentPlugin::make()</code> in a Filament v5 panel, instances are also available at <code>/admin/bpmn/processes/instances</code>.</p>
+</blockquote>
+
+<h3>Completing the Hibernated User Task</h3>
+
+<ol>
+<li>Locate the running <strong>Demo: Order Processing</strong> instance and click <strong>Live Cockpit</strong> (<code>/bpmn/processes/instances/1/track</code>).</li>
+<li>Inspect the diagram overlay:
+
+<ul>
+<li><strong>Completed nodes</strong> (<code>.bpmn-history-completed</code>) are highlighted in slate blue.</li>
+<li><strong>Active waiting nodes</strong> (<code>.bpmn-active-token</code>) pulse in green.</li>
+</ul></li>
+<li>Click the pulsing <strong>Manager Review</strong> node on the canvas to open the task approval modal.</li>
+<li>Choose <strong>Approve &amp; Continue</strong>, enter review notes, and click <strong>Submit &amp; Resume</strong>.</li>
+<li>In Terminal A, watch your queue worker immediately wake the hibernated Fiber, pass through the merge gateway, run <code>SendNotificationActivity</code> (logging the confirmation message), and complete at the End Event.</li>
+</ol>
+
+<hr />
+
+<h2>CLI Scaffolding &amp; Control Reference</h2>
+
+<p>Once you have verified the demo workflow, use the Artisan CLI to scaffold your own components or control running instances:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#6A737D"># Scaffold a Service Task Activity and register it in config/saccharine-bpmn.php</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-activity</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">SendInvoiceActivity</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Create a Message/Event Trigger listener</span></span>
-<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-trigger</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">OrderPaidTrigger</span></span>
+<span class="line"><span style="color:#6A737D"># Scaffold a custom BpmnTriggerableEvent and register its alias</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-trigger</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">CustomerOnboardedEvent</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Create a Camunda-compatible Element Template JSON definition</span></span>
-<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-template</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">payment-service</span></span></code></pre>
+<span class="line"><span style="color:#6A737D"># Scaffold a Camunda-compatible Element Template JSON file in resources/bpmn/templates/</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:make-template</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&quot;Charge Credit Card&quot;</span><span style="color:#E1E4E8"> </span><span style="color:#79B8FF">--key=</span><span style="color:#9ECBFF">&quot;charge_card&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># List and control running process instances</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">list</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">suspend</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">{id}</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">resume</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">{id}</span></span>
+<span class="line"><span style="color:#B392F0">php</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">artisan</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">bpmn:instance</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">halt</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">{id}</span></span>
+<span class="line"></span></code></pre>
             </div>
 
-            <!-- Sequential Next / Prev Pagination -->
-            <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+            <!-- Dynamic Sequential Next / Prev Pagination -->
+                        <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
                                     <a href="/bpmn/docs/introduction" class="flex items-center gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto">
                         <span>&larr;</span>
                         <div class="text-left">
                             <span class="text-[10px] text-slate-400 block uppercase">Previous</span>
-                            <span class="font-bold font-sans">Introduction &amp; Stack</span>
+                            <span class="font-bold font-sans">Introduction &amp; Overview</span>
                         </div>
                     </a>
                 
-                                    <a href="/bpmn/docs/core-concepts" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
+                                    <a href="/bpmn/docs/activities_triggers_gateways" class="flex items-center justify-end gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto text-right">
                         <div>
                             <span class="text-[10px] text-slate-400 block uppercase">Next</span>
-                            <span class="font-bold font-sans">Core Concepts &amp; Replay</span>
+                            <span class="font-bold font-sans">Activities, Triggers &amp; Gateways</span>
                         </div>
                         <span>&rarr;</span>
                     </a>
@@ -312,6 +364,19 @@
         </article>
     </div>
 </div>
+
+<script type="module">
+    if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs')
+            .then(({ default: mermaid }) => {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'neutral', // Matches Tailwind's slate palette cleanly
+                });
+                mermaid.run({ querySelector: '.mermaid' });
+            });
+    }
+</script>
     </main>
 
     <!-- Universal Footer -->

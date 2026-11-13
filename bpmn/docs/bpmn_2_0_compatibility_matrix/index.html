@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN6PPNHB');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPMN 2.0 Compatibility Matrix | Saccharine</title>
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    
+    "name": "Saccharine",
+    "alternateName": ["Saccharine App"],
+    "url": "https://saccharine.app"
+    
+    }
+    </script>
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="description" content="Complete breakdown of supported, visual-only, and planned BPMN 2.0 elements, event definitions, and gateway semantics in Saccharine BPMN.">
+    <meta property="og:site_name" content="Saccharine">
+    <meta property="og:title" content="BPMN 2.0 Compatibility Matrix | Saccharine">
+    <meta property="og:description" content="Complete breakdown of supported, visual-only, and planned BPMN 2.0 elements, event definitions, and gateway semantics in Saccharine BPMN.">
+    <meta property="og:image" content="https://saccharine.app/assets/images/bpmn-index.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
+    <meta property="og:url" content="https://saccharine.app/bpmn/docs/bpmn_2_0_compatibility_matrix">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/build/assets/main-fEbv5a62.css">
+    <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
+    <style>
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white flex flex-col min-h-full">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN6PPNHB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Top Global Navigation Bar -->
+    <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="/" class="flex items-center space-x-2.5 group">
+                    <div class="h-8 w-8 rounded-lg bg-indigo-600 group-hover:bg-indigo-500 transition flex items-center justify-center font-bold text-white shadow-sm">
+                        S
+                    </div>
+                    <span class="text-lg font-extrabold text-slate-900 tracking-tight">Saccharine</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-1 pl-4 border-l border-slate-200 text-sm font-medium">
+                    <a href="/bpmn" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        BPMN Workflow
+                    </a>
+                    <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
+                        Documentation
+                    </a>
+                    <!-- <a href="/blog" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        Blog
+                    </a> -->
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span>Live Sandbox</span>
+                    <span class="text-slate-400">&nearr;</span>
+                </a>
+                <a href="https://github.com/saccharine-app/bpmn" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-900 transition flex items-center gap-1 text-xs">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Injection -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
+        <!-- Dynamic Sidebar -->
+        
+        <aside class="w-full lg:w-64 shrink-0">
+    <div class="sticky top-20 py-8 lg:pr-6 space-y-8">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Package</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold border border-indigo-100">
+                saccharine/bpmn
+            </span>
+        </div>
+
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Getting Started
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/introduction" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Introduction &amp; Overview
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/quickstart" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Quickstart Guide
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Building Workflows
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/activities_triggers_gateways" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Activities, Triggers &amp; Gateways
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/visual_modeler" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Visual Modeler &amp; Element Templates
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Operations &amp; Filament
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/operations_and_filament" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Operations, Telemetry &amp; Filament
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    Architecture &amp; RFC
+                </h4>
+                <ul class="space-y-1 text-sm">
+                                                                    <li>
+                            <a href="/bpmn/docs/architecture_and_roadmap" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                                Architecture, Limitations &amp; Roadmap
+                            </a>
+                        </li>
+                                                                    <li>
+                            <a href="/bpmn/docs/bpmn_2_0_compatibility_matrix" 
+                               class="block px-3 py-1.5 rounded-md transition text-xs font-medium bg-indigo-50 text-indigo-700 font-semibold border-l-2 border-indigo-600">
+                                BPMN 2.0 Compatibility Matrix
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+        
+        <div class="pt-4 border-t border-slate-200 text-xs text-slate-500 space-y-2">
+            <div class="font-semibold text-slate-700">Need help or found a bug?</div>
+            <a href="https://github.com/saccharine-app/bpmn/issues" target="_blank" rel="noopener" class="text-indigo-600 hover:underline flex items-center gap-1">
+                Open an Issue on GitHub &rarr;
+            </a>
+        </div>
+    </div>
+</aside>
+        <!-- Main Documentation Content Panel -->
+        <article class="flex-1 py-8 lg:pl-10 lg:border-l border-slate-200 min-w-0">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-6">
+                <a href="/bpmn" class="hover:text-slate-600">bpmn</a>
+                <span>/</span>
+                <span class="text-slate-500">docs</span>
+                <span>/</span>
+                <span class="text-indigo-600 font-semibold">Architecture &amp; RFC</span>
+            </nav>
+
+            <!-- Prose Markdown Container -->
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
+                <h1>BPMN 2.0 Compatibility Matrix</h1>
+
+<p><code>saccharine/bpmn</code> implements the core subset of the OMG BPMN 2.0 specification required for queue-driven Laravel workflows. Unsupported elements are automatically pruned from the visual modeler's palette, context pad, and replace menu via <code>engineCapabilities.js</code>.</p>
+
+<h2>Legend</h2>
+
+<ul>
+<li><strong>✅ Supported:</strong> Parsed into the relational graph, enabled in the visual modeler, and executed by a dedicated runtime handler.</li>
+<li><strong>⚠️ Visual / Partial:</strong> Allowed on the canvas for layout or partially implemented (see notes).</li>
+<li><strong>🗓️ Planned:</strong> Tracked on the v1.0 milestone roadmap.</li>
+<li><strong>❌ Not Supported:</strong> Excluded from the palette and runtime engine.</li>
+</ul>
+
+<hr />
+
+<h2>1. Events Matrix (Position × Trigger Type)</h2>
+
+<p>Rather than listing all 70+ abstract BPMN metamodel combinations, the matrix below maps the concrete event positions supported by <code>BpmnParserService</code> against standard OMG trigger definitions:</p>
+
+<table>
+<thead>
+<tr>
+  <th align="left">Event Trigger Type</th>
+  <th align="center">Start Event (<code>&lt;bpmn:startEvent&gt;</code>)</th>
+  <th align="center">Intermediate Catch (<code>&lt;bpmn:intermediateCatchEvent&gt;</code>)</th>
+  <th align="center">Boundary (<code>&lt;bpmn:boundaryEvent&gt;</code>)</th>
+  <th align="center">End Event (<code>&lt;bpmn:endEvent&gt;</code>)</th>
+  <th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left"><strong>None (Blank)</strong></td>
+  <td align="center">✅</td>
+  <td align="center">—</td>
+  <td align="center">—</td>
+  <td align="center">✅</td>
+  <td align="left">Initiates manual/API runs; End Events clean up active branch tokens.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Message</strong></td>
+  <td align="center">✅</td>
+  <td align="center">🗓️</td>
+  <td align="center">🗓️</td>
+  <td align="center">❌</td>
+  <td align="left">Start Events bind <code>messageRef</code> to Eloquent/event triggers. Mid-process correlation is Milestone 1.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Timer</strong></td>
+  <td align="center">❌</td>
+  <td align="center">✅</td>
+  <td align="center">✅</td>
+  <td align="center">—</td>
+  <td align="left">Supports ISO 8601 durations (<code>timeDuration</code>, e.g., <code>PT24H</code>) on Intermediate Catch and User Task Boundaries.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Error</strong></td>
+  <td align="center">❌</td>
+  <td align="center">—</td>
+  <td align="center">✅</td>
+  <td align="center">❌</td>
+  <td align="left">Attaches to <code>serviceTask</code>, <code>callActivity</code>, and <code>subProcess</code>; injects <code>_error_caught</code> into <code>$userData</code>.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Signal / Escalation</strong></td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="left">Pruned from the modeler UI.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Conditional</strong></td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="center">—</td>
+  <td align="left">Use an Exclusive Gateway (<code>XOR</code>) downstream of a Start Event for conditional routing.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Compensation / Cancel</strong></td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="center">❌</td>
+  <td align="left">Implement rollback logic programmatically inside Activity classes.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Terminate</strong></td>
+  <td align="center">—</td>
+  <td align="center">—</td>
+  <td align="center">—</td>
+  <td align="center">❌</td>
+  <td align="left">Use administrative <code>haltProcess</code> interventions or allow active branches to reach standard End Events.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Link</strong></td>
+  <td align="center">—</td>
+  <td align="center">❌</td>
+  <td align="center">—</td>
+  <td align="center">—</td>
+  <td align="left">Connect nodes directly via <code>&lt;bpmn:sequenceFlow&gt;</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note on Non-Interrupting &amp; Event Sub-Processes:</strong> Non-interrupting boundary events (<code>cancelActivity="false"</code>), Intermediate Throw Events (<code>&lt;bpmn:intermediateThrowEvent&gt;</code>), and Event Sub-Processes (<code>triggeredByEvent="true"</code>) are not currently supported.</p>
+</blockquote>
+
+<hr />
+
+<h2>2. Tasks &amp; Activities</h2>
+
+<table>
+<thead>
+<tr>
+  <th align="left">BPMN 2.0 Element</th>
+  <th align="left">XML Tag</th>
+  <th align="center">Status</th>
+  <th align="left">Engine Behavior &amp; Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left"><strong>Service Task</strong></td>
+  <td align="left"><code>&lt;bpmn:serviceTask&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Resolves <code>camunda:class</code> against <code>config('saccharine-bpmn.activities')</code> and merges <code>camunda:inputParameter</code> defaults.</td>
+</tr>
+<tr>
+  <td align="left"><strong>User Task</strong></td>
+  <td align="left"><code>&lt;bpmn:userTask&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Emits <code>UserTaskPending</code> and hibernates the Fiber until resumed via <code>submitUserTask</code> or a Timer Boundary timeout.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Call Activity</strong></td>
+  <td align="left"><code>&lt;bpmn:callActivity&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Resolves <code>calledElement</code> key to an active <code>ProcessVersion</code> and runs as an isolated child workflow.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Embedded Sub-Process</strong></td>
+  <td align="left"><code>&lt;bpmn:subProcess&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Scopes nested elements via <code>parent_element_id</code> and executes inside a bounded child workflow.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Generic Task</strong></td>
+  <td align="left"><code>&lt;bpmn:task&gt;</code></td>
+  <td align="center">⚠️</td>
+  <td align="left">Enabled in <code>engineCapabilities.js</code> for sketching, but lacks a runtime handler in <code>NodeHandlerFactory</code>.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Script / Business Rule / Manual / Send / Receive Tasks</strong></td>
+  <td align="left"><code>&lt;bpmn:scriptTask&gt;</code>, etc.</td>
+  <td align="center">❌</td>
+  <td align="left">Pruned from the UI; implement custom logic in PHP <code>Workflow\V2\Activity</code> classes via Service Tasks.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Multi-Instance Loops</strong></td>
+  <td align="left"><code>multiInstanceLoopCharacteristics</code></td>
+  <td align="center">🗓️</td>
+  <td align="left">Sequential and parallel collection iteration on tasks and sub-processes is not yet implemented.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>3. Gateways</h2>
+
+<table>
+<thead>
+<tr>
+  <th align="left">BPMN 2.0 Element</th>
+  <th align="left">XML Tag</th>
+  <th align="center">Status</th>
+  <th align="left">Engine Behavior &amp; Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left"><strong>Exclusive Gateway (XOR)</strong></td>
+  <td align="left"><code>&lt;bpmn:exclusiveGateway&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Evaluates outgoing <code>conditionExpression</code> rules via Symfony ExpressionLanguage; supports expressionless default flows.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Parallel Gateway (AND)</strong></td>
+  <td align="left"><code>&lt;bpmn:parallelGateway&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Spawns concurrent child workflows on split and synchronizes payload mutations at the join via <code>Workflow\V2\all()</code>.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Inclusive Gateway (OR)</strong></td>
+  <td align="left"><code>&lt;bpmn:inclusiveGateway&gt;</code></td>
+  <td align="center">🗓️</td>
+  <td align="left">Multi-branch conditional routing and dynamic join synchronization under research.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Event-Based / Complex Gateways</strong></td>
+  <td align="left"><code>&lt;bpmn:eventBasedGateway&gt;</code>, <code>&lt;bpmn:complexGateway&gt;</code></td>
+  <td align="center">❌</td>
+  <td align="left">Pruned from the modeler palette and replace menu.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>4. Connecting Objects, Swimlanes &amp; Data</h2>
+
+<table>
+<thead>
+<tr>
+  <th align="left">BPMN 2.0 Element</th>
+  <th align="left">XML Tag</th>
+  <th align="center">Status</th>
+  <th align="left">Engine Behavior &amp; Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left"><strong>Sequence Flow</strong></td>
+  <td align="left"><code>&lt;bpmn:sequenceFlow&gt;</code></td>
+  <td align="center">✅</td>
+  <td align="left">Compiled into <code>process_edges</code> with optional <code>&lt;bpmn:conditionExpression&gt;</code> logic.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Pools, Lanes &amp; Groups</strong></td>
+  <td align="left"><code>&lt;bpmn:laneSet&gt;</code>, <code>&lt;bpmn:lane&gt;</code>, <code>&lt;bpmn:group&gt;</code></td>
+  <td align="center">⚠️</td>
+  <td align="left">Allowed on the canvas for visual organization; ignored during runtime execution.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Text Annotations</strong></td>
+  <td align="left"><code>&lt;bpmn:textAnnotation&gt;</code></td>
+  <td align="center">⚠️</td>
+  <td align="left">Preserved in stored <code>bpmn_xml</code> for documentation; ignored by <code>BpmnParserService</code>.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Data Objects &amp; Data Stores</strong></td>
+  <td align="left"><code>&lt;bpmn:dataObject&gt;</code>, <code>&lt;bpmn:dataStore&gt;</code></td>
+  <td align="center">❌</td>
+  <td align="left">Process state flows implicitly through <code>$userData</code>; declarative <code>camunda:outputParameter</code> mapping is Milestone 2.</td>
+</tr>
+<tr>
+  <td align="left"><strong>Collaborations &amp; Message Flows</strong></td>
+  <td align="left"><code>&lt;bpmn:collaboration&gt;</code>, <code>&lt;bpmn:messageFlow&gt;</code></td>
+  <td align="center">❌</td>
+  <td align="left">Cross-pool inter-process message flows are not supported.</td>
+</tr>
+</tbody>
+</table>
+            </div>
+
+            <!-- Dynamic Sequential Next / Prev Pagination -->
+                        <div class="mt-16 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+                                    <a href="/bpmn/docs/architecture_and_roadmap" class="flex items-center gap-2 text-slate-600 hover:text-indigo-600 p-2 rounded hover:bg-slate-50 transition w-full sm:w-auto">
+                        <span>&larr;</span>
+                        <div class="text-left">
+                            <span class="text-[10px] text-slate-400 block uppercase">Previous</span>
+                            <span class="font-bold font-sans">Architecture, Limitations &amp; Roadmap</span>
+                        </div>
+                    </a>
+                
+                            </div>
+        </article>
+    </div>
+</div>
+
+<script type="module">
+    if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs')
+            .then(({ default: mermaid }) => {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'neutral', // Matches Tailwind's slate palette cleanly
+                });
+                mermaid.run({ querySelector: '.mermaid' });
+            });
+    }
+</script>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-6 w-6 rounded bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <span class="font-bold text-slate-200">Saccharine Open Source</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Domain-agnostic operational primitives and workflow orchestration for Laravel.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <a href="/bpmn" class="hover:text-white transition">BPMN Workflow</a>
+                    <a href="/bpmn/docs/introduction" class="hover:text-white transition">Docs</a>
+                    <a href="https://github.com/saccharine-app/bpmn" class="hover:text-white transition" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://opensource.org/licenses/MIT" class="hover:text-white transition" target="_blank" rel="noopener">MIT License</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800/80 text-center md:text-left text-xs text-slate-500">
+                &copy; 2026 Saccharine. BPMN 2.0 is an OMG standard. Web canvas powered by bpmn-js (Camunda). Durable execution powered by durable-workflow.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
