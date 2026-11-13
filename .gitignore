@@ -7,6 +7,8 @@
 npm-debug.log
 hot
 
+source/_bpmn_docs/*.md
+
 # Optional ignores
 # /build_staging/
 # /build_production/

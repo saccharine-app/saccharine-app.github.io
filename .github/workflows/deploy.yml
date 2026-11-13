@@ -27,6 +27,7 @@ jobs:
 
       - name: Sync BPMN Docs into Jigsaw Collection
         run: |
+          mkdir -p source/_bpmn_docs
           rm -rf source/_bpmn_docs/*.md
           cp .tmp-bpmn/docs/*.md source/_bpmn_docs/
           rm -rf .tmp-bpmn
