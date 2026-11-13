@@ -10,7 +10,7 @@ description: Native BPMN 2.0 graph orchestration running over Laravel background
         <div class="container mx-auto px-6 py-20 text-center max-w-4xl">
             <div class="flex items-center justify-center gap-2 mb-6">
                 <span class="px-3 py-1 bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-bold rounded-full uppercase tracking-wider">
-                    v0.5.3-alpha
+                    v0.6.0-alpha
                 </span>
                 <span class="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-600 text-xs font-mono rounded-full">
                     PHP 8.4
