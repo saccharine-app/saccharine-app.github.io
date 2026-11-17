@@ -4,7 +4,8 @@ use Illuminate\Support\Str;
 
 return [
     'production' => false,
-    'baseUrl' => 'https://saccharine.app',
+    'baseUrl' => '',
+    // 'baseUrl' => 'https://saccharine.app',
     'title' => 'Saccharine',
     'baseName' => 'Saccharine',
     'description' => 'Open-source Modular Operational Infrastructure for Laravel',

@@ -30,12 +30,12 @@
     <meta property="og:site_name" content="{{ $page->baseName ? $page->baseName : 'Saccharine' }}">
     <meta property="og:title" content="{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}">
     <meta property="og:description" content="{{ $page->description ?? 'Open-source, domain-agnostic Laravel packages for workflows, quoting, and paperwork.' }}">
-    <meta property="og:image" content="https://saccharine.app/assets/images/bpmn-index.png" />
+    <meta property="og:image" content="{{ $page->baseUrl }}/assets/images/bpmn-index.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
-    <meta property="og:url" content="https://saccharine.app{{ $page->getPath() }}">
+    <meta property="og:url" content="{{ $page->getUrl() }}">
     <meta name="twitter:card" content="summary_large_image">
     {{-- Enables hot reload during 'npm run dev' --}}
     @viteRefresh()
@@ -80,9 +80,9 @@
                     <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition {{ str_starts_with($page->getPath(), '/bpmn/docs') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-600 hover:text-slate-900' }}">
                         Documentation
                     </a>
-                    <!-- <a href="/blog" class="px-3 py-1.5 rounded-md transition {{ str_starts_with($page->getPath(), '/blog') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-600 hover:text-slate-900' }}">
+                    <a href="/blog" class="px-3 py-1.5 rounded-md transition {{ str_starts_with($page->getPath(), '/blog') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-600 hover:text-slate-900' }}">
                         Blog
-                    </a> -->
+                    </a>
                 </div>
             </div>
 

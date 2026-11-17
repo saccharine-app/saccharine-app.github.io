@@ -1,4 +1,4 @@
 ---
 title: Engineering
-description: Technical deep dives into the Saccharine engine internals.
+description: Technical deep dives into the Saccharine internals.
 ---

@@ -16,7 +16,7 @@
     </div>
 
     <h2 class="text-xl font-bold text-slate-900 mt-2">
-        <a href="{{ $post->getUrl() }}" class="hover:text-indigo-600 transition">
+        <a href="{{ $post->getPath() }}" class="hover:text-indigo-600 transition">
             {{ $post->title }}
         </a>
     </h2>

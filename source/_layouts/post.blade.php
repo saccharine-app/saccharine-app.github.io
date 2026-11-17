@@ -6,7 +6,7 @@
     <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-8">
         <a href="/blog" class="hover:text-indigo-600 transition flex items-center gap-1.5">
             <span>&larr;</span>
-            <span>Back to Engineering Blog</span>
+            <span>Back to Blog</span>
         </a>
     </nav>
 

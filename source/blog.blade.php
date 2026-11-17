@@ -11,10 +11,10 @@ pagination:
 <div class="container mx-auto px-6 py-16 max-w-4xl">
     <div class="mb-12 border-b border-slate-200 pb-8">
         <span class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-600">
-            Saccharine Engineering
+            Updates & Architecture Notes
         </span>
         <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 tracking-tight">
-            Updates & Architecture Notes
+            Blog
         </h1>
         <p class="text-slate-600 text-base mt-2 max-w-2xl">
             Incremental releases, BPMN engine internals, and design notes for modular Laravel packages.
