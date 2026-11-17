@@ -11,7 +11,54 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}</title>
+
+    @php
+        $pageTitle = $page->title
+            ? $page->title . ' | ' . ($page->baseName ?? 'Saccharine')
+            : ($page->baseName ?? 'Saccharine') . ' - Modular Operational Infrastructure for Laravel';
+        $pageDescription = $page->og_description ?? $page->description ?? 'Open-source Laravel packages for workflows, quoting, and paperwork.';
+        $rawOgImage = $page->og_image ?? $page->cover_image ?? $page->ogImage ?? '/assets/images/bpmn-index.png';
+        $ogImageUrl = str_starts_with($rawOgImage, 'http') ? $rawOgImage : rtrim($page->baseUrl, '/') . '/' . ltrim($rawOgImage, '/');
+        $ogImageAlt = $page->og_image_alt ?? $page->title ?? $page->ogImageAlt;
+        $ogType = $page->og_type ?? ($page->date ? 'article' : ($page->ogType ?? 'website'));
+    @endphp
+
+    <title>{{ $pageTitle }}</title>
+    <meta name="description" content="{{ $pageDescription }}">
+    <link rel="canonical" href="{{ $page->getUrl() }}">
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="{{ $page->baseName ?? 'Saccharine' }}">
+    <meta property="og:type" content="{{ $ogType }}">
+    <meta property="og:title" content="{{ $page->og_title ?? $pageTitle }}">
+    <meta property="og:description" content="{{ $pageDescription }}">
+    <meta property="og:url" content="{{ $page->getUrl() }}">
+    <meta property="og:image" content="{{ $ogImageUrl }}">
+    <meta property="og:image:type" content="image/png" />
+    @if ($ogImageAlt)
+        <meta property="og:image:alt" content="{{ $ogImageAlt }}">
+    @endif
+
+    @if ($page->date)
+        <meta property="article:published_time" content="{{ date('c', $page->date) }}">
+        @if ($page->author)
+            <meta property="article:author" content="{{ $page->author }}">
+        @endif
+    @endif
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $page->og_title ?? $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDescription }}">
+    <meta name="twitter:image" content="{{ $ogImageUrl }}">
+
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" /> -->
+
     @verbatim
     <script type="application/ld+json">
     {
@@ -25,18 +72,7 @@
     }
     </script>
     @endverbatim
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <meta name="description" content="{{ $page->description ?? 'Open-source Laravel packages for workflows, quoting, and paperwork.' }}">
-    <meta property="og:site_name" content="{{ $page->baseName ? $page->baseName : 'Saccharine' }}">
-    <meta property="og:title" content="{{ $page->title ? $page->title . ' | Saccharine' : 'Saccharine - Modular Operational Infrastructure for Laravel' }}">
-    <meta property="og:description" content="{{ $page->description ?? 'Open-source, domain-agnostic Laravel packages for workflows, quoting, and paperwork.' }}">
-    <meta property="og:image" content="{{ $page->baseUrl }}/assets/images/bpmn-index.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
-    <meta property="og:url" content="{{ $page->getUrl() }}">
-    <meta name="twitter:card" content="summary_large_image">
+
     {{-- Enables hot reload during 'npm run dev' --}}
     @viteRefresh()
 

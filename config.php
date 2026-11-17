@@ -9,6 +9,10 @@ return [
     'title' => 'Saccharine',
     'baseName' => 'Saccharine',
     'description' => 'Open-source Modular Operational Infrastructure for Laravel',
+    'ogImage' => '/assets/images/bpmn-index.png',
+    'ogImageAlt' => 'A process orchestrator for Laravel that turns flowcharts into durable background queue jobs.',
+    'ogType' => 'website',
+    
     'collections' => [
         // BPMN Documentation Collection
         'bpmn_docs' => [
