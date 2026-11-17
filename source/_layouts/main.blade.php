@@ -77,20 +77,18 @@
     <!-- <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" /> -->
-
-    @verbatim
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    @endverbatim
-    "name": "{{ $page->baseName }}",
-    "alternateName": ["{{ $page->baseName }} App"],
-    "url": "{{ $page->baseUrl }}"
-    @verbatim
-    }
-    </script>
-    @endverbatim
+    
+    @if (trim($page->getPath(), '/') === '')
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "{{ $page->baseName ?? 'Saccharine' }}",
+            "alternateName": ["{{ ($page->baseName ?? 'Saccharine') . ' App' }}"],
+            "url": "{{ rtrim($page->baseUrl, '/') }}/"
+        }
+        </script>
+    @endif
 
     {{-- Enables hot reload during 'npm run dev' --}}
     @viteRefresh()
