@@ -30,13 +30,29 @@
     <!-- Open Graph -->
     <meta property="og:site_name" content="{{ $page->baseName ?? 'Saccharine' }}">
     <meta property="og:type" content="{{ $ogType }}">
-    <meta property="og:title" content="{{ $page->og_title ?? $pageTitle }}">
+    <meta property="og:title" content="{{ $page->og_title ?? $page->title ?? $pageTitle }}">
     <meta property="og:description" content="{{ $pageDescription }}">
     <meta property="og:url" content="{{ $page->getUrl() }}">
     <meta property="og:image" content="{{ $ogImageUrl }}">
-    <meta property="og:image:type" content="image/png" />
+    <!-- <meta property="og:image:type" content="image/png" /> -->
     @if ($ogImageAlt)
         <meta property="og:image:alt" content="{{ $ogImageAlt }}">
+    @endif
+
+    @php
+        $localImagePath = str_starts_with($rawOgImage, 'http')
+            ? null
+            : getcwd() . '/source/' . ltrim($rawOgImage, '/');
+        $imageDimensions = ($localImagePath && file_exists($localImagePath))
+            ? @getimagesize($localImagePath)
+            : null;
+        $ogImageWidth = $page->og_image_width ?? ($imageDimensions[0] ?? null);
+        $ogImageHeight = $page->og_image_height ?? ($imageDimensions[1] ?? null);
+    @endphp
+
+    @if ($ogImageWidth && $ogImageHeight)
+        <meta property="og:image:width" content="{{ $ogImageWidth }}" />
+        <meta property="og:image:height" content="{{ $ogImageHeight }}" />
     @endif
 
     @if ($page->date)
