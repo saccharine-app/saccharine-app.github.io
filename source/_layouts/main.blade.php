@@ -26,8 +26,10 @@
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
     <link rel="canonical" href="{{ $page->getUrl() }}">
+    <meta name="theme-color" content="#4f46e5" />
 
     <!-- Open Graph -->
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="{{ $page->baseName ?? 'Saccharine' }}">
     <meta property="og:type" content="{{ $ogType }}">
     <meta property="og:title" content="{{ $page->og_title ?? $page->title ?? $pageTitle }}">
@@ -69,6 +71,7 @@
     <meta name="twitter:image" content="{{ $ogImageUrl }}">
 
     <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <!-- <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
