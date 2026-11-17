@@ -68,8 +68,8 @@
     <meta name="twitter:description" content="{{ $pageDescription }}">
     <meta name="twitter:image" content="{{ $ogImageUrl }}">
 
-
     <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <!-- <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
     <meta property="og:image:width" content="1200" />
