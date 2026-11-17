@@ -79,15 +79,19 @@
     <meta property="og:image:height" content="630" /> -->
     
     @if (trim($page->getPath(), '/') === '')
+        @verbatim
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
+        @endverbatim
             "name": "{{ $page->baseName ?? 'Saccharine' }}",
             "alternateName": ["{{ ($page->baseName ?? 'Saccharine') . ' App' }}"],
             "url": "{{ rtrim($page->baseUrl, '/') }}/"
+        @verbatim
         }
         </script>
+        @endverbatim
     @endif
 
     {{-- Enables hot reload during 'npm run dev' --}}
