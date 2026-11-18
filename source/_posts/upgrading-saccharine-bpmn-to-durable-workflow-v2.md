@@ -45,7 +45,7 @@ One naming headache lingered even after that pass: `ProcessHistory` and `process
 * **`ProcessTransition`**  **(**  **`process_transitions`**  **):**  Accurate in state-machine theory, yet a bit loaded; it implies the act of changing state rather than a completed item on an itinerary.
 * **`ProcessHistoryEvent`**  **(**  **`process_history_events`**  **):**  Longer, and BPMN already uses the word "event" for triggers like Start and Boundary Events, which initially made me hesitate.
 
-In the end, `ProcessHistoryEvent` won out. Anchoring "event" with `history_` disambiguates it from BPMN diagram events, `process_history_events` pluralizes cleanly, and it mirrors `durable-workflow` v2's own `workflow_history_events` tablem making it obvious that one tracks high-level BPMN node completions while the other tracks low-level coroutine replay events.
+In the end, `ProcessHistoryEvent` won out. Anchoring "event" with `history_` disambiguates it from BPMN diagram events, `process_history_events` pluralizes cleanly, and it mirrors `durable-workflow` v2's own `workflow_history_events` table, making it obvious that one tracks high-level BPMN node completions while the other tracks low-level coroutine replay events.
 
 ### **3. When the Worker Crashed at Byte Zero**
 
