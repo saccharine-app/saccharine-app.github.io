@@ -16,16 +16,22 @@
     <title>Upgrading Saccharine BPMN to durable-workflow v2 | Saccharine</title>
     <meta name="description" content="A deep dive into how PHP Fibers eliminate generator promise chains while preserving deterministic replay.">
     <link rel="canonical" href="https://saccharine.app/blog/2026-11/upgrading-saccharine-bpmn-to-durable-workflow-v2">
+    <meta name="theme-color" content="#4f46e5" />
 
     <!-- Open Graph -->
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Saccharine">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Upgrading Saccharine BPMN to durable-workflow v2 | Saccharine">
+    <meta property="og:title" content="Upgrading Saccharine BPMN to durable-workflow v2">
     <meta property="og:description" content="A deep dive into how PHP Fibers eliminate generator promise chains while preserving deterministic replay.">
     <meta property="og:url" content="https://saccharine.app/blog/2026-11/upgrading-saccharine-bpmn-to-durable-workflow-v2">
     <meta property="og:image" content="https://saccharine.app/assets/images/upgrading-saccharine-bpmn-to-durable-workflow-v2.jpg">
-    <meta property="og:image:type" content="image/png" />
+    <!-- <meta property="og:image:type" content="image/png" /> -->
             <meta property="og:image:alt" content="Upgrading Saccharine BPMN to durable-workflow v2">
+    
+    
+            <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
     
             <meta property="article:published_time" content="2026-11-17T00:00:00+00:00">
                     <meta property="article:author" content="Saccharine Team">
@@ -36,27 +42,15 @@
     <meta name="twitter:description" content="A deep dive into how PHP Fibers eliminate generator promise chains while preserving deterministic replay.">
     <meta name="twitter:image" content="https://saccharine.app/assets/images/upgrading-saccharine-bpmn-to-durable-workflow-v2.jpg">
 
-
     <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <!-- <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" /> -->
-
     
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
     
-    "name": "Saccharine",
-    "alternateName": ["Saccharine App"],
-    "url": "https://saccharine.app"
-    
-    }
-    </script>
-    
-
     
     
     
@@ -246,7 +240,7 @@
 <li><strong><code>ProcessHistoryEvent</code></strong>  <strong>(</strong>  <strong><code>process_history_events</code></strong>  <strong>):</strong>  Longer, and BPMN already uses the word "event" for triggers like Start and Boundary Events, which initially made me hesitate.</li>
 </ul>
 
-<p>In the end, <code>ProcessHistoryEvent</code> won out. Anchoring "event" with <code>history_</code> disambiguates it from BPMN diagram events, <code>process_history_events</code> pluralizes cleanly, and it mirrors <code>durable-workflow</code> v2's own <code>workflow_history_events</code> tablem making it obvious that one tracks high-level BPMN node completions while the other tracks low-level coroutine replay events.</p>
+<p>In the end, <code>ProcessHistoryEvent</code> won out. Anchoring "event" with <code>history_</code> disambiguates it from BPMN diagram events, <code>process_history_events</code> pluralizes cleanly, and it mirrors <code>durable-workflow</code> v2's own <code>workflow_history_events</code> table, making it obvious that one tracks high-level BPMN node completions while the other tracks low-level coroutine replay events.</p>
 
 <h3><strong>3. When the Worker Crashed at Byte Zero</strong></h3>
 
