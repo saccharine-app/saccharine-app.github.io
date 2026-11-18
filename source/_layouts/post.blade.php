@@ -89,30 +89,30 @@
 
     <!-- Sequential Next / Previous Post Navigation -->
     @php
-        $prev = $page->getPrevious();
-        $next = $page->getNext();
+        $newer = $page->getPrevious(); // Index - 1 (more recent in a -date sort)
+        $older = $page->getNext();     // Index + 1 (further back in a -date sort)
     @endphp
-    @if ($prev || $next)
+    @if ($newer || $older)
         <nav class="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
-            @if ($next)
-                <a href="{{ $next->getUrl() }}"
+            @if ($newer)
+                <a href="{{ $newer->getPath() }}"
                    class="flex items-center gap-2.5 text-slate-600 hover:text-indigo-600 p-3 rounded-lg border border-transparent hover:border-slate-200 hover:bg-slate-50 transition w-full sm:w-auto">
                     <span>&larr;</span>
                     <div class="text-left">
                         <span class="text-[10px] text-slate-400 block uppercase">Newer Post</span>
-                        <span class="font-bold font-sans text-sm text-slate-800">{{ $next->title }}</span>
+                        <span class="font-bold font-sans text-sm text-slate-800">{{ $newer->title }}</span>
                     </div>
                 </a>
             @else
                 <div></div>
             @endif
 
-            @if ($prev)
-                <a href="{{ $prev->getUrl() }}"
+            @if ($older)
+                <a href="{{ $older->getPath() }}"
                    class="flex items-center justify-end gap-2.5 text-slate-600 hover:text-indigo-600 p-3 rounded-lg border border-transparent hover:border-slate-200 hover:bg-slate-50 transition w-full sm:w-auto text-right">
                     <div>
                         <span class="text-[10px] text-slate-400 block uppercase">Older Post</span>
-                        <span class="font-bold font-sans text-sm text-slate-800">{{ $prev->title }}</span>
+                        <span class="font-bold font-sans text-sm text-slate-800">{{ $older->title }}</span>
                     </div>
                     <span>&rarr;</span>
                 </a>

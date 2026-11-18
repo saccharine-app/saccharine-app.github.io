@@ -30,8 +30,13 @@ return [
         // Blog Posts Collection
         'posts' => [
             'author' => 'Saccharine Team',
-            'path' => 'blog/{date|Y-m}/{filename}',
-            'sort' => '-date',
+            // Look for files in source/_posts/
+            // Strips leading "01-", "02-", etc. from the generated URL slug
+            'path' => function ($page) {
+                $slug = preg_replace('/^\d+-/', '', $page->getFilename());
+                return sprintf('blog/%s/%s', date('Y-m', $page->date), $slug);
+            },
+            'sort' => ['-date', '-filename'],
             'extends' => '_layouts.post',
             'section' => 'post_content',
         ],
