@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Saccharine Engineering Blog</title>
+    <subtitle>Open-source Modular Operational Infrastructure for Laravel</subtitle>
+    <link href="https://saccharine.app/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="https://saccharine.app/blog" rel="alternate" type="text/html" />
+    <id>https://saccharine.app/blog</id>
+    <updated>2026-11-17T00:00:00+00:00</updated>
+    <author>
+        <name>Saccharine Team</name>
+    </author>
+
+            <entry>
+            <title>Upgrading Saccharine BPMN to durable-workflow v2</title>
+            <link href="https://saccharine.app/blog/2026-11/upgrading-saccharine-bpmn-to-durable-workflow-v2" rel="alternate" type="text/html" />
+            <id>https://saccharine.app/blog/2026-11/upgrading-saccharine-bpmn-to-durable-workflow-v2</id>
+            <published>2026-11-17T00:00:00+00:00</published>
+            <updated>2026-11-17T00:00:00+00:00</updated>
+                            <summary>A deep dive into how PHP Fibers eliminate generator promise chains while preserving deterministic replay.</summary>
+                        <content type="html"><![CDATA[<h2><strong>Upgrading Saccharine BPMN to <code>durable-workflow</code> v2</strong></h2>
+
+<p>What started as a routine dependency bump on <code>durable-workflow/workflow</code> turned into a full-scale architectural refactoring: roughly 900 edits across more than 100 files, a migration from PHP generators to native Fibers, and an entire day spent wrangling Xdebug through WSL and Docker. Looking back, though, the upgrade forced me to clean up domain boundaries I had been blurring from day one and proved that the BPMN engine's error handling actually works outside of an in-memory test suite.</p>
+
+<p>Here is why I decided to tackle the <code>durable-workflow</code> v2.0 upgrade now rather than later, and what broke along the way.</p>
+
+<h3><strong>1. Why Upgrade Now (and Why Stay Embedded for Now)</strong></h3>
+
+<p>The initial impetus was simple: <code>durable-workflow/workflow</code> v1.0 is no longer supported. I was already at a point where I wanted to add more BPMN elements, like Intermediate Timer Catch Events, and continuing to build new node handlers, signal patterns, and tests on top of a deprecated v1.0 foundation only guaranteed a much more painful migration down the road.</p>
+
+<p>Version 2.0 also changes how <code>durable-workflow</code> thinks about architecture. The intended model in v2 is to run the orchestrator as a separate service (either self-hosted or cloud-managed) with the Laravel application talking to it through an SDK. That has a couple of appealing properties. If the host app only interacts through an SDK instead of owning the entire runtime, you can move between self-hosted and cloud-managed deployments without rewriting application logic. Because I am already running Docker with separate FrankenPHP containers for the web app and <code>artisan queue:work</code>, standing up a self-hosted orchestrator container wouldn't be much of a stretch. Also worth noting, v2 is polyglot and supports running queues from PHP, Python, and Rust, which opens up the long-term idea of a PHP app delegating heavy BPMN service tasks to a Rust or Python worker, or even turning the BPMN engine itself into something cross-language, since the compiled graph tables are just relational data.</p>
+
+<p>That polyglot angle is pretty pie-in-the-sky while the package is still in alpha, though, and v2 still ships a Laravel-embedded mode (treated mostly as a compatibility path). Before committing to service mode, I had to weigh what switching immediately would actually cost.</p>
+
+<table>
+<thead>
+<tr>
+  <th align="left">Consideration</th>
+  <th align="left">Embedded Mode (v2)</th>
+  <th align="left">Service Mode + SDK (v2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left">External infrastructure</td>
+  <td align="left">Self-contained Laravel package; zero external services</td>
+  <td align="left">Requires a running <code>durable-workflow/server</code> container</td>
+</tr>
+<tr>
+  <td align="left">Adoption friction</td>
+  <td align="left">Low; standard composer require and migrations</td>
+  <td align="left">High; host apps must provision an orchestration service</td>
+</tr>
+<tr>
+  <td align="left">Deployment topology</td>
+  <td align="left">Runs via standard artisan queue:work</td>
+  <td align="left">Multi-container setup (app, server, worker daemon)</td>
+</tr>
+<tr>
+  <td align="left">Test environment</td>
+  <td align="left">Runs in milliseconds on SQLite via Orchestra Testbench</td>
+  <td align="left">Requires an SDK test harness or mocked remote client</td>
+</tr>
+<tr>
+  <td align="left">Polyglot workers</td>
+  <td align="left">Bound to PHP queue workers</td>
+  <td align="left">Supports PHP, Python, and Rust task queues</td>
+</tr>
+</tbody>
+</table>
+
+<p>Staying in embedded mode for now won out easily. Requiring every Laravel developer who wants to try a visual BPMN package to spin up a standalone orchestration server would shrink the audience before the core BPMN features are even finished. Keeping embedded mode let me get onto a supported v2 codebase right away, keep all of the existing Testbench tests fast on SQLite, and defer any SDK adapter layer until the engine's own execution semantics are locked down.</p>
+
+<h3><strong>2. Disentangling Processes from Workflows (~900 Edits Later)</strong></h3>
+
+<p>I created a new branch, bumped <code>durable-workflow/workflow</code> to v2.0 in embedded mode, and ran the test suite to see what would break first. The answer was immediate: SQL errors from colliding table names.</p>
+
+<p>In v1, I hadn't thought carefully enough about naming my own database tables <code>workflow_definitions</code>, <code>workflow_versions</code>, <code>workflow_nodes</code>, <code>workflow_edges</code>, <code>workflow_instances</code>, <code>workflow_tokens</code>, and <code>workflow_triggers_log</code>. In v2, <code>durable-workflow</code> introduced its own <code>workflow_instances</code> table, which collided directly with mine. Even without the SQL error, the naming was muddying the data model: BPMN is a business-process domain layer sitting  <em>on top</em>  of <code>durable-workflow</code>'s lower-level coroutine engine.</p>
+
+<p>To clean that up, I renamed the package's tables and Eloquent models from <code>Workflow*</code> to <code>Process*</code> (<code>ProcessDefinition</code>, <code>ProcessVersion</code>, <code>ProcessNode</code>, <code>ProcessEdge</code>, <code>ProcessInstance</code>, <code>ProcessToken</code>, and <code>process_triggers_log</code>). The catch was that I couldn't just run a blind search-and-replace across the repository. Plenty of symbols, like <code>BpmnInterpreterWorkflow</code> itself and the <code>durable_workflow_id</code> foreign key, legitimately refer to the underlying coroutine layer. I had to go through and distinguish "process" (the BPMN graph and runtime state) from "workflow" (the durable execution primitive) across code, migrations, comments, and docs, ending up with around 900 edits across more than 100 files before the test suite came back clean.</p>
+
+<p>One naming headache lingered even after that pass: <code>ProcessHistory</code> and <code>process_histories</code>. It is standard in Laravel to pair a singular model with a plural table, but "history" is an amorphous mass noun. What does one singular "history" even mean? A history book? The entire biography of a record? Pluralizing it into <code>process_histories</code> felt just as awkward, even though I originally liked how terse it was compared to a longer compound name. Before wrapping up the refactor, I weighed the alternatives:</p>
+
+<ul>
+<li><strong><code>ProcessStep</code></strong>  <strong>(</strong>  <strong><code>process_steps</code></strong>  <strong>):</strong>  Terse and countable, but too easily confused with design-time nodes on a diagram ("step 1, step 2").</li>
+<li><strong><code>ProcessTransition</code></strong>  <strong>(</strong>  <strong><code>process_transitions</code></strong>  <strong>):</strong>  Accurate in state-machine theory, yet a bit loaded; it implies the act of changing state rather than a completed item on an itinerary.</li>
+<li><strong><code>ProcessHistoryEvent</code></strong>  <strong>(</strong>  <strong><code>process_history_events</code></strong>  <strong>):</strong>  Longer, and BPMN already uses the word "event" for triggers like Start and Boundary Events, which initially made me hesitate.</li>
+</ul>
+
+<p>In the end, <code>ProcessHistoryEvent</code> won out. Anchoring "event" with <code>history_</code> disambiguates it from BPMN diagram events, <code>process_history_events</code> pluralizes cleanly, and it mirrors <code>durable-workflow</code> v2's own <code>workflow_history_events</code> table, making it obvious that one tracks high-level BPMN node completions while the other tracks low-level coroutine replay events.</p>
+
+<h3><strong>3. When the Worker Crashed at Byte Zero</strong></h3>
+
+<p>Having the Pest suite pass on in-memory SQLite was one thing; running a real process inside the Saccharine Docker stack with FrankenPHP and PostgreSQL was another.</p>
+
+<p>The first snag was purely operational. Because I booted the FrankenPHP queue worker container before running migrations on a fresh database, <code>queue:work</code> immediately crashed looking for Laravel's cache table while polling <code>illuminate:queue:restart</code>:</p>
+
+<pre><code class="language-text">SQLSTATE[42P01]: Undefined table: 7 ERROR: relation "cache" does not exist
+LINE 1: select * from "cache" where "key" in ($1)
+</code></pre>
+
+<p>Even after running <code>php artisan migrate</code>, the worker container still needed an explicit restart, something I will need to keep in mind for VPS deploy scripts.</p>
+
+<p>Once the worker was actually running, triggering a process created a ProcessInstance record, yet it reported no active token and never advanced. Checking the Docker logs showed <code>BpmnInterpreterWorkflow</code> failing in 55ms, followed by <code>WorkflowSignal</code> failing in 18ms when I tried to halt it. Worse, the Laravel log was empty, and trying to query <code>Workflow\Models\Workflow</code> in Tinker threw a class-not-found error because v2 had overhauled its internal models.</p>
+
+<p>Pulling the raw exception directly out of failed_jobs finally pointed to the culprit:</p>
+
+<pre><code class="language-text">ErrorException: unserialize(): Error at offset 0 of 472 bytes in /var/www/html/vendor/durable-workflow/workflow/src/Serializers/AbstractSerializer.php:70
+##2 /var/www/html/vendor/durable-workflow/workflow/src/Serializers/AbstractSerializer.php(70): unserialize('wwHioz3/VYAiNw4...')
+</code></pre>
+
+<p>Normally an <code>unserialize()</code> error on ciphertext points to mismatched <code>APP_KEY</code> values between containers or stale database rows left over from an older version. Both my app and worker containers build from the same FrankenPHP Dockerfile and share the exact same <code>APP_KEY</code>, and truncating the old tables didn't change anything. Publishing the new v2 <code>config/workflow.php</code> file gave the real explanation away in its comments:</p>
+
+<pre><code class="language-php">// Payload codec diagnostic input. Final v2 always uses "avro" as the
+// default codec for new typed binary payloads with cross-language type
+// fidelity (int stays int, float stays float).
+'serializer' =&gt; Env::dw('DW_SERIALIZER', 'WORKFLOW_SERIALIZER', 'avro'),
+</code></pre>
+
+<p>In v2, Avro binary encoding is the mandatory default codec for new runs. When the process was dispatched, the v2 engine serialized its payload using Avro. Because <code>BpmnInterpreterWorkflow</code> still extended the legacy <code>Workflow\Workflow</code> compatibility alias instead of <code>Workflow\V2\Workflow</code>, the worker treated it as a v1 workflow on pickup and fed raw Avro bytes straight into PHP's native <code>unserialize()</code>.</p>
+
+<h3><strong>4. From Yielding Generators to Native PHP Fibers</strong></h3>
+
+<p>Switching imports to the WorkflowV2 namespace immediately revealed that v2 wasn't just a namespace shuffle: the whole execution model had changed from PHP Generators to native PHP 8.1+ Fibers. Half-migrated files clashed in subtle ways during the transition: <code>makeScopedChildWorkflow()</code> and <code>ParallelGatewayHandler</code> still had lingering <code>Workflow\ChildWorkflowStub::make(...)</code> calls alongside new <code>Workflow\V2\child()</code> imports, and <code>BpmnServiceProvider</code> still carried a <code>config('workflow.v1_enabled')</code> guard.</p>
+
+<p>In v1, every durable boundary required <code>yield</code> or <code>yield from</code> so the engine could drive a <code>Generator</code> state machine from the outside. In v2, the workflow entry point shifts from <code>execute()</code> to <code>handle()</code>, manual stub classes like <code>Workflow\V2\ChildWorkflowStub</code> are gone, and suspension happens inside functional primitives (<code>Workflow\V2\activity()</code>, <code>child()</code>, <code>await()</code>, <code>awaitWithTimeout()</code>, <code>timer()</code>, <code>sideEffect()</code>, and <code>all()</code>). Because Fibers can suspend from anywhere in the call stack without bubbling promises back up through every caller, <code>BpmnNodeHandlerInterface::handle()</code> no longer needed to return <code>Generator</code>.</p>
+
+<p>Removing <code>yield</code> did make me wonder if I was giving up replay checkpoints, since <code>yield</code> had previously marked the exact pause points the engine replayed against. In practice, checkpoints simply moved inside the v2 helper functions: on replay, <code>handle()</code> re-runs from the top, and whenever it reaches <code>activity()</code>, <code>child()</code>, or <code>sideEffect()</code>, the runtime returns the cached event-log result instead of suspending again.</p>
+
+<p>There was an immediate payoff in the test suite, too. Under v1, isolated node handler tests like <code>ServiceTaskTest</code>, <code>CallActivityTest</code>, <code>SubProcessTest</code>, <code>ExclusiveGatewayTest</code>, and <code>TimerBoundaryEventTest</code> had to manually pump generators with <code>$generator-&gt;current()</code>, <code>$generator-&gt;send()</code>, and <code>$generator-&gt;getReturn()</code>. Once handlers became synchronous-looking methods returning <code>[?string $nextNodeId, array $userData]</code>, I could mock wrapper methods on <code>BpmnInterpreterWorkflow</code> (<code>makeActivity</code>, <code>makeChildWorkflow</code>, <code>makeScopedChildWorkflow</code>, <code>awaitWithTimeoutPromise</code>) and assert directly on the returned array.</p>
+
+<h3><strong>5. Rethinking Signals, Mailboxes, and Updates</strong></h3>
+
+<p>The trickiest conceptual shift in v2 was how external inputs reach a running process. In v1, #<code>BpmnInterpreterWorkflow</code> used <code>#SignalMethod</code> attributes and <code>$this-&gt;inbox</code> to receive human task submissions and operator interventions (<code>suspendWorkflow</code>, <code>resumeWorkflow</code>, <code>haltWorkflow</code>). When <code>BpmnInterventionTest</code> started failing on <code>expect($workflow-&gt;running())-&gt;toBeFalse()</code>, even after <code>#Signal('haltWorkflow')</code> appeared to be accepted, I realized I didn't actually understand how v2 signals worked.</p>
+
+<p>Looking at v2's <code>functions.php</code> and migration guide cleared up the confusion, though it initially felt like a step backward:</p>
+
+<ul>
+<li><strong>v1</strong>  <strong><code>#SignalMethod</code></strong>  <strong>behaved like an interrupt:</strong>  An external caller could invoke a method on the workflow at any time and mutate class properties, regardless of what step the workflow was currently executing.</li>
+<li><strong>v2 named signals behave like a mailbox:</strong>  <code>#SignalMethod</code> is gone, <code>await()</code> accepts a single signal name or callable, and <code>$workflow-&gt;signal(...)</code> simply records an event that the Fiber only reads when execution reaches a matching <code>await('signal-name')</code>.</li>
+</ul>
+
+<p>To me, that sounded less like responding to an asynchronous signal and more like polling for input in a game loop. If a process is parked at a userTask awaiting <code>'submitUserTask'</code>, or blocked inside a long-running <code>activity()</code>, how is an operator supposed to suspend or halt it?</p>
+
+<p>I explored a few alternatives before landing on the pattern that actually fit:</p>
+
+<ol>
+<li><strong>Racing with</strong>  <strong><code>Workflow\V2\select()</code></strong>  <strong>:</strong>  Racing the current node handler against await('suspend') and await('halt') looks neat on paper, but non-winning branches in <code>select()</code> stay open. If an activity wins the race, you accumulate orphaned signal listeners on every node in a loop; if halt wins, the background activity keeps running unless manually cancelled.</li>
+<li><strong>Memos (</strong>  <strong><code>upsertMemo</code></strong>  <strong>):</strong>  An AI coding agent I asked to inspect <code>durable-workflow</code>'s source suggested storing suspension flags in workflow memos and checking them around activity boundaries. Checking functions.php ruled that out immediately: the documentation explicitly warns that: "Memos are eventually consistent describe/list metadata, not replay authority and not a safe place for workflow-branching truth."</li>
+<li><strong>Update Methods (</strong>  <strong><code>#UpdateMethod</code></strong>  <strong>via</strong>  <strong><code>submitUpdate()</code></strong>  <strong>):</strong>  In v2, updates allow callers to mutate workflow state synchronously and deterministically. Unlike <code>#SignalMethod</code> in v1, they fit neatly with cooperative Fiber waits without relying on un-awaited signal mailboxes.</li>
+</ol>
+
+<p>That made <code>#UpdateMethod</code> the right tool for all four interactive operations (<code>submitUserTask</code>, <code>suspendProcess</code>, <code>resumeProcess</code>, and <code>haltProcess</code>) invoked via <code>$workflow-&gt;submitUpdate(...)</code> across controllers, CLI commands, and Filament actions. <code>UserTaskHandler</code> blocks on a closure checking <code>$workflow-&gt;hasUnreadInbox() || $workflow-&gt;isSuspended() || $workflow-&gt;isHalted()</code>, while the interpreter loop intercepts <code>$this-&gt;isSuspended</code> with <code>await(fn () =&gt; !$this-&gt;isSuspended || $this-&gt;isHalted)</code> and handles <code>$this-&gt;isHalted</code> by setting <code>$userData['_system_status'] = 'halted'</code>, cleaning up active tokens, and breaking out cleanly. (While <code>durable-workflow</code> v2 also provides <code>$workflow-&gt;cancel()</code> at activity boundaries, standardizing on <code>submitUpdate()</code> kept user tasks and operator interventions on one consistent, BPMN-aware state model.)</p>
+
+<h3><strong>6. Deferred Closures in Parallel Gateways</strong></h3>
+
+<p>After refactoring the loop, handlers, and tests to <code>Workflow\V2</code>, 60 out of 68 tests passed—leaving <code>ParallelGatewayTest</code> as the main holdout. Both child branches and their service tasks started, never reached the join, and ended with a failed workflow status. Because Pest runs in memory without writing standard Laravel log files, the failure gave almost no diagnostic output on its own.</p>
+
+<p>Querying v2's internal tables directly inside the failing test (<code>workflow_failures</code>, <code>workflow_runs</code>, and <code>workflow_history_events</code>) alongside piping <code>Log::listen()</code> to <code>STDERR</code> surfaced the issue. In v1, <code>ParallelGatewayHandler</code> built an array of <code>ChildWorkflowStub::make(...)</code> objects and <code>yield</code>ed them into <code>all()</code>. In v2, calling <code>child()</code> inside a foreach loop suspends the parent Fiber immediately on the very first branch before the second branch is even scheduled.</p>
+
+<p>Wrapping each branch in a deferred closure fixed it cleanly:</p>
+
+<pre><code class="language-php">$parallelTasks = [];
+foreach ($outgoingEdges as $edge) {
+    $targetId = $edge-&gt;target_node_id;
+    $parallelTasks[] = fn () =&gt; $workflow-&gt;makeChildWorkflow(
+        $version-&gt;id,
+        $userData,
+        $targetId,
+        $instanceId
+    );
+}
+
+$branchResults = all($parallelTasks);
+</code></pre>
+
+<p>Because <code>all()</code> handles Closure entries through <code>WorkflowFiberContext::whileInactive()</code>, both branches schedule concurrently before suspending on the join barrier. With that change, the entire Pest suite turned green.</p>
+
+<h3><strong>7. Xdebug, a One-Line Bug, and an Accidental Error Boundary Test</strong></h3>
+
+<p>Even with every automated test passing, running a real workflow in Docker with queue:work still stalled right after the Start Event (<code>Start_OrderPlaced</code>). A ProcessToken row was created, the instance showed as running, and nothing else happened.</p>
+
+<p>I spent an entire day getting Xdebug working through WSL and Docker just so I could step into <code>BpmnInterpreterWorkflow::handle()</code>. Stepping through showed <code>StartEventHandler</code> finding the outgoing edge and returning the next node ID, followed by execution entering <code>WorkflowExecution::startCallback()</code>, calling <code>WorkflowFiberContext::leave()</code>, and exiting. Checking <code>workflow_history_events</code> exposed what actually happened, and it was a stupid oversight.</p>
+
+<p>Inside <code>BpmnInterpreterWorkflow::handle()</code>, every other <code>sideEffect</code> call had been updated to the v2 <code>sideEffect()</code> function, except for one leftover <code>WorkflowStub::sideEffect(...)</code> inside the <code>if ($instanceId !== null)</code> block that records history entries (ProcessHistory, later renamed ProcessHistoryEvent). Two blind spots in the test suite had kept that fatal call hidden:</p>
+
+<ul>
+<li><strong>Isolated node tests</strong>  mock <code>BpmnInterpreterWorkflow</code> and never run the outer while loop in <code>handle()</code>.</li>
+<li><strong>Integration tests</strong>  like BpmnInterpreterTest started workflows with only two arguments, leaving <code>$instanceId = null</code> and skipping the history-recording block altogether.</li>
+</ul>
+
+<p>Fixing that single line unblocked the engine through the Exclusive Gateway (<code>Gateway_VIP</code>) and onto the <code>Task_ManualReview</code> User Task. Updating <code>ProcessInstanceController::submitUserTask()</code> to use <code>submitUpdate()</code> instead of the old signal call let the user task submit and resume the Fiber.</p>
+
+<p>Then the next Service Task (<code>SendNotificationActivity</code>) crashed; this time because an earlier docker compose restart of just the app container hadn't brought Mailpit back up, causing a mail transport exception. Rather than just restarting Mailpit and declaring victory, I took advantage of the broken container to test something I had only ever verified in Pest mocks: a live Error Boundary Event. I attached an Error Boundary Event to the notification Service Task in the diagram, routed it to a "Manager Intervention Needed" User Task leading to an End Event, and left Mailpit stopped. Sure enough, when the notification task threw its exception, the worker caught it, routed the token down the boundary path, paused at the intervention task for manual approval, and finished cleanly.</p>
+
+<p>Getting Xdebug running in containers was miserable, and chasing down a half-migrated <code>sideEffect()</code> call was humbling, but hitting a real infrastructure failure in the middle of the upgrade ended up proving the core thesis of the package: when a dependency goes down, the diagram routes around the failure and puts a human in the loop without losing state.</p>
+]]></content>
+                            <category term="bpmn" />
+                            <category term="engineering" />
+                    </entry>
+    </feed>
