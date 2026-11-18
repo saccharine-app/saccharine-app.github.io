@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ $page->baseName ?? 'Saccharine' }} Engineering Blog</title>
+    <subtitle>{{ $page->description }}</subtitle>
+    <link href="{{ rtrim($page->baseUrl, '/') }}/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="{{ rtrim($page->baseUrl, '/') }}/blog" rel="alternate" type="text/html" />
+    <id>{{ rtrim($page->baseUrl, '/') }}/blog</id>
+    <updated>{{ $posts->first() ? date('c', $posts->first()->date) : date('c') }}</updated>
+    <author>
+        <name>Saccharine Team</name>
+    </author>
+
+    @foreach ($posts->take(20) as $post)
+        <entry>
+            <title>{{ $post->title }}</title>
+            <link href="{{ $post->getUrl() }}" rel="alternate" type="text/html" />
+            <id>{{ $post->getUrl() }}</id>
+            <published>{{ date('c', $post->date) }}</published>
+            <updated>{{ date('c', $post->updated ?? $post->date) }}</updated>
+            @if ($post->description)
+                <summary>{{ $post->description }}</summary>
+            @endif
+            <content type="html"><![CDATA[{!! $post->getContent() !!}]]></content>
+            @foreach ($post->categories ?? [] as $category)
+                <category term="{{ $category }}" />
+            @endforeach
+        </entry>
+    @endforeach
+</feed>
