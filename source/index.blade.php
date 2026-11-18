@@ -1,6 +1,7 @@
 ---
 title: Saccharine - Operational Platform for Laravel
 description: Open-source, Laravel packages for durable workflows, dynamic quoting, document pipelines, and operational triage.
+updated: 2026-10-25
 ---
 @extends('_layouts.main')
 

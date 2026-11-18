@@ -1,6 +1,7 @@
 ---
 title: Saccharine BPMN - Visual Workflows for Laravel
 description: Native BPMN 2.0 graph orchestration running over Laravel background queues without external Java runtimes.
+updated: 2026-11-13
 ---
 @extends('_layouts.main')
 

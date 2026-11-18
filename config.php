@@ -67,4 +67,15 @@ return [
     'isActiveDoc' => function ($page, $path) {
         return Str::endsWith(trimPath($page->getPath()), trimPath($path));
     },
+    'getLastMod' => function ($page, $p) {
+        // $raw = $page->updated ?? $page->date ?? null;
+        $raw = $p->updated ?? $p->date ?? null;
+        if (! $raw) {
+            return null;
+        }
+
+        $timestamp = is_numeric($raw) ? (int) $raw : strtotime((string) $raw);
+
+        return $timestamp ? date('Y-m-d', $timestamp) : null;
+    },
 ];
