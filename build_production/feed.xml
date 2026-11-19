@@ -5,11 +5,115 @@
     <link href="https://saccharine.app/feed.xml" rel="self" type="application/atom+xml" />
     <link href="https://saccharine.app/blog" rel="alternate" type="text/html" />
     <id>https://saccharine.app/blog</id>
-    <updated>2026-11-17T00:00:00+00:00</updated>
+    <updated>2026-11-19T00:00:00+00:00</updated>
     <author>
         <name>Saccharine Team</name>
     </author>
 
+            <entry>
+            <title>Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN</title>
+            <link href="https://saccharine.app/blog/2026-11/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn" rel="alternate" type="text/html" />
+            <id>https://saccharine.app/blog/2026-11/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn</id>
+            <published>2026-11-19T00:00:00+00:00</published>
+            <updated>2026-11-19T00:00:00+00:00</updated>
+                            <summary>The conceptual importance and technical hurdles of adding timed delays to a process engine.</summary>
+                        <content type="html"><![CDATA[<h2>Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN</h2>
+
+<p>Intermediate Timer Catch Events are a feature I had wanted to add to Saccharine BPMN for a while, but I deliberately held off until the <code>durable-workflow</code> v2 upgrade was out of the way. Implementing a new timed wait state on top of v1's generator coroutines right before tearing them out for PHP Fibers would have just created more code to rewrite. Once the v2 refactor settled and the test suite was green, adding intermediate timers turned out to be surprisingly small in terms of code (five focused changes across the parser, engine, and modeler) yet it closes a major conceptual gap in what a process diagram can express.</p>
+
+<h3>1. Delays vs. Deadlines in BPMN</h3>
+
+<p>At a glance, it is easy to lump all BPMN timers together, because in the XML they all share a <code>&lt;bpmn:timerEventDefinition&gt;</code>. In practice, though, BPMN treats a timer not as a standalone node type, but as a behavior modifier whose meaning changes completely depending on where it sits in the diagram.</p>
+
+<p>Before this change, Saccharine BPMN already supported <strong>Boundary Timer Events</strong> on <code>UserTask</code> nodes. In <code>UserTaskHandler</code>, an attached timer acts as an SLA deadline: the handler pulls the ISO 8601 duration (such as <code>PT2H</code> or <code>PT24H</code>) and passes it into <code>awaitWithTimeoutPromise()</code>. If a human approves or rejects the task in time, the token continues down the normal sequence flow; if the deadline expires first, the engine injects <code>_timer_expired = true</code> into <code>$userData</code> and diverts execution down the escalation path.</p>
+
+<p><strong>Intermediate Timer Catch Events</strong> (<code>&lt;bpmn:intermediateCatchEvent&gt;</code>) solve the opposite problem. Instead of interrupting a task when someone is too slow, an intermediate timer represents an <em>intentional delay</em> built into the happy path; a fixed waiting period (such as 1 hour, 24 hours, or 2 days) between steps (<code>Start -&gt; Timer Catch Event -&gt; Service Task -&gt; End</code>). A third BPMN flavor, <strong>Timer Start Events</strong> (cron-style recurring schedules), belongs outside <code>BpmnInterpreterWorkflow</code> altogether in a scheduled console command and remains unimplemented for now.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Timer Flavor</th>
+  <th>BPMN Element</th>
+  <th>Process Role</th>
+  <th>Engine Status &amp; Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Boundary Timer</td>
+  <td><code>&lt;bpmn:boundaryEvent&gt;</code> on <code>userTask</code></td>
+  <td>Interrupting SLA deadline; escalates when a human misses a window</td>
+  <td>Implemented; <code>awaitWithTimeoutPromise()</code> inside <code>UserTaskHandler</code></td>
+</tr>
+<tr>
+  <td>Intermediate Catch Timer</td>
+  <td><code>&lt;bpmn:intermediateCatchEvent&gt;</code></td>
+  <td>Intentional mid-process pause before advancing to the next node</td>
+  <td>Implemented; <code>timerPromise()</code> wrapping <code>Workflow\V2\timer()</code></td>
+</tr>
+<tr>
+  <td>Timer Start Event</td>
+  <td><code>&lt;bpmn:startEvent&gt;</code></td>
+  <td>Recurring schedule launching new instances</td>
+  <td>Not yet implemented; belongs in an external scheduled command</td>
+</tr>
+</tbody>
+</table>
+
+<p>The real significance of supporting both deadlines and delays natively in the engine is how they sleep. In a conventional Laravel app, modeling a 24-hour wait usually means either tying up a worker or writing database status flags and polling them with a cron job every few minutes. Under <code>durable-workflow</code> v2, hitting a timer inside a Fiber flushes the state checkpoint to the database, ends the worker's current execution cycle, and releases all memory. Thousands of instances can sit mid-process in a <code>PT24H</code> or <code>P1D</code> wait without holding queue connections or worker threads open; when the scheduled wake-up fires, the worker replays cached history for earlier steps and picks up right after the timer. With the Fiber runtime already handling suspension and replay, wiring this behavior into the BPMN engine required surprisingly little scaffolding.</p>
+
+<h3>2. Five Small Pieces on Top of v2 Fibers</h3>
+
+<p>Because the v2 refactor had already flattened node handlers into synchronous methods returning <code>[?string $nextNodeId, array $userData]</code> and isolated static engine calls behind wrapper methods on <code>BpmnInterpreterWorkflow</code>, adding intermediate timer support did not require touching the core execution loop or adding a single database migration. <code>process_nodes</code> already carried <code>event_definition_type</code> and <code>implementation</code> columns for boundary timers, so intermediate catch timers slotted straight into the same schema.</p>
+
+<p>The implementation spanned five compact changes across the stack:</p>
+
+<ol>
+<li>XML Parsing ( <code>src/Services/BpmnParserService.php</code> ): I added <code>'intermediateCatchEvent'</code> to the <code>$nodeTypes</code> array in <code>parseAndStore()</code>. Inside the node loop, when the parser sees a child, it sets <code>$eventDefType = 'timer'</code> and extracts <code>&lt;bpmn:timeDuration&gt;</code> (falling back to <code>'PT1H'</code> if missing) into <code>implementation</code>.</li>
+<li>Mockable Fiber Suspension ( <code>src/Workflows/BpmnInterpreterWorkflow.php</code> ): Just like <code>makeActivity()</code> and <code>awaitWithTimeoutPromise()</code>, I added a small <code>timerPromise(string $duration): void</code> helper wrapping <code>Workflow\V2\timer($duration)</code> so isolated node tests can intercept the call without hitting global coroutine state.</li>
+<li>The Node Handler ( <code>src/Handlers/Nodes/Events/IntermediateCatchEventHandler.php</code> ): A new handler implementing <code>BpmnNodeHandlerInterface</code> checks for <code>event_definition_type === 'timer'</code>, logs step telemetry, calls <code>$workflow-&gt;timerPromise($duration)</code>, and returns the next sequential node alongside the untouched <code>$userData</code> payload.</li>
+<li>Factory Registration ( <code>src/Handlers/NodeHandlerFactory.php</code> ): Mapped <code>'intermediateCatchEvent'</code> to <code>IntermediateCatchEventHandler::class</code>.</li>
+<li>Visual Modeler Support ( <code>resources/js/engineCapabilities.js</code> ): Added <code>'bpmn:IntermediateCatchEvent'</code> to <code>DEFAULT_SUPPORTED_ELEMENTS</code> so the filtered palette and replace menu let diagram authors drop and configure timer catch events directly on the canvas.</li>
+</ol>
+
+<p>The handler itself shows how clean node additions became once generator <code>yield</code> chains were gone, and why guarding on <code>event_definition_type === 'timer'</code> keeps the door open for <code>&lt;bpmn:messageEventDefinition&gt;</code> catch events later on:</p>
+
+<pre><code class="language-php">public function handle(
+    BpmnInterpreterWorkflow $workflow,
+    ProcessNode $node,
+    ProcessVersion $version,
+    array $userData,
+    ?int $instanceId
+): array {
+    if ($node-&gt;event_definition_type === 'timer') {
+        $duration = $node-&gt;implementation ?? 'PT1H';
+        $workflow-&gt;timerPromise($duration);
+    }
+
+    $nextNodeId = $workflow-&gt;getNextSequentialNode($version, $node-&gt;bpmn_element_id);
+    return [$nextNodeId, $userData];
+}
+</code></pre>
+
+<p>Wrapping <code>Workflow\V2\timer()</code> inside <code>timerPromise()</code> also solved the main practical question for the test suite: how to verify timed waits reliably without making Pest sit idle for an hour.</p>
+
+<h3>3. Testing Timed Execution Without Waiting</h3>
+
+<p>Following the same test structure as the other nodes, <code>tests/Feature/Nodes/Events/TimerIntermediateEventTest.php</code> exercises the feature at three layers:</p>
+
+<ul>
+<li>XML Extraction: Feeds <code>&lt;intermediateCatchEvent&gt;</code> containing <code>&lt;bpmn:timerEventDefinition&gt;&lt;bpmn:timeDuration&gt;PT1H&lt;/bpmn:timeDuration&gt;&lt;/bpmn:timerEventDefinition&gt;</code> into <code>BpmnParserService</code> and asserts that <code>event_definition_type</code> is stored as <code>'timer'</code> with <code>'PT1H'</code> in implementation.</li>
+<li>Isolated Handler Logic: Uses a Mockery partial mock of <code>BpmnInterpreterWorkflow</code> to intercept <code>timerPromise()</code> and verify that <code>IntermediateCatchEventHandler</code> routes to the next node without altering <code>$userData</code>.</li>
+<li>End-to-End Durable Execution: Runs a full <code>Start -&gt; Timer Catch Event -&gt; Service Task -&gt; End</code> process through the durable queue worker using a zero-second <code>PT0S</code> duration in Pest so the sleep-and-resume cycle executes without stalling the test suite.</li>
+</ul>
+
+<p>Because zero-second tests only prove the plumbing, I also ran integration checks against real durations, confirming that processes slept and resumed cleanly after waits of 1 minute, 1 hour, and 1 day.</p>
+
+<p>Shipping this also forced a quick cleanup of the project roadmap. Auditing <code>05_architecture_roadmap.md</code> against the codebase reminded me that both Boundary Timers and Intermediate Timer Catch Events had already moved from "planned" to working features. With time-based delays and deadlines checked off in v0.6.0-alpha, the remaining gap in Milestone 1 narrows cleanly to Intermediate and Boundary Message Catch Events: correlating external webhooks and domain events via business keys to wake hibernated Fibers mid-process.</p>
+]]></content>
+                            <category term="bpmn" />
+                            <category term="engineering" />
+                    </entry>
             <entry>
             <title>Upgrading Saccharine BPMN to durable-workflow v2</title>
             <link href="https://saccharine.app/blog/2026-11/upgrading-saccharine-bpmn-to-durable-workflow-v2" rel="alternate" type="text/html" />

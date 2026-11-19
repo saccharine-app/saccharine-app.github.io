@@ -4,7 +4,7 @@ description: "A deep dive into how PHP Fibers eliminate generator promise chains
 date: 2026-11-17
 categories: [bpmn, engineering]
 tags: [bpmn, durable-workflow]
-cover_image: /assets/images/upgrading-saccharine-bpmn-to-durable-workflow-v2.jpg
+cover_image: /assets/images/posts/upgrading-saccharine-bpmn-to-durable-workflow-v2.jpg
 ---
 
 ## **Upgrading Saccharine BPMN to `durable-workflow` v2**

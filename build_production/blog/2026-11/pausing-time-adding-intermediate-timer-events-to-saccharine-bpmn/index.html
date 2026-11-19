@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN6PPNHB');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <title>Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN | Saccharine</title>
+    <meta name="description" content="The conceptual importance and technical hurdles of adding timed delays to a process engine.">
+    <link rel="canonical" href="https://saccharine.app/blog/2026-11/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn">
+    <meta name="theme-color" content="#4f46e5" />
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Saccharine">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN">
+    <meta property="og:description" content="The conceptual importance and technical hurdles of adding timed delays to a process engine.">
+    <meta property="og:url" content="https://saccharine.app/blog/2026-11/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn">
+    <meta property="og:image" content="https://saccharine.app/assets/images/posts/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn.jpg">
+    <!-- <meta property="og:image:type" content="image/png" /> -->
+            <meta property="og:image:alt" content="Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN">
+    
+    
+            <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+    
+            <meta property="article:published_time" content="2026-11-19T00:00:00+00:00">
+                    <meta property="article:author" content="Saccharine Team">
+            
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN | Saccharine">
+    <meta name="twitter:description" content="The conceptual importance and technical hurdles of adding timed delays to a process engine.">
+    <meta name="twitter:image" content="https://saccharine.app/assets/images/posts/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn.jpg">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- <meta property="og:image:alt" content="A process orchestrator for Laravel that turns flowcharts into durable background queue jobs." />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" /> -->
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/assets/build/assets/main-CEWNCbMv.css">
+    <!--<script defer src="/assets/build/assets/main-l0sNRNKZ.js"></script>-->
+    <style>
+        .bg-animated-gradient {
+            background: linear-gradient(-45deg, #eff6ff, #e0e7ff, #f3e8ff, #f8fafc);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-white flex flex-col min-h-full">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN6PPNHB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Top Global Navigation Bar -->
+    <header class="border-b border-slate-200/80 bg-white/90 backdrop-blur sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="/" class="flex items-center space-x-2.5 group">
+                    <div class="h-8 w-8 rounded-lg bg-indigo-600 group-hover:bg-indigo-500 transition flex items-center justify-center font-bold text-white shadow-sm">
+                        S
+                    </div>
+                    <span class="text-lg font-extrabold text-slate-900 tracking-tight">Saccharine</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-1 pl-4 border-l border-slate-200 text-sm font-medium">
+                    <a href="/bpmn" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        BPMN Workflow
+                    </a>
+                    <a href="/bpmn/docs/introduction" class="px-3 py-1.5 rounded-md transition text-slate-600 hover:text-slate-900">
+                        Documentation
+                    </a>
+                    <a href="/blog" class="px-3 py-1.5 rounded-md transition bg-indigo-50 text-indigo-700 font-semibold">
+                        Blog
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="https://demo.saccharine.app" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition text-xs font-semibold">
+                    <span>Live Sandbox</span>
+                    <span class="text-slate-400">&nearr;</span>
+                </a>
+                <a href="https://github.com/saccharine-app/bpmn" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-900 transition flex items-center gap-1 text-xs">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Injection -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-16 max-w-4xl">
+    <!-- Top Back Link / Breadcrumb -->
+    <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-8">
+        <a href="/blog" class="hover:text-indigo-600 transition flex items-center gap-1.5">
+            <span>&larr;</span>
+            <span>Back to Blog</span>
+        </a>
+    </nav>
+
+    <article>
+        <!-- Post Header -->
+        <header class="mb-10 pb-8 border-b border-slate-200">
+            <!-- Date, Author & Categories -->
+            <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-500 mb-4">
+                                    <time datetime="2026-11-19">
+                        November 19, 2026
+                    </time>
+                
+                                    <span class="text-slate-300">&bull;</span>
+                    <span class="text-slate-600">Saccharine Team</span>
+                
+                                    <span class="text-slate-300">&bull;</span>
+                    <div class="flex flex-wrap gap-1.5">
+                                                    <a href="/blog/categories/bpmn"
+                               class="text-indigo-700 bg-indigo-50 border border-indigo-200/70 px-2.5 py-0.5 rounded-full font-semibold hover:bg-indigo-100 transition">
+                                bpmn
+                            </a>
+                                                    <a href="/blog/categories/engineering"
+                               class="text-indigo-700 bg-indigo-50 border border-indigo-200/70 px-2.5 py-0.5 rounded-full font-semibold hover:bg-indigo-100 transition">
+                                engineering
+                            </a>
+                                            </div>
+                            </div>
+
+            <!-- Title & Description -->
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN
+            </h1>
+
+                            <p class="text-slate-600 text-base md:text-lg mt-3 leading-relaxed">
+                    The conceptual importance and technical hurdles of adding timed delays to a process engine.
+                </p>
+            
+            <!-- Optional Cover Image -->
+                            <div class="mt-8 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 shadow-sm">
+                    <img src="/assets/images/posts/pausing-time-adding-intermediate-timer-events-to-saccharine-bpmn.jpg"
+                         alt="Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN"
+                         class="w-full h-auto block">
+                </div>
+                    </header>
+
+        <!-- Post Body (Full-width prose matching docs.blade.php) -->
+                    <div class="prose prose-slate max-w-none
+                        prose-headings:font-bold prose-headings:tracking-tight
+                        prose-a:text-indigo-600 hover:prose-a:text-indigo-500
+                        prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800
+                        prose-code:font-mono prose-code:text-indigo-600 prose-code:before:content-none prose-code:after:content-none">
+                <h2>Pausing Time: Adding Intermediate Timer Events to Saccharine BPMN</h2>
+
+<p>Intermediate Timer Catch Events are a feature I had wanted to add to Saccharine BPMN for a while, but I deliberately held off until the <code>durable-workflow</code> v2 upgrade was out of the way. Implementing a new timed wait state on top of v1's generator coroutines right before tearing them out for PHP Fibers would have just created more code to rewrite. Once the v2 refactor settled and the test suite was green, adding intermediate timers turned out to be surprisingly small in terms of code (five focused changes across the parser, engine, and modeler) yet it closes a major conceptual gap in what a process diagram can express.</p>
+
+<h3>1. Delays vs. Deadlines in BPMN</h3>
+
+<p>At a glance, it is easy to lump all BPMN timers together, because in the XML they all share a <code>&lt;bpmn:timerEventDefinition&gt;</code>. In practice, though, BPMN treats a timer not as a standalone node type, but as a behavior modifier whose meaning changes completely depending on where it sits in the diagram.</p>
+
+<p>Before this change, Saccharine BPMN already supported <strong>Boundary Timer Events</strong> on <code>UserTask</code> nodes. In <code>UserTaskHandler</code>, an attached timer acts as an SLA deadline: the handler pulls the ISO 8601 duration (such as <code>PT2H</code> or <code>PT24H</code>) and passes it into <code>awaitWithTimeoutPromise()</code>. If a human approves or rejects the task in time, the token continues down the normal sequence flow; if the deadline expires first, the engine injects <code>_timer_expired = true</code> into <code>$userData</code> and diverts execution down the escalation path.</p>
+
+<p><strong>Intermediate Timer Catch Events</strong> (<code>&lt;bpmn:intermediateCatchEvent&gt;</code>) solve the opposite problem. Instead of interrupting a task when someone is too slow, an intermediate timer represents an <em>intentional delay</em> built into the happy path; a fixed waiting period (such as 1 hour, 24 hours, or 2 days) between steps (<code>Start -&gt; Timer Catch Event -&gt; Service Task -&gt; End</code>). A third BPMN flavor, <strong>Timer Start Events</strong> (cron-style recurring schedules), belongs outside <code>BpmnInterpreterWorkflow</code> altogether in a scheduled console command and remains unimplemented for now.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Timer Flavor</th>
+  <th>BPMN Element</th>
+  <th>Process Role</th>
+  <th>Engine Status &amp; Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Boundary Timer</td>
+  <td><code>&lt;bpmn:boundaryEvent&gt;</code> on <code>userTask</code></td>
+  <td>Interrupting SLA deadline; escalates when a human misses a window</td>
+  <td>Implemented; <code>awaitWithTimeoutPromise()</code> inside <code>UserTaskHandler</code></td>
+</tr>
+<tr>
+  <td>Intermediate Catch Timer</td>
+  <td><code>&lt;bpmn:intermediateCatchEvent&gt;</code></td>
+  <td>Intentional mid-process pause before advancing to the next node</td>
+  <td>Implemented; <code>timerPromise()</code> wrapping <code>Workflow\V2\timer()</code></td>
+</tr>
+<tr>
+  <td>Timer Start Event</td>
+  <td><code>&lt;bpmn:startEvent&gt;</code></td>
+  <td>Recurring schedule launching new instances</td>
+  <td>Not yet implemented; belongs in an external scheduled command</td>
+</tr>
+</tbody>
+</table>
+
+<p>The real significance of supporting both deadlines and delays natively in the engine is how they sleep. In a conventional Laravel app, modeling a 24-hour wait usually means either tying up a worker or writing database status flags and polling them with a cron job every few minutes. Under <code>durable-workflow</code> v2, hitting a timer inside a Fiber flushes the state checkpoint to the database, ends the worker's current execution cycle, and releases all memory. Thousands of instances can sit mid-process in a <code>PT24H</code> or <code>P1D</code> wait without holding queue connections or worker threads open; when the scheduled wake-up fires, the worker replays cached history for earlier steps and picks up right after the timer. With the Fiber runtime already handling suspension and replay, wiring this behavior into the BPMN engine required surprisingly little scaffolding.</p>
+
+<h3>2. Five Small Pieces on Top of v2 Fibers</h3>
+
+<p>Because the v2 refactor had already flattened node handlers into synchronous methods returning <code>[?string $nextNodeId, array $userData]</code> and isolated static engine calls behind wrapper methods on <code>BpmnInterpreterWorkflow</code>, adding intermediate timer support did not require touching the core execution loop or adding a single database migration. <code>process_nodes</code> already carried <code>event_definition_type</code> and <code>implementation</code> columns for boundary timers, so intermediate catch timers slotted straight into the same schema.</p>
+
+<p>The implementation spanned five compact changes across the stack:</p>
+
+<ol>
+<li>XML Parsing ( <code>src/Services/BpmnParserService.php</code> ): I added <code>'intermediateCatchEvent'</code> to the <code>$nodeTypes</code> array in <code>parseAndStore()</code>. Inside the node loop, when the parser sees a child, it sets <code>$eventDefType = 'timer'</code> and extracts <code>&lt;bpmn:timeDuration&gt;</code> (falling back to <code>'PT1H'</code> if missing) into <code>implementation</code>.</li>
+<li>Mockable Fiber Suspension ( <code>src/Workflows/BpmnInterpreterWorkflow.php</code> ): Just like <code>makeActivity()</code> and <code>awaitWithTimeoutPromise()</code>, I added a small <code>timerPromise(string $duration): void</code> helper wrapping <code>Workflow\V2\timer($duration)</code> so isolated node tests can intercept the call without hitting global coroutine state.</li>
+<li>The Node Handler ( <code>src/Handlers/Nodes/Events/IntermediateCatchEventHandler.php</code> ): A new handler implementing <code>BpmnNodeHandlerInterface</code> checks for <code>event_definition_type === 'timer'</code>, logs step telemetry, calls <code>$workflow-&gt;timerPromise($duration)</code>, and returns the next sequential node alongside the untouched <code>$userData</code> payload.</li>
+<li>Factory Registration ( <code>src/Handlers/NodeHandlerFactory.php</code> ): Mapped <code>'intermediateCatchEvent'</code> to <code>IntermediateCatchEventHandler::class</code>.</li>
+<li>Visual Modeler Support ( <code>resources/js/engineCapabilities.js</code> ): Added <code>'bpmn:IntermediateCatchEvent'</code> to <code>DEFAULT_SUPPORTED_ELEMENTS</code> so the filtered palette and replace menu let diagram authors drop and configure timer catch events directly on the canvas.</li>
+</ol>
+
+<p>The handler itself shows how clean node additions became once generator <code>yield</code> chains were gone, and why guarding on <code>event_definition_type === 'timer'</code> keeps the door open for <code>&lt;bpmn:messageEventDefinition&gt;</code> catch events later on:</p>
+
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color:#F97583">public</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> </span><span style="color:#B392F0">handle</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#79B8FF">BpmnInterpreterWorkflow</span><span style="color:#E1E4E8"> $workflow,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#79B8FF">ProcessNode</span><span style="color:#E1E4E8"> $node,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#79B8FF">ProcessVersion</span><span style="color:#E1E4E8"> $version,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">array</span><span style="color:#E1E4E8"> $userData,</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">?int</span><span style="color:#E1E4E8"> $instanceId</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> </span><span style="color:#F97583">array</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">if</span><span style="color:#E1E4E8"> ($node</span><span style="color:#F97583">-&gt;</span><span style="color:#E1E4E8">event_definition_type </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&#39;timer&#39;</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        $duration </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $node</span><span style="color:#F97583">-&gt;</span><span style="color:#E1E4E8">implementation </span><span style="color:#F97583">??</span><span style="color:#E1E4E8"> </span><span style="color:#9ECBFF">&#39;PT1H&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">        $workflow</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">timerPromise</span><span style="color:#E1E4E8">($duration);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    $nextNodeId </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $workflow</span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0">getNextSequentialNode</span><span style="color:#E1E4E8">($version, $node</span><span style="color:#F97583">-&gt;</span><span style="color:#E1E4E8">bpmn_element_id);</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> [$nextNodeId, $userData];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+
+<p>Wrapping <code>Workflow\V2\timer()</code> inside <code>timerPromise()</code> also solved the main practical question for the test suite: how to verify timed waits reliably without making Pest sit idle for an hour.</p>
+
+<h3>3. Testing Timed Execution Without Waiting</h3>
+
+<p>Following the same test structure as the other nodes, <code>tests/Feature/Nodes/Events/TimerIntermediateEventTest.php</code> exercises the feature at three layers:</p>
+
+<ul>
+<li>XML Extraction: Feeds <code>&lt;intermediateCatchEvent&gt;</code> containing <code>&lt;bpmn:timerEventDefinition&gt;&lt;bpmn:timeDuration&gt;PT1H&lt;/bpmn:timeDuration&gt;&lt;/bpmn:timerEventDefinition&gt;</code> into <code>BpmnParserService</code> and asserts that <code>event_definition_type</code> is stored as <code>'timer'</code> with <code>'PT1H'</code> in implementation.</li>
+<li>Isolated Handler Logic: Uses a Mockery partial mock of <code>BpmnInterpreterWorkflow</code> to intercept <code>timerPromise()</code> and verify that <code>IntermediateCatchEventHandler</code> routes to the next node without altering <code>$userData</code>.</li>
+<li>End-to-End Durable Execution: Runs a full <code>Start -&gt; Timer Catch Event -&gt; Service Task -&gt; End</code> process through the durable queue worker using a zero-second <code>PT0S</code> duration in Pest so the sleep-and-resume cycle executes without stalling the test suite.</li>
+</ul>
+
+<p>Because zero-second tests only prove the plumbing, I also ran integration checks against real durations, confirming that processes slept and resumed cleanly after waits of 1 minute, 1 hour, and 1 day.</p>
+
+<p>Shipping this also forced a quick cleanup of the project roadmap. Auditing <code>05_architecture_roadmap.md</code> against the codebase reminded me that both Boundary Timers and Intermediate Timer Catch Events had already moved from "planned" to working features. With time-based delays and deadlines checked off in v0.6.0-alpha, the remaining gap in Milestone 1 narrows cleanly to Intermediate and Boundary Message Catch Events: correlating external webhooks and domain events via business keys to wake hibernated Fibers mid-process.</p>
+            </div>
+        
+        <!-- Tags Footer -->
+                    <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap items-center gap-2">
+                <span class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 mr-1">
+                    Tags:
+                </span>
+                                    <a href="/blog/tags/bpmn"
+                       class="text-xs font-mono text-slate-600 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 border border-slate-200/80 hover:border-indigo-200 px-2.5 py-1 rounded-md transition">
+                        #bpmn
+                    </a>
+                                    <a href="/blog/tags/durable-workflow"
+                       class="text-xs font-mono text-slate-600 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 border border-slate-200/80 hover:border-indigo-200 px-2.5 py-1 rounded-md transition">
+                        #durable-workflow
+                    </a>
+                            </div>
+            </article>
+
+    <!-- Sequential Next / Previous Post Navigation -->
+                <nav class="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
+                            <div></div>
+            
+                            <a href="/blog/2026-11/upgrading-saccharine-bpmn-to-durable-workflow-v2"
+                   class="flex items-center justify-end gap-2.5 text-slate-600 hover:text-indigo-600 p-3 rounded-lg border border-transparent hover:border-slate-200 hover:bg-slate-50 transition w-full sm:w-auto text-right">
+                    <div>
+                        <span class="text-[10px] text-slate-400 block uppercase">Older Post</span>
+                        <span class="font-bold font-sans text-sm text-slate-800">Upgrading Saccharine BPMN to durable-workflow v2</span>
+                    </div>
+                    <span>&rarr;</span>
+                </a>
+                    </nav>
+    </div>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-6 w-6 rounded bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <span class="font-bold text-slate-200">Saccharine Open Source</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Domain-agnostic operational primitives and workflow orchestration for Laravel.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-6 text-xs text-slate-400">
+                    <a href="/bpmn" class="hover:text-white transition">BPMN Workflow</a>
+                    <a href="/bpmn/docs/introduction" class="hover:text-white transition">Docs</a>
+                    <a href="https://github.com/saccharine-app/bpmn" class="hover:text-white transition" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://opensource.org/licenses/MIT" class="hover:text-white transition" target="_blank" rel="noopener">MIT License</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800/80 text-center md:text-left text-xs text-slate-500">
+                &copy; 2026 Saccharine. BPMN 2.0 is an OMG standard. Web canvas powered by bpmn-js (Camunda). Durable execution powered by durable-workflow.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
